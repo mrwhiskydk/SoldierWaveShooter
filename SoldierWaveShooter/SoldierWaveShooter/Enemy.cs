@@ -8,5 +8,6 @@ namespace SoldierWaveShooter
 {
     class Enemy
     {
+
     }
 }

@@ -15,6 +15,9 @@ namespace SoldierWaveShooter
         public Gameworld()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 1020;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 

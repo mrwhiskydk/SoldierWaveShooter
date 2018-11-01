@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SoldierWaveShooter.Player" Collapsed="true">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SoldierWaveShooter.Player">
     <Position X="3.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAAAAAg=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+  <Class Name="SoldierWaveShooter.Gameworld">
+    <Position X="5.75" Y="0.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.GameObjects" Collapsed="true">
-    <Position X="5.5" Y="1.5" Width="1.5" />
+  <Class Name="SoldierWaveShooter.GameObjects">
+    <Position X="10.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects.cs</FileName>
