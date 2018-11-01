@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
