@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    class Player
+    class Enemy
     {
-        private int test;
-        private string text;
-        private int health;
     }
 }
