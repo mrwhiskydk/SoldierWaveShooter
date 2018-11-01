@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    class Player
+    class GameObjects
     {
-        private int health;
     }
 }
