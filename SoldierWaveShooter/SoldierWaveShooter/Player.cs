@@ -9,5 +9,6 @@ namespace SoldierWaveShooter
     class Player
     {
         private int test;
+        private string text;
     }
 }
