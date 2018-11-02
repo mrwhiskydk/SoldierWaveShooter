@@ -30,7 +30,7 @@ namespace SoldierWaveShooter
             }
         }
 
-        private static ContentManager _content;
+        public static ContentManager _content;
         public static ContentManager ContentManager
         {
             get
@@ -47,6 +47,7 @@ namespace SoldierWaveShooter
             graphics.PreferredBackBufferHeight = 1020;   // set this value to the desired height of your window
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
+            _content = Content;
         }
 
         public static void AddGameObject(GameObject go)
