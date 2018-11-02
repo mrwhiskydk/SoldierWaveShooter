@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    public class GameObjects
+    public class PowerUp : GameObjects
     {
-
+        public PowerUp()
+        {
+        }
     }
 }

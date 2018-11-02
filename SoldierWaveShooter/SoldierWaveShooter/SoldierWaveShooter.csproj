@@ -43,12 +43,16 @@
   <ItemGroup>
     <Compile Include="Boss.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="AnimatedGameObject.cs" />
     <Compile Include="GameObjects.cs" />
     <Compile Include="Gameworld.cs" />
     <Compile Include="InGameMenu.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Melee.cs" />
+    <Compile Include="Physics.cs" />
+    <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ranged.cs" />
