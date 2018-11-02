@@ -7,7 +7,7 @@ namespace SoldierWaveShooter
 {
     public class PowerUp : GameObject
     {
-        public PowerUp()
+        public PowerUp(string spriteName) : base(spriteName)
         {
         }
     }
