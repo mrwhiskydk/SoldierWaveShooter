@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    public class GameObjects
+    public class GameObject
     {
         protected Texture2D sprite;
         public Vector2 position;
