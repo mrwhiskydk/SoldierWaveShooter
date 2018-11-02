@@ -13,12 +13,12 @@ namespace SoldierWaveShooter
         private double timeElapsed;
 
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
 
         }
 
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
 
         }
