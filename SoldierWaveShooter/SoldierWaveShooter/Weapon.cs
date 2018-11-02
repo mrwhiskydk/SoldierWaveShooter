@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public class Weapon
+    public abstract class Weapon
     {
         protected int ammo;
         protected float firerate;
