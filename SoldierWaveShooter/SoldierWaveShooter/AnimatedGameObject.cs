@@ -14,9 +14,9 @@ namespace SoldierWaveShooter
     {
         Rectangle[] animationRectangles;
 
-        private float animationFPS;
-        private int currentAnimationIndex;
-        private double timeElapsed;
+        float animationFPS = 10;
+        int currentAnimationIndex = 0;
+        double timeElapsed = 0;
 
         public override Rectangle CollisionBox
         {
