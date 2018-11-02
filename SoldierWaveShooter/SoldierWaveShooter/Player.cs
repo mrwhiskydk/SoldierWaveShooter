@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    class Player
+    class Player : Character
     {
         private int test;
         private string text;
