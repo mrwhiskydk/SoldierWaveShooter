@@ -83,8 +83,8 @@ namespace SoldierWaveShooter
 
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
-            //player = new Player();
-            //gameObjects.Add(player);
+            player = new Player(4, 10, Vector2.Zero, "Player");
+            gameObjects.Add(player);
 
             // TODO: use this.Content to load your game content here
         }
