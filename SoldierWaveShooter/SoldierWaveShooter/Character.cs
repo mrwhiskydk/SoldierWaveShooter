@@ -11,6 +11,10 @@ namespace SoldierWaveShooter
         protected bool isGrounded;
         protected bool isAlive;
         protected bool isFacingRight;
-        protected int health; 
+        protected int health;
+
+        public Character(string spriteName) : base(spriteName)
+        {
+        }
     }
 }

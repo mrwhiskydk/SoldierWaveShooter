@@ -38,15 +38,20 @@ namespace SoldierWaveShooter
             return CollisionBox.Intersects(otherObject.CollisionBox);
         }
 
+        public virtual void DoCollision(GameObject otherObject)
+        {
+
+        }
+
         /// <summary>
         /// The default constructor for a GameObject
         /// </summary>
         /// <param name="content">Reference to a ContentManager for loading resources</param>
         /// <param name="spriteName">The name of the texture resource the should be used for the sprite</param>
         /// <exception cref="Microsoft.Xna.Framework.Content.ContentLoadException">Thrown if a matching texture cant be found for spriteName</exception>
-        public GameObject(ContentManager content, string spriteName) : this(Vector2.Zero, content, spriteName)
+        public GameObject(string spriteName) : this(Vector2.Zero, spriteName)
         {
-            this.content = content;
+    
         }
 
         /// <summary>
@@ -56,10 +61,10 @@ namespace SoldierWaveShooter
         /// <param name="content">Reference to a ContentManager for loading resources</param>
         /// <param name="spriteName">The name of the texture resource the should be used for the sprite</param>
         /// <exception cref="Microsoft.Xna.Framework.Content.ContentLoadException">Thrown if a matching texture cant be found for spriteName</exception>
-        public GameObject(Vector2 startPosition, ContentManager content, string spriteName)
+        public GameObject(Vector2 startPosition, string spriteName)
         {
             position = startPosition;
-            sprite = content.Load<Texture2D>(spriteName);
+            sprite = Gameworld.Content.Load<Texture2D>(spriteName);
         }
 
         /// <summary>
