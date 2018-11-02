@@ -18,6 +18,30 @@ namespace SoldierWaveShooter
         private int currentAnimationIndex;
         private double timeElapsed;
 
+        public override Rectangle CollisionBox
+        {
+            get
+            {
+                return new Rectangle((int)(position.X - animationRectangles[0].Width * 0.5), (int)(position.Y - animationRectangles[0].Height * 0.5), animationRectangles[0].Width, animationRectangles[0].Height);
+            }
+        }
+
+        public AnimatedGameObject(int frameCount, float animationFPS, ContentManager content, string spriteName) : this(frameCount, animationFPS, Vector2.Zero, content, spriteName)
+        {
+
+        }
+
+        public AnimatedGameObject(int frameCount, float animationFPS, Vector2 startPostion, ContentManager content, string spriteName) : base(startPostion, content, spriteName)
+        {
+            this.animationFPS = animationFPS;
+            animationRectangles = new Rectangle[frameCount];
+            for (int i = 0; i < frameCount; i++)
+            {
+                animationRectangles[i] = new Rectangle(i * (sprite.Width / frameCount), 0, (sprite.Width / frameCount), sprite.Height);
+            }
+            currentAnimationIndex = 0;
+        }
+
 
 
         /// <summary>
