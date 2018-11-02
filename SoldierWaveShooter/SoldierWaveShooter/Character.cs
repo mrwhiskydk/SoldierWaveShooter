@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public abstract class Character : GameObjects
+    public abstract class Character : GameObject
     {
         protected float movementSpeed;
         protected bool isGrounded;
