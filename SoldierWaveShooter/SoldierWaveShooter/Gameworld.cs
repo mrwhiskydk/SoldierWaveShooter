@@ -10,7 +10,7 @@ namespace SoldierWaveShooter
     /// </summary>
     public class Gameworld : Game
     {
-        GraphicsDeviceManager graphics;
+        static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         private List<GameObject> gameObjects = new List<GameObject>();
