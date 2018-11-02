@@ -7,6 +7,8 @@ namespace SoldierWaveShooter
 {
     public class Boss : Enemy
     {
-
+        public Boss(string spriteName) : base(spriteName)
+        {
+        }
     }
 }

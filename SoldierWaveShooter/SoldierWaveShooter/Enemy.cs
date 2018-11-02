@@ -7,9 +7,6 @@ namespace SoldierWaveShooter
 {
     public class Enemy : Character
     {
-        public Enemy(string spriteName) : base(spriteName)
-        {
-        }
 
         public void Update()
         {
