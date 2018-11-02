@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -26,6 +27,15 @@ namespace SoldierWaveShooter
             get
             {
                 return graphics.GraphicsDevice.Viewport.Bounds;
+            }
+        }
+
+        private static ContentManager _content;
+        public static ContentManager ContentManager
+        {
+            get
+            {
+                return _content;
             }
         }
 
@@ -99,6 +109,27 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
+
+            foreach (GameObject go in gameObjects)
+            {
+                go.Update(gameTime);
+                foreach (GameObject other in gameObjects)
+                {
+                    if (go != other && go.IsColliding(other))
+                    {
+                        go.DoCollision(other);
+                    }
+                }
+            }
+
+            foreach (GameObject go in toBeRemoved)
+            {
+                gameObjects.Remove(go);
+            }
+            toBeRemoved.Clear();
+
+            gameObjects.AddRange(toBeAdded);
+            toBeAdded.Clear();
 
             base.Update(gameTime);
         }
