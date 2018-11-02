@@ -64,7 +64,7 @@ namespace SoldierWaveShooter
         public GameObject(Vector2 startPosition, string spriteName)
         {
             position = startPosition;
-            sprite = Gameworld.Content.Load<Texture2D>(spriteName);
+            sprite = Gameworld.ContentManager.Load<Texture2D>(spriteName);
         }
 
         /// <summary>

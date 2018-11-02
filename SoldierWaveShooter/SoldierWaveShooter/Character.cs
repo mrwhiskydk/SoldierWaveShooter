@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace SoldierWaveShooter
 {
-    public abstract class Character : GameObject, IPhysics
+    public abstract class Character : AnimatedGameObject, IPhysics
     {
         protected float movementSpeed;
         protected bool isGrounded;
@@ -13,7 +14,7 @@ namespace SoldierWaveShooter
         protected bool isFacingRight;
         protected int health;
 
-        public Character(string spriteName) : base(spriteName)
+        public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
         }
     }
