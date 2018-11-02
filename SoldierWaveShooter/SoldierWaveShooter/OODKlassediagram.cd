@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SoldierWaveShooter.Player">
-    <Position X="14" Y="7" Width="1.5" />
+    <Position X="14" Y="7" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
@@ -10,14 +10,14 @@
   <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARgEEAAAAAABwAIAAIEQAAAAAAAAEgBAAAAAAAAAAQ=</HashCode>
+      <HashCode>AARgEEAAAAAABwAJAAIEQAAAAAAAAEhBAAAAAAAAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.GameObject">
-    <Position X="10" Y="0.5" Width="2.75" />
+    <Position X="10" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAgAgAACAIAAAABAAAAAAAAAAAAIAAQA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAgAgAACAIAAAAhAAAAAAAAAAAAIAAQA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -139,7 +139,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.908" />
+    <Lollipop Position="1.523" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

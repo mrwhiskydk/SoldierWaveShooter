@@ -12,6 +12,10 @@ namespace SoldierWaveShooter
         private string text;
         private int testInt;
 
+        public Player(string spriteName) : base(spriteName)
+        {
+        }
+
         public void Update()
         {
 
