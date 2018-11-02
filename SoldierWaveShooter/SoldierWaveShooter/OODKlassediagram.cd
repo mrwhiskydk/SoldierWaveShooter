@@ -84,10 +84,10 @@
       <FileName>Platform.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.AnimatedGameObject">
+  <Class Name="SoldierWaveShooter.AnimatedGameObject" Collapsed="true">
     <Position X="6.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAoAAAAAAAAgAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>AnimatedGameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
