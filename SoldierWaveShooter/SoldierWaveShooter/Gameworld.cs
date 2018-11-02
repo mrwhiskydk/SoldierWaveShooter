@@ -30,7 +30,7 @@ namespace SoldierWaveShooter
             }
         }
 
-        public static ContentManager _content;
+        private static ContentManager _content;
         public static ContentManager ContentManager
         {
             get
