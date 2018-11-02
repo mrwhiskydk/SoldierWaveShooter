@@ -17,7 +17,9 @@ namespace SoldierWaveShooter
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
 
+        private Player player;
         private Texture2D collisionTexture;
+
 
         public static Rectangle ScreenSize
         {
@@ -68,6 +70,11 @@ namespace SoldierWaveShooter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            collisionTexture = Content.Load<Texture2D>("CollisionTexture");
+
+            player = new Player();
+            gameObjects.Add(player);
 
             // TODO: use this.Content to load your game content here
         }
