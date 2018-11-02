@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public class Enemy
+    public class UI
     {
     }
 }
