@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace SoldierWaveShooter
 {
@@ -12,6 +13,20 @@ namespace SoldierWaveShooter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private List<GameObject> gameObjects = new List<GameObject>();
+        private static List<GameObject> toBeAdded = new List<GameObject>();
+        private static List<GameObject> toBeRemoved = new List<GameObject>();
+
+
+        public static Rectangle ScreenSize
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Bounds;
+            }
+        }
+
+
         public Gameworld()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -19,6 +34,16 @@ namespace SoldierWaveShooter
             graphics.PreferredBackBufferHeight = 1020;   // set this value to the desired height of your window
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
+        }
+
+        public static void AddGameObject(GameObject go)
+        {
+            toBeAdded.Add(go);
+        }
+
+        public static void RemoveGameObject(GameObject go)
+        {
+            toBeRemoved.Add(go);
         }
 
         /// <summary>
