@@ -10,7 +10,11 @@ namespace SoldierWaveShooter
     {
         private int test;
         private string text;
-        private int health;
         private int testInt;
+
+        public void Update()
+        {
+
+        }
     }
 }

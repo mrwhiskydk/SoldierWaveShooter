@@ -7,5 +7,12 @@ namespace SoldierWaveShooter
 {
     public class Enemy : Character
     {
+
+
+
+        public void Update()
+        {
+
+        }
     }
 }
