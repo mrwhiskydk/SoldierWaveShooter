@@ -11,9 +11,17 @@ namespace SoldierWaveShooter
     public class GameObjects
     {
         protected Texture2D sprite;
-        public Vector2 position;
         protected float rotation;
-        
+
+        public Vector2 position;
+
+        /// <summary>
+        /// Property that gets the position of GameObject
+        /// </summary>
+        public Vector2 Position { get; set; }
+
+        public Rectangle CollisionBox { get; set; }
+
 
 
     }
