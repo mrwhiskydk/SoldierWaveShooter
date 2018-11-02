@@ -20,7 +20,12 @@ namespace SoldierWaveShooter
         /// </summary>
         public Vector2 Position { get; set; }
 
-        public Rectangle CollisionBox { get; set; }
+
+
+
+
+
+
 
         public virtual void Update(GameTime gameTime)
         {
