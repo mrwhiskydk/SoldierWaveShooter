@@ -41,9 +41,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AnimatedGameObject.cs" />
     <Compile Include="GameObjects.cs" />
     <Compile Include="Gameworld.cs" />
+    <Compile Include="Physics.cs" />
+    <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
