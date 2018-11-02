@@ -22,5 +22,16 @@ namespace SoldierWaveShooter
 
         public Rectangle CollisionBox { get; set; }
 
+        public virtual void Update(GameTime gameTime)
+        {
+
+        }
+
+        public virtual void Draw(GameTime gameTime)
+        {
+
+        }
+
+
     }
 }
