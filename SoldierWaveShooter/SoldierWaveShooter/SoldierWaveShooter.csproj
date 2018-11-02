@@ -45,7 +45,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="AnimatedGameObject.cs" />
-    <Compile Include="GameObjects.cs" />
+    <Compile Include="GameObject.cs" />
     <Compile Include="Gameworld.cs" />
     <Compile Include="InGameMenu.cs" />
     <Compile Include="Machinegun.cs" />

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public class AnimatedGameObject : GameObjects
+    public class AnimatedGameObject : GameObject
     {
         private float animationFPS;
         private int currentAnimationIndex;

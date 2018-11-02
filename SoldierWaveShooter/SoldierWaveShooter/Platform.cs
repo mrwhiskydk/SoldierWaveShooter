@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public class Platform : GameObjects
+    public class Platform : GameObject
     {
     }
 }
