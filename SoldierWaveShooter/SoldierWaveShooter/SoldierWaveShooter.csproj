@@ -47,6 +47,7 @@
     <Compile Include="GameObjects.cs" />
     <Compile Include="Gameworld.cs" />
     <Compile Include="InGameMenu.cs" />
+    <Compile Include="Machinegun.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="Melee.cs" />
     <Compile Include="Physics.cs" />
@@ -54,9 +55,14 @@
     <Compile Include="Player.cs" />
     <Compile Include="PowerUp.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ranged.cs" />
+    <Compile Include="Shotgun.cs" />
+    <Compile Include="Sniper.cs" />
+    <Compile Include="Standard.cs" />
     <Compile Include="UI.cs" />
+    <Compile Include="Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
