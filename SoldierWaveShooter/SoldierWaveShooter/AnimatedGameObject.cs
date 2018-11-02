@@ -5,7 +5,17 @@ using System.Text;
 
 namespace SoldierWaveShooter
 {
-    public class AnimatedGameObject
+    public class AnimatedGameObject : GameObjects
     {
+        private float animationFPS;
+        private int currentAnimationIndex;
+        private double timeElapsed;
+
+
+        public void Update()
+        {
+
+        }
+
     }
 }
