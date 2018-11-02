@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SoldierWaveShooter.Player">
-    <Position X="14" Y="5.5" Width="1.5" />
+    <Position X="14" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
@@ -10,14 +10,14 @@
   <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARgEEAAAAAABwAIAAIAAAAAAAAAAEgAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AARgEEAAAAAABwAIAAIEQAAAAAAAAEgAAAAAAAAAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.GameObject">
     <Position X="10.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgAACAIAAAABAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,14 +64,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Enemy">
-    <Position X="10.5" Y="5.5" Width="1.5" />
+    <Position X="10.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.PowerUp">
-    <Position X="10.25" Y="2.75" Width="1.5" />
+    <Position X="10.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PowerUp.cs</FileName>
@@ -141,7 +141,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Character">
-    <Position X="12.25" Y="2.5" Width="2.5" />
+    <Position X="12.25" Y="3.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
