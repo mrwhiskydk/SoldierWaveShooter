@@ -100,6 +100,27 @@ namespace SoldierWaveShooter
 
             // TODO: Add your update logic here
 
+            foreach (GameObject go in gameObjects)
+            {
+                go.Update(gameTime);
+                foreach (GameObject other in gameObjects)
+                {
+                    if (go != other && go.IsColliding(other))
+                    {
+                        go.DoCollision(other);
+                    }
+                }
+            }
+
+            foreach (GameObject go in toBeRemoved)
+            {
+                gameObjects.Remove(go);
+            }
+            toBeRemoved.Clear();
+
+            gameObjects.AddRange(toBeAdded);
+            toBeAdded.Clear();
+
             base.Update(gameTime);
         }
 
