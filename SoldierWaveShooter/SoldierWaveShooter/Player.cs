@@ -27,9 +27,9 @@ namespace SoldierWaveShooter
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-              
+
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.D))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
