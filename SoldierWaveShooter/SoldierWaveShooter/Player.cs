@@ -19,7 +19,6 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            
             HandleMovement(gameTime);
         }
 
@@ -35,7 +34,7 @@ namespace SoldierWaveShooter
             {
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && )
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 position.Y -= (float)(3000 * gameTime.ElapsedGameTime.TotalSeconds);
                 Gravity = true;

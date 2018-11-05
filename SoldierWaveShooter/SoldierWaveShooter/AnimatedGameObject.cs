@@ -14,7 +14,7 @@ namespace SoldierWaveShooter
     {
         Rectangle[] animationRectangles;
 
-        float animationFPS = 100;
+        float animationFPS = 10;
         int currentAnimationIndex = 0;
         double timeElapsed = 0;
 
