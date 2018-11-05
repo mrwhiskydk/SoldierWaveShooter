@@ -38,5 +38,12 @@ namespace SoldierWaveShooter
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
         }
+        public override void DoCollision(GameObject otherObject)
+        {
+            if (otherObject is Platform)
+            {
+
+            }
+        }
     }
 }
