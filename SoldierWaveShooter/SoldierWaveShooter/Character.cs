@@ -17,5 +17,13 @@ namespace SoldierWaveShooter
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
         }
+
+        protected virtual void HandleMovement()
+        {
+
+
+        }
+
+
     }
 }
