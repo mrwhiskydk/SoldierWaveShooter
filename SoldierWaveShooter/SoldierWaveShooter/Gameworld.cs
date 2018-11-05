@@ -87,8 +87,8 @@ namespace SoldierWaveShooter
             {
                 gameObjects.Add(new Platform(new Vector2((i*70) + 35, 990), "Grass"));
             }
-            ground = new Platform(Vector2.Zero, "Grass");
-            player = new Player(8, 10, Vector2.Zero, "PlayerRun");
+
+            player = new Player();
             gameObjects.Add(player);
 
             // TODO: use this.Content to load your game content here
@@ -126,9 +126,11 @@ namespace SoldierWaveShooter
                 go.Update(gameTime);
                 foreach (GameObject other in gameObjects)
                 {
+                    
                     if (go != other && go.IsColliding(other))
                     {
                         go.DoCollision(other);
+
                     }
                 }
             }
