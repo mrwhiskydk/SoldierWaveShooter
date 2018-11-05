@@ -30,7 +30,7 @@ namespace SoldierWaveShooter
             }
         }
 
-        public static ContentManager _content;
+        private static ContentManager _content;
         public static ContentManager ContentManager
         {
             get
@@ -84,7 +84,7 @@ namespace SoldierWaveShooter
 
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
-            player = new Player(4, 10, Vector2.Zero, "Player");
+            player = new Player(8, 10, Vector2.Zero, "PlayerRun");
             gameObjects.Add(player);
 
             // TODO: use this.Content to load your game content here

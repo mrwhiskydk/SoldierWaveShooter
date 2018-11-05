@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
         private string text;
         private int testInt;
 
-        public Player(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
+        public Player(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), spriteName)
         {
         }
 
