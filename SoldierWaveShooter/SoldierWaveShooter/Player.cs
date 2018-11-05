@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
@@ -17,9 +18,25 @@ namespace SoldierWaveShooter
         {
         }
 
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
 
+        }
+
+        protected override void HandleMovement(GameTime gameTime)
+        {
+            if (!isFacingRight && Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+              
+            }
+            if(isFacingRight && Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+
+
+            position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
         }
     }
 }
