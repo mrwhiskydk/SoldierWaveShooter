@@ -11,16 +11,18 @@ namespace SoldierWaveShooter
     class Player : Character
     {
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon weapon = new Standard("Grass");
+        private Standard weapon = new Standard("Grass");
 
         public Player(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), spriteName)
         {
+            Gameworld.AddGameObject(weapon);
         }
 
         public override void Update(GameTime gameTime)
         {
             
             HandleMovement(gameTime);
+            weapon.Position = position;
         }
 
         protected override void HandleMovement(GameTime gameTime)
