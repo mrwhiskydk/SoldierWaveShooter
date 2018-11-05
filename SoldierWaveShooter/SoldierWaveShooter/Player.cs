@@ -42,7 +42,7 @@ namespace SoldierWaveShooter
         {
             if (otherObject is Platform)
             {
-
+                gravity = false;
             }
         }
     }
