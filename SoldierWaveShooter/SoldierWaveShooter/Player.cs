@@ -33,9 +33,10 @@ namespace SoldierWaveShooter
             {
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && )
             {
-                position.Y -= (float)(1000 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(3000 * gameTime.ElapsedGameTime.TotalSeconds);
+                Gravity = true;
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
@@ -44,7 +45,7 @@ namespace SoldierWaveShooter
         {
             if (otherObject is Platform)
             {
-                isGrounded = true;
+                Gravity = false;
             }
         }
     }
