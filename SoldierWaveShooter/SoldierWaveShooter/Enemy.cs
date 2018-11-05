@@ -8,6 +8,8 @@ namespace SoldierWaveShooter
 {
     public class Enemy : Character
     {
+        protected Vector2 direction = new Vector2(0, 0);
+
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
         }
@@ -19,7 +21,7 @@ namespace SoldierWaveShooter
 
         protected override void HandleMovement(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
