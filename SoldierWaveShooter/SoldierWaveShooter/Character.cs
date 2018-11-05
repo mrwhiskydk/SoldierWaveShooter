@@ -28,7 +28,7 @@ namespace SoldierWaveShooter
 
 
         protected abstract void HandleMovement(GameTime gameTime);
-       
+
 
     }
 }
