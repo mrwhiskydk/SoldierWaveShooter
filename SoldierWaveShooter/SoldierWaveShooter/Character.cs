@@ -22,23 +22,12 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            HandleMovement(gameTime);
-
             base.Update(gameTime);
         }
 
 
-        protected virtual void HandleMovement(GameTime gameTime)
-        {
-            if(isGrounded && isFacingRight)
-            {
-
-            }
-
-
-            position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-        }
-
+        protected abstract void HandleMovement(GameTime gameTime);
+       
 
     }
 }
