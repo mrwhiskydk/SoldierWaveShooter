@@ -15,10 +15,16 @@ namespace SoldierWaveShooter
 
         public Vector2 position;
 
+        protected bool gravity = false;
+
+        
+
         /// <summary>
         /// Property that gets the position of GameObject
         /// </summary>
-        public Vector2 Position { get => position; }
+        public Vector2 Position { get => position; set => position = value; }
+
+        public bool Gravity { get => gravity; set => gravity = value; }
 
         public virtual Rectangle CollisionBox
         {

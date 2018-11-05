@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SoldierWaveShooter
 {
-    public abstract class Character : AnimatedGameObject, IPhysics
+    public abstract class Character : AnimatedGameObject
     {
         protected float movementSpeed = 100;
         protected bool isGrounded;
@@ -17,6 +17,7 @@ namespace SoldierWaveShooter
 
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
+            gravity = true;
         }
 
 
