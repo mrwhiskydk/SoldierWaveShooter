@@ -83,7 +83,8 @@ namespace SoldierWaveShooter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
-            ground = new Platform(new Vector2(Gameworld.ScreenSize.Width / 2, 40), "Grass");
+            ground = new Platform(new Vector2(Gameworld.ScreenSize.Width /2, 960), "Grass");
+            gameObjects.Add(ground);
             player = new Player(8, 10, Vector2.Zero, "PlayerRun");
             gameObjects.Add(player);
 
