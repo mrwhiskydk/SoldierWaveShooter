@@ -18,7 +18,7 @@ namespace SoldierWaveShooter
         /// <summary>
         /// Property that gets the position of GameObject
         /// </summary>
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get => position; }
 
         public virtual Rectangle CollisionBox
         {
