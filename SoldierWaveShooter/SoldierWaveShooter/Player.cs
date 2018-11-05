@@ -12,7 +12,7 @@ namespace SoldierWaveShooter
     {
         protected Vector2 direction = new Vector2(0, 0);
 
-        public Player(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), spriteName)
+        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
         }
 
@@ -26,7 +26,8 @@ namespace SoldierWaveShooter
         {
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+
+                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);               
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
