@@ -9,6 +9,7 @@ namespace SoldierWaveShooter
     {
         public PowerUp(string spriteName) : base(spriteName)
         {
+            gravity = true;
         }
     }
 }

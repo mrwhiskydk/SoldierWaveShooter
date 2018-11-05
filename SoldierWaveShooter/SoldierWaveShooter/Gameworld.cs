@@ -113,6 +113,12 @@ namespace SoldierWaveShooter
 
             foreach (GameObject go in gameObjects)
             {
+                //Apply gravity
+                if (go.Gravity)
+                {
+                    go.Position = new Vector2(go.Position.X, go.Position.Y + 1);
+                }
+
                 go.Update(gameTime);
                 foreach (GameObject other in gameObjects)
                 {
