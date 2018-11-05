@@ -20,7 +20,7 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-
+            HandleMovement(gameTime);
         }
 
         protected override void HandleMovement(GameTime gameTime)
