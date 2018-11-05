@@ -2,14 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
-    public abstract class Weapon
+    public abstract class Weapon : GameObject
     {
         protected int ammo;
         protected float firerate;
-        protected float projectilespeed;
+        protected float projectileSpeed;
         protected int damage;
+        protected double lastShot;
+
+        public Weapon(string spriteName) : base(spriteName)
+        {
+        }
+
+        public void Shoot()
+        {
+            
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            lastShot += gameTime.ElapsedGameTime.TotalSeconds;
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && lastShot > 0.3f)
+            {
+                Gameworld.AddGameObject(new Projectile(position, "grass", new Vector2(1, 0), 10, 50));
+            }
+        }
     }
 }
