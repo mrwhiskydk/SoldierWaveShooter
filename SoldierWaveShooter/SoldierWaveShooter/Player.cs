@@ -18,6 +18,7 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+            
             HandleMovement(gameTime);
         }
 
@@ -34,10 +35,8 @@ namespace SoldierWaveShooter
             }
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                position.Y -= (float)(500 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(1000 * gameTime.ElapsedGameTime.TotalSeconds);
             }
-
-
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
         }
@@ -46,7 +45,6 @@ namespace SoldierWaveShooter
             if (otherObject is Platform)
             {
                 isGrounded = true;
-                gravity = false;
             }
         }
     }
