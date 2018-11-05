@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SoldierWaveShooter.Player">
-    <Position X="14" Y="7" Width="2.25" />
+    <Position X="14.25" Y="8.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAgAAAAAIAAAAACAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARgEEAAAAAABwAJAAIEQAAAAAAAAEhBAAAAAAAAAAQ=</HashCode>
+      <HashCode>AARwEEAAAAAABwAJAAIEQAAAAAAAAEhBAAAAAAAAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.GameObject">
     <Position X="10" Y="0.5" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAgAgAACAIAAAAhAAAAAAAAAAAAIAAQA=</HashCode>
+      <HashCode>AAQAAAgAAAAIAgAgAACAIAAAAhAAAAAAAAAAAAIAAQA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -43,35 +43,35 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Ranged">
-    <Position X="8.75" Y="9" Width="1.5" />
+    <Position X="8.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Ranged.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Melee">
-    <Position X="10.5" Y="9" Width="1.5" />
+    <Position X="10.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Boss">
-    <Position X="12.25" Y="9" Width="1.5" />
+    <Position X="12.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Boss.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Enemy">
-    <Position X="10.5" Y="7.25" Width="1.5" />
+    <Position X="10.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.PowerUp">
-    <Position X="10.5" Y="4.25" Width="1.5" />
+    <Position X="14" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PowerUp.cs</FileName>
@@ -134,12 +134,11 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Character">
-    <Position X="13" Y="4.25" Width="2.5" />
+    <Position X="11.75" Y="4.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAEAAAg=</HashCode>
+      <HashCode>AAQAAAAAAAAAIAAAAAAAAAAAAAIAAAAIAAAAACEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="1.523" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
