@@ -7,5 +7,8 @@ namespace SoldierWaveShooter
 {
     public class Machinegun : Weapon
     {
+        public Machinegun(string spriteName) : base(spriteName)
+        {
+        }
     }
 }
