@@ -116,7 +116,7 @@ namespace SoldierWaveShooter
                 //Apply gravity
                 if (go.Gravity)
                 {
-                    go.Position = new Vector2(go.Position.X, go.Position.Y + 1);
+                    go.Position = new Vector2(go.Position.X, go.Position.Y + 5);
                 }
 
                 go.Update(gameTime);
