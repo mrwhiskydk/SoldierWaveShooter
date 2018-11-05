@@ -22,7 +22,7 @@ namespace SoldierWaveShooter
         /// <summary>
         /// Property that gets the position of GameObject
         /// </summary>
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get => position; }
 
         public bool Gravity { get => gravity; set => gravity = value; }
 
@@ -90,7 +90,6 @@ namespace SoldierWaveShooter
         {
 
             spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, new SpriteEffects(), 0f);
-
 
         }
 

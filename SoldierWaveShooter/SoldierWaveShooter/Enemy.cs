@@ -12,9 +12,14 @@ namespace SoldierWaveShooter
         {
         }
 
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
 
+        }
+
+        protected override void HandleMovement(GameTime gameTime)
+        {
+            throw new NotImplementedException();
         }
     }
 }
