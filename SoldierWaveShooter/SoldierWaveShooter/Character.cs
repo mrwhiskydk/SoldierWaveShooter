@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public abstract class Character : AnimatedGameObject, IPhysics
     {
-        protected float movementSpeed;
+        protected float movementSpeed = 100;
         protected bool isGrounded;
         protected bool isAlive;
         protected bool isFacingRight;
