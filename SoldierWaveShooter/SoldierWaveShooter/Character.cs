@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public abstract class Character : AnimatedGameObject
     {
-        protected float movementSpeed = 100;
+        protected float movementSpeed = 300;
         protected bool isGrounded;
         protected bool isAlive;
         protected bool isFacingRight;
@@ -23,12 +23,13 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
         }
 
 
         protected abstract void HandleMovement(GameTime gameTime);
-       
+
 
     }
 }
