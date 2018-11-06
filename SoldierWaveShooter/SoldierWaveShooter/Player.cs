@@ -21,6 +21,8 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+
+            base.Update(gameTime);
             HandleMovement(gameTime);
             weapon.Position = position;
 

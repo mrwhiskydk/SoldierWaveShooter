@@ -16,7 +16,7 @@ namespace SoldierWaveShooter
 
         float animationFPS = 10;
         int currentAnimationIndex = 0;
-        double timeElapsed = 0;
+        double timeElapsed = 0;     
 
         public override Rectangle CollisionBox
         {
@@ -50,7 +50,7 @@ namespace SoldierWaveShooter
         /// <param name="gameTime">Takes a GameTime the provides the timespan since last call to update </param>
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            
 
             timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
             currentAnimationIndex = (int)(timeElapsed * animationFPS);
@@ -60,6 +60,8 @@ namespace SoldierWaveShooter
                 currentAnimationIndex = 0;
                 timeElapsed = 0;
             }
+
+            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
