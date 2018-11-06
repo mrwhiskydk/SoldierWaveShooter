@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
         protected float movementSpeed = 300;
         protected bool isGrounded;
         protected bool isAlive;
-        protected bool isFacingRight;
+
         
         protected int health;
 
@@ -25,17 +25,6 @@ namespace SoldierWaveShooter
         {
 
             base.Update(gameTime);
-
-
-            //if (isGrounded)
-            //{
-            //    gravity = false;
-            //}
-            //else
-            //{
-            //    gravity = true;
-            //}
-            //gravity = !isGrounded;
 
         }
 

@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 namespace SoldierWaveShooter
 {
     class Player : Character
-    {
+    {        
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper() };
         protected Vector2 velocity = new Vector2(0, 0);       
@@ -36,20 +36,22 @@ namespace SoldierWaveShooter
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-
+                isFacingRight = false;
                 position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
+                isFacingRight = true;
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
             
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
-            {
+            {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 velocity.Y -= 5;
+                jumpForce -= 5;
                 isGrounded = false;
                 gravity = true;
                 if(position.Y > 20)
@@ -57,7 +59,7 @@ namespace SoldierWaveShooter
                     velocity.Y += 5;
                 }
             }
-         
+
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
