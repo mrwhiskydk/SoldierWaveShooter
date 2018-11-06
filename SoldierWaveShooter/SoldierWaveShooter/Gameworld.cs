@@ -17,8 +17,8 @@ namespace SoldierWaveShooter
         private List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
-        private Platform ground;
         private Player player;
+        private Platform platform;
         private Texture2D collisionTexture;
 
 
@@ -87,7 +87,8 @@ namespace SoldierWaveShooter
             {
                 gameObjects.Add(new Platform(new Vector2((i*70) + 35, 990), "Grass"));
             }
-
+            platform = new Platform(new Vector2(750, 890), "Grass");
+            gameObjects.Add(platform);
             player = new Player(8, 10, Vector2.Zero, "PlayerRun");
             gameObjects.Add(player);
 
