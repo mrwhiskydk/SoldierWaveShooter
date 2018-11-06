@@ -11,8 +11,8 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        protected Vector2 velocity = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard() };
+        private Weapon[] weapons = { new Standard(), new Sniper() };
+        protected Vector2 velocity = new Vector2(0, 0);       
         private Weapon weapon;
 
         private double jumpForce = 100;
@@ -27,9 +27,7 @@ namespace SoldierWaveShooter
 
             base.Update(gameTime);
             HandleMovement(gameTime);
-            weapon.Position = position;
-
-
+            WeaponSystem();
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -48,7 +46,7 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
@@ -56,10 +54,57 @@ namespace SoldierWaveShooter
                 jumpForce -= 5;
                 isGrounded = false;
                 gravity = true;
+                if(position.Y > 20)
+                {
+                    velocity.Y += 5;
+                }
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+        }
+
+        private void WeaponSystem()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                weapon = weapons[0];
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D2))
+            {
+                CheckSlot(1);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D3))
+            {
+                CheckSlot(2);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D4))
+            {
+                CheckSlot(3);
+            }
+
+            weapon.Position = position;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                weapon.Shoot();
+            }
+
+            //Used to check if the pressed key contains a weapon in our inventory "weapons"
+            void CheckSlot(int slot)
+            {
+                if (slot < weapons.Length)
+                {
+                    if (weapons[slot] != null)
+                    {
+                        weapon.equipped = false;
+                        weapon = weapons[slot];
+                        weapon.equipped = true;
+                    }
+                    
+                }
+            }
         }
 
         public override void DoCollision(GameObject otherObject)

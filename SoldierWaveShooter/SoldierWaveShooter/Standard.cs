@@ -7,9 +7,9 @@ namespace SoldierWaveShooter
 {
     public class Standard : Weapon
     {
-        public Standard() : base("CollisionTexture")
+        public Standard() : base("ColtPixel")
         {
-
+            equipped = true;
         }
     }
 }

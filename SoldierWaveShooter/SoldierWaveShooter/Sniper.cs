@@ -7,8 +7,12 @@ namespace SoldierWaveShooter
 {
     public class Sniper : Weapon
     {
-        public Sniper(string spriteName) : base(spriteName)
+        
+        public Sniper() : base("HuntingRifle")
         {
+            firerate = 1f;
+            projectileSpeed = 50;
+            damage = 100;
         }
     }
 }
