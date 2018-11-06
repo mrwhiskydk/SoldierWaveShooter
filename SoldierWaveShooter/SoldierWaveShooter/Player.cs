@@ -14,6 +14,8 @@ namespace SoldierWaveShooter
         private Weapon[] weapons = { new Standard() };
         private Weapon weapon;
 
+        private double jumpForce = 2500;
+
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
             weapon = weapons[0];
@@ -41,9 +43,11 @@ namespace SoldierWaveShooter
             {
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
+
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 100;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {
-                position.Y -= (float)(10000 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 isGrounded = false;
                 gravity = true;
             }
@@ -57,6 +61,8 @@ namespace SoldierWaveShooter
             {
                 isGrounded = true;
                 gravity = false;
+
+                jumpForce = 2500;
             }
             
             
