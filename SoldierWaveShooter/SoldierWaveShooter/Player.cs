@@ -47,17 +47,22 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 velocity.Y -= 5;
                 isGrounded = false;
                 gravity = true;
+                if(position.Y > 20)
+                {
+                    velocity.Y += 5;
+                }
             }
          
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
         }
 
         public override void DoCollision(GameObject otherObject)
