@@ -19,9 +19,9 @@ namespace SoldierWaveShooter
 
         }
 
-        protected override void HandleMovement(GameTime gameTime)
-        {
+        //protected override void HandleMovement(GameTime gameTime)
+        //{
 
-        }
+        //}
     }
 }
