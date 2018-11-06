@@ -21,13 +21,18 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            //HandleMovement(gameTime);
+            HandleMovement(gameTime);
             weapon.Position = position;
 
+
+        }
+
+        protected override void HandleMovement(GameTime gameTime)
+        {
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
 
-                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);               
+                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
