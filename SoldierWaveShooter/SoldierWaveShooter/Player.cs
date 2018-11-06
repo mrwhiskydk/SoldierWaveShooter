@@ -11,11 +11,13 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
+        protected Vector2 velocity = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard() };
         private Weapon weapon;
 
-        
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 860), "Player")
+        private double jumpForce = 100;
+
+        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
             weapon = weapons[0];
         }
@@ -32,6 +34,8 @@ namespace SoldierWaveShooter
 
         protected override void HandleMovement(GameTime gameTime)
         {
+            
+
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 isFacingRight = false;
@@ -43,18 +47,18 @@ namespace SoldierWaveShooter
                 isFacingRight = true;
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded == true)
+
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {
-                position.Y -= (float)(10000 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+                velocity.Y -= 5;
                 isGrounded = false;
                 gravity = true;
             }
-            else
-            {
-
-            }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+            position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         public override void DoCollision(GameObject otherObject)
@@ -63,8 +67,13 @@ namespace SoldierWaveShooter
             {
                 isGrounded = true;
                 gravity = false;
+
+                jumpForce = 100;
             }
+            
+            
         }
+
 
     }
 }
