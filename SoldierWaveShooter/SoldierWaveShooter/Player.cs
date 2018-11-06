@@ -13,7 +13,6 @@ namespace SoldierWaveShooter
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper() };
         protected Vector2 velocity = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard() };
         private Weapon weapon;
 
         private double jumpForce = 100;
