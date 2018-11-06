@@ -39,7 +39,7 @@ namespace SoldierWaveShooter
         /// </summary>
         /// <param name="otherObject">The other GameObject that should be tested against</param>
         /// <returns>Returns true if current object collides with otherObject otherwise false</returns>
-        public bool IsColliding(GameObject otherObject)
+        public virtual bool IsColliding(GameObject otherObject)
         {
             return CollisionBox.Intersects(otherObject.CollisionBox);
         }

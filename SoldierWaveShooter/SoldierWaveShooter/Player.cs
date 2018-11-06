@@ -39,19 +39,21 @@ namespace SoldierWaveShooter
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded == true)
             {
                 position.Y -= (float)(10000 * gameTime.ElapsedGameTime.TotalSeconds);
-                Gravity = true;
                 isGrounded = false;
+                gravity = true;
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
         }
+
         public override void DoCollision(GameObject otherObject)
         {
-            if (otherObject is Platform)
+            if (otherObject is Platform && !isGrounded)
             {
-                Gravity = false;
                 isGrounded = true;
+                gravity = false;
             }
         }
+
     }
 }

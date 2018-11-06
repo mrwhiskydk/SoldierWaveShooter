@@ -25,6 +25,18 @@ namespace SoldierWaveShooter
         {
 
             base.Update(gameTime);
+
+
+            //if (isGrounded)
+            //{
+            //    gravity = false;
+            //}
+            //else
+            //{
+            //    gravity = true;
+            //}
+            //gravity = !isGrounded;
+
         }
 
 
