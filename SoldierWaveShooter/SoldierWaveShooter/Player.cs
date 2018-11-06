@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
     class Player : Character
     {
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard() };
+        private Weapon[] weapons = { new Standard(), new Sniper() };
         private Weapon weapon;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
@@ -22,7 +22,7 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
             HandleMovement(gameTime);
-            weapon.Position = position;
+            WeaponSystem();
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -46,6 +46,49 @@ namespace SoldierWaveShooter
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
         }
+
+        private void WeaponSystem()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                weapon = weapons[0];
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D2))
+            {
+                CheckSlot(1);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D3))
+            {
+                CheckSlot(2);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D4))
+            {
+                CheckSlot(3);
+            }
+
+            weapon.Position = position;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                weapon.Shoot();
+            }
+
+            //Used to check if the pressed key contains a weapon in our inventory "weapons"
+            void CheckSlot(int slot)
+            {
+                if (slot < weapons.Length)
+                {
+                    if (weapons[slot] != null)
+                    {
+                        weapon.equipped = false;
+                        weapon = weapons[slot];
+                        weapon.equipped = true;
+                    }
+                    
+                }
+            }
+        }
+
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
