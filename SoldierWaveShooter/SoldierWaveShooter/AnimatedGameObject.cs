@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
     public class AnimatedGameObject : GameObject
     {
         Rectangle[] animationRectangles;
-
+        protected bool isFacingRight;
         float animationFPS = 10;
         int currentAnimationIndex = 0;
         double timeElapsed = 0;     
@@ -66,7 +66,15 @@ namespace SoldierWaveShooter
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+            if (isFacingRight == true)
+            {
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+            }
+            else if(isFacingRight == false)
+            {
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
+            }
+   
         }
 
 
