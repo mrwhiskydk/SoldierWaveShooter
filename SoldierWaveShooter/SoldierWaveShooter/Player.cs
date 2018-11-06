@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
     class Player : Character
     {
         protected Vector2 direction = new Vector2(0, 0);
-        private Standard weapon = new Standard("Grass");
+        private Standard weapon = new Standard("M16");
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
