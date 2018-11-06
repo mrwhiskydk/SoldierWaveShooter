@@ -27,9 +27,10 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
             lastShot += gameTime.ElapsedGameTime.TotalSeconds;
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && lastShot > 0.3f)
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && lastShot > 0.2f)
             {
-                Gameworld.AddGameObject(new Projectile(position, "grass", new Vector2(1, 0), 10, 50));
+                Gameworld.AddGameObject(new Projectile(position, "Bullet", new Vector2(1, 0), 10, 10));
+                lastShot = 0;
             }
         }
     }

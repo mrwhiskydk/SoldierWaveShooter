@@ -9,6 +9,7 @@ namespace SoldierWaveShooter
     {
         public Standard(string spriteName) : base(spriteName)
         {
+
         }
     }
 }

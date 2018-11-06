@@ -11,30 +11,32 @@ namespace SoldierWaveShooter
     class Player : Character
     {
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon weapon = new Standard("Grass");
+        private Standard weapon = new Standard("Grass");
 
-        public Player(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), spriteName)
+        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
+            Gameworld.AddGameObject(weapon);
         }
 
         public override void Update(GameTime gameTime)
         {
-         
             HandleMovement(gameTime);
+            weapon.Position = position;
         }
 
         protected override void HandleMovement(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+
+                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);               
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && )
             {
                 position.Y -= (float)(10000 * gameTime.ElapsedGameTime.TotalSeconds);
                 Gravity = true;
