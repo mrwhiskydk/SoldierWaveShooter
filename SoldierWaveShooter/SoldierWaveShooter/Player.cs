@@ -50,9 +50,10 @@ namespace SoldierWaveShooter
 
             jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
-            {
+            {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 velocity.Y -= 5;
+                jumpForce -= 5;
                 isGrounded = false;
                 gravity = true;
             }
