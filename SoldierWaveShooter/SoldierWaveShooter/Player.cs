@@ -11,17 +11,22 @@ namespace SoldierWaveShooter
     class Player : Character
     {
         protected Vector2 direction = new Vector2(0, 0);
-        private Standard weapon = new Standard("M16");
+        private Weapon[] weapons = { new Standard() };
+        private Weapon weapon;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
         {
-            Gameworld.AddGameObject(weapon);
+            weapon = weapons[0];
         }
 
         public override void Update(GameTime gameTime)
         {
+
+            base.Update(gameTime);
             HandleMovement(gameTime);
             weapon.Position = position;
+
+
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -29,7 +34,7 @@ namespace SoldierWaveShooter
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
 
-                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);               
+                position.X -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
 
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
