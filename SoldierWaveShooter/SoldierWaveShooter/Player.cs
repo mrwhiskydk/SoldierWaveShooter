@@ -11,13 +11,11 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        //protected Vector2 gravityScale = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard(), new Sniper() };       
+        private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };
+        //protected Vector2 velocity = new Vector2(0, 0);       
         private Weapon weapon;
 
-      
-
-        private double jumpForce = 10000;
+        private double jumpForce = 8000;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -26,11 +24,12 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
             HandleMovement(gameTime);
             WeaponSystem();
         }
-        
+
         protected override void HandleMovement(GameTime gameTime)
         {
             Gravity = true;
@@ -46,12 +45,11 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            //jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded == true /*&& jumpForce > 0*/ )
-            {
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
+            {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                //velocity.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                //gravityScale.Y += 1f;
+ 
                 isGrounded = false;
             }
 
@@ -75,7 +73,7 @@ namespace SoldierWaveShooter
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
-                weapon = weapons[0];
+                CheckSlot(0);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D2))
             {
@@ -89,7 +87,7 @@ namespace SoldierWaveShooter
             {
                 CheckSlot(3);
             }
-            
+
             weapon.Position = position;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -97,8 +95,7 @@ namespace SoldierWaveShooter
                 weapon.Shoot();
             }
 
-
-            // Used to check if the pressed key contains a weapon in our inventory "weapons"
+            //Used to check if the pressed key contains a weapon in our inventory "weapons"
             void CheckSlot(int slot)
             {
                 if (slot < weapons.Length)
