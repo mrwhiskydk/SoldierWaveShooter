@@ -21,7 +21,7 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            position = new Vector2(position.X + speed, position.Y);
+            position += new Vector2(direction.X + speed, direction.Y);
         }
     }
 }

@@ -15,6 +15,8 @@ namespace SoldierWaveShooter
         protected int projectileSpeed = 20;
         protected int damage = 10;
         protected double lastShot;
+        protected Random rnd = new Random();
+        protected float accuracy = 0.9f;
         public bool equipped = false;
 
         public Weapon(string spriteName) : base(spriteName)
@@ -26,7 +28,11 @@ namespace SoldierWaveShooter
         {
             if (lastShot > firerate)
             {
-                Gameworld.AddGameObject(new Projectile(position, "Bullet", new Vector2(1, 0), damage, projectileSpeed));
+                float spread = (float)rnd.NextDouble();
+                //float spread = rnd.Next(99, 101) / 100;
+                
+                Console.WriteLine(spread);
+                Gameworld.AddGameObject(new Projectile(position, "Bullet", new Vector2(1, spread), damage, projectileSpeed));
                 lastShot = 0;
             }
         }

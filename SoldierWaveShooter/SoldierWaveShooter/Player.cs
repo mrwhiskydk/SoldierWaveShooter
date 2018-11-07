@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard(), new Sniper() };
+        private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };
         protected Vector2 velocity = new Vector2(0, 0);       
         private Weapon weapon;
 
@@ -69,7 +69,7 @@ namespace SoldierWaveShooter
         {
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
-                weapon = weapons[0];
+                CheckSlot(0);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D2))
             {
