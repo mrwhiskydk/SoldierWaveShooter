@@ -12,6 +12,7 @@ namespace SoldierWaveShooter
             firerate = 1f;
             projectileSpeed = 50;
             damage = 100;
+            spread = 0f;
         }
     }
 }
