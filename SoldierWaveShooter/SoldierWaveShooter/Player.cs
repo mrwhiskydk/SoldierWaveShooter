@@ -56,7 +56,7 @@ namespace SoldierWaveShooter
 
             }
 
-            //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+            position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
         }
 
