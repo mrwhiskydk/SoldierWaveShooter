@@ -17,7 +17,7 @@ namespace SoldierWaveShooter
 
       
 
-        private double jumpForce = 1000;
+        private double jumpForce = 10000;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -33,11 +33,7 @@ namespace SoldierWaveShooter
         
         protected override void HandleMovement(GameTime gameTime)
         {
-            if (isGrounded == true)
-            {
-                Gravity = false;
-            }
-
+            Gravity = true;
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 isFacingRight = false;
@@ -51,21 +47,28 @@ namespace SoldierWaveShooter
             }
 
             //jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded /*&& jumpForce > 0*/)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded == true /*&& jumpForce > 0*/ )
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 //velocity.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
                 //gravityScale.Y += 1f;
                 isGrounded = false;
-                Gravity = true;
-
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             //velocity += gravityScale * (float)(gameTime.ElapsedGameTime.TotalSeconds);
             
-            
+        }
+
+        public override void DoCollision(GameObject otherObject)
+        {
+            if (otherObject is Platform)
+            {
+                isGrounded = true;
+                Gravity = false;
+            }
+
         }
 
         private void WeaponSystem()
@@ -109,17 +112,11 @@ namespace SoldierWaveShooter
                     
                 }
             }
+
+    
         }
-        public override void DoCollision(GameObject otherObject)
-        {
-            if (otherObject is Platform)
-            {
-                isGrounded = true;
-                Gravity = false;
-            }
-            
-            
-        }
+
+
 
 
     }
