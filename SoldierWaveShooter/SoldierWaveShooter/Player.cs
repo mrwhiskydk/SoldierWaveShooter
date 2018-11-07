@@ -12,10 +12,10 @@ namespace SoldierWaveShooter
     {        
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };
-        //protected Vector2 velocity = new Vector2(0, 0);       
+        
         private Weapon weapon;
 
-        private double jumpForce = 8000;
+        private double jumpForce = 5000;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -32,7 +32,7 @@ namespace SoldierWaveShooter
 
         protected override void HandleMovement(GameTime gameTime)
         {
-            
+            gravity = true;
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
@@ -46,18 +46,20 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
+            //jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
             {                
-                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
- 
+                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);             
+
                 isGrounded = false;
-                gravity = true;
+
 
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+            //position.Y += velocity.Y * (float)(gameTime.ElapsedGameTime.TotalSeconds);
+            
+
         }
 
         private void WeaponSystem()
@@ -109,7 +111,7 @@ namespace SoldierWaveShooter
                 isGrounded = true;
                 gravity = false;
 
-                jumpForce = 8000;
+                jumpForce = 5000;
             }
             
             
