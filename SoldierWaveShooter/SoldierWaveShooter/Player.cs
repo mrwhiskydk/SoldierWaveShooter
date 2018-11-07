@@ -51,6 +51,8 @@ namespace SoldierWaveShooter
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+ 
+                isGrounded = false;
             }
 
             //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
@@ -97,7 +99,6 @@ namespace SoldierWaveShooter
                     
                 }
             }
-        }
 
         public override void DoCollision(GameObject otherObject)
         {
