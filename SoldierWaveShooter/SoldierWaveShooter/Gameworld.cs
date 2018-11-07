@@ -20,7 +20,7 @@ namespace SoldierWaveShooter
         private Player player;
         private Platform platform;
         private Texture2D collisionTexture;
-        private float gravityStrength = .5f;
+        private float gravityStrength = 5f;
 
 
         public static Rectangle ScreenSize
@@ -86,9 +86,11 @@ namespace SoldierWaveShooter
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 990), "Grass"));
+                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf"));
             }
-            platform = new Platform(new Vector2(750, 890), "Grass");
+            platform = new Platform(new Vector2(750, 890), "GrassHalf");
+            gameObjects.Add(platform);
+            platform = new Platform(new Vector2(950, 800), "GrassHalf");
             gameObjects.Add(platform);
             player = new Player();
             gameObjects.Add(player);
