@@ -90,7 +90,9 @@ namespace SoldierWaveShooter
             }
             platform = new Platform(new Vector2(750, 890), "GrassHalf");
             gameObjects.Add(platform);
-            platform = new Platform(new Vector2(950, 800), "GrassHalf");
+            platform = new Platform(new Vector2(900, 800), "GrassHalf");
+            gameObjects.Add(platform);
+            platform = new Platform(new Vector2(1050, 890), "GrassHalf");
             gameObjects.Add(platform);
             player = new Player();
             gameObjects.Add(player);
