@@ -86,9 +86,13 @@ namespace SoldierWaveShooter
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 990), "Grass"));
+                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf"));
             }
-            platform = new Platform(new Vector2(750, 890), "Grass");
+            platform = new Platform(new Vector2(750, 890), "GrassHalf");
+            gameObjects.Add(platform);
+            platform = new Platform(new Vector2(900, 800), "GrassHalf");
+            gameObjects.Add(platform);
+            platform = new Platform(new Vector2(1050, 890), "GrassHalf");
             gameObjects.Add(platform);
             player = new Player();
             gameObjects.Add(player);
@@ -122,7 +126,9 @@ namespace SoldierWaveShooter
                 //Apply gravity
                 if (go.Gravity)
                 {
-                    go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
+                    go.GravityScale = new Vector2(go.GravityScale.X, go.GravityScale.Y);
+                    //go.Velocity = new Vector2(go.Velocity.X, go.Velocity.Y);
+
                 }
 
                 go.Update(gameTime);

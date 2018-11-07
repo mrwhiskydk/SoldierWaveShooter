@@ -18,12 +18,13 @@ namespace SoldierWaveShooter
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
             gravity = true;
+
+            //isGrounded = !gravity;
         }
 
 
         public override void Update(GameTime gameTime)
         {
-
             base.Update(gameTime);
 
         }
