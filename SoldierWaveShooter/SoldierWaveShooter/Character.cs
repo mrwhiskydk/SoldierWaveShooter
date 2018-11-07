@@ -23,7 +23,6 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-
             base.Update(gameTime);
 
         }

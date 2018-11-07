@@ -16,6 +16,7 @@ namespace SoldierWaveShooter
         public Vector2 position;
 
         protected bool gravity = false;
+        protected bool isColliding = false;
 
         
 
@@ -41,6 +42,7 @@ namespace SoldierWaveShooter
         /// <returns>Returns true if current object collides with otherObject otherwise false</returns>
         public virtual bool IsColliding(GameObject otherObject)
         {
+            isColliding = true;
             return CollisionBox.Intersects(otherObject.CollisionBox);
         }
 
