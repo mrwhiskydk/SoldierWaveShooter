@@ -43,7 +43,6 @@ namespace SoldierWaveShooter
         /// <returns>Returns true if current object collides with otherObject otherwise false</returns>
         public virtual bool IsColliding(GameObject otherObject)
         {
-            isColliding = true;
             return CollisionBox.Intersects(otherObject.CollisionBox);
         }
 

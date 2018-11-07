@@ -11,14 +11,12 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        protected Vector2 gravityScale = new Vector2(0, 0);
+        //protected Vector2 gravityScale = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper() };       
         private Weapon weapon;
-        private bool objectPlatform = false;
 
-        
-
-        private double jumpForce = 1000;
+       
+        //private double jumpForce = 100;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -34,7 +32,10 @@ namespace SoldierWaveShooter
         
         protected override void HandleMovement(GameTime gameTime)
         {
-
+            if (isGrounded == true)
+            {
+                Gravity = false;
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
@@ -48,20 +49,20 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
+            //jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded /*&& jumpForce > 0*/)
             {
-                //position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                velocity.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                gravityScale.Y += 1f;
+                position.Y -= (float)(/*jumpForce*/10000 * gameTime.ElapsedGameTime.TotalSeconds);
+                //velocity.Y -= (float)(jumpForce* gameTime.ElapsedGameTime.TotalSeconds);
+                //gravityScale.Y += 1f;
                 isGrounded = false;
                 gravity = true;
 
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-            velocity += gravityScale * (float)(gameTime.ElapsedGameTime.TotalSeconds);
+            //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+            //velocity += gravityScale * (float)(gameTime.ElapsedGameTime.TotalSeconds);
             
             
         }
@@ -108,23 +109,10 @@ namespace SoldierWaveShooter
                 }
             }
         }
-        private void CheckCollision(GameTime gameTime)
-        {
-            if (isColliding == true && isGrounded == true)
-            {
-                Gravity = false;
-            }
-            else
-            {
-                Gravity = true;
-            }
-        }
-
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
             {
-                objectPlatform = true;
                 isGrounded = true;
             }
             
