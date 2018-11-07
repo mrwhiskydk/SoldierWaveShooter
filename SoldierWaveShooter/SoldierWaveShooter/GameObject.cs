@@ -15,9 +15,12 @@ namespace SoldierWaveShooter
 
         public Vector2 position;
         public Vector2 velocity = new Vector2(0, 0);
+        protected Vector2 gravityScale = new Vector2(0, 2f);
 
         protected bool gravity = false;
+
         
+
 
         /// <summary>
         /// Property that gets the position of GameObject
@@ -25,6 +28,8 @@ namespace SoldierWaveShooter
         public Vector2 Position { get => position; set => position = value; }
 
         public Vector2 Velocity { get => velocity; set => velocity = value; }
+
+        public Vector2 GravityScale { get => gravityScale; set => gravityScale = value; }
 
         public bool Gravity { get => gravity; set => gravity = value; }
 
