@@ -12,12 +12,12 @@ namespace SoldierWaveShooter
     {        
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };
-        protected Vector2 velocity = new Vector2(0, 0);       
+        //protected Vector2 velocity = new Vector2(0, 0);       
         private Weapon weapon;
 
-        private double jumpForce = 100;
+        private double jumpForce = 8000;
 
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
+        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
             weapon = weapons[0];
         }
@@ -46,23 +46,18 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                velocity.Y -= 5;
-                jumpForce -= 5;
+ 
                 isGrounded = false;
                 gravity = true;
-                if(position.Y > 20)
-                {
-                    velocity.Y += 5;
-                }
+
             }
 
-            position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
+            //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         private void WeaponSystem()
@@ -114,7 +109,7 @@ namespace SoldierWaveShooter
                 isGrounded = true;
                 gravity = false;
 
-                jumpForce = 100;
+                jumpForce = 8000;
             }
             
             
