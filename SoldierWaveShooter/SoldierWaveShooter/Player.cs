@@ -11,13 +11,15 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard(), new Sniper() };
-        protected Vector2 velocity = new Vector2(0, 0);       
+        protected Vector2 gravityScale = new Vector2(0, 0);
+        private Weapon[] weapons = { new Standard(), new Sniper() };       
         private Weapon weapon;
 
-        private double jumpForce = 100;
+        
 
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, Gameworld.ScreenSize.Height / 2), "PlayerRun")
+        private double jumpForce = 1000;
+
+        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
             weapon = weapons[0];
         }
@@ -46,23 +48,22 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
-            {                
-                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                velocity.Y -= 5;
-                jumpForce -= 5;
+            {
+                //position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+                velocity.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+                gravityScale.Y += 1f;
                 isGrounded = false;
                 gravity = true;
-                if(position.Y > 20)
-                {
-                    velocity.Y += 5;
-                }
+
             }
 
             position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            velocity += gravityScale * (float)(gameTime.ElapsedGameTime.TotalSeconds);
+            
+            
         }
 
         private void WeaponSystem()

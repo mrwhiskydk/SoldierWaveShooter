@@ -20,7 +20,7 @@ namespace SoldierWaveShooter
         private Player player;
         private Platform platform;
         private Texture2D collisionTexture;
-        private float gravityStrength = 5f;
+        private float gravityStrength = 2f;
 
 
         public static Rectangle ScreenSize
@@ -123,6 +123,8 @@ namespace SoldierWaveShooter
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
+                    //go.Velocity = new Vector2(go.Velocity.X, go.Velocity.Y);
+                    
                 }
 
                 go.Update(gameTime);
