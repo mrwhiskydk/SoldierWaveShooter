@@ -15,7 +15,7 @@ namespace SoldierWaveShooter
         //protected Vector2 velocity = new Vector2(0, 0);       
         private Weapon weapon;
 
-        private double jumpForce = 8000;
+        private double jumpForce = 1000;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -45,7 +45,7 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds / 2;
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 750;
             if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && jumpForce > 0)
             {                
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
