@@ -23,7 +23,7 @@ namespace SoldierWaveShooter
             get { return health; }
         }
 
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
+        public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRunSW")
         {
             weapon = weapons[0];
             health = 100;
@@ -84,6 +84,11 @@ namespace SoldierWaveShooter
                 health -= 1;
             }
 
+            if (otherObject is Flying)
+            {
+                health -= 10;
+            }
+
         }
 
         private void WeaponSystem()
@@ -127,19 +132,5 @@ namespace SoldierWaveShooter
                 }
             }
         }
-        public override void DoCollision(GameObject otherObject)
-        {
-            if (otherObject is Platform)
-            {
-                
-                gravity = false;
-                jumpForce = jumpPower;
-                canJump = true;
-            }
-            
-            
-        }
-
-
     }
 }
