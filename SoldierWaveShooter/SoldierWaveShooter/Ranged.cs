@@ -8,8 +8,39 @@ namespace SoldierWaveShooter
 {
     public class Ranged : Enemy
     {
-        public Ranged(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
+        public Ranged() : base(3, 12, new Vector2(50, 870), "p1_walk2", 50)
         {
+            isFacingRight = true;
+            enemyHealth = 100;
+        }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            HandleMovement(gameTime);
+
+            if (enemyHealth == 0)
+            {
+                Gameworld.RemoveGameObject(this);
+            }
+        }
+
+        protected override void HandleMovement(GameTime gameTime)
+        {
+            if (isFacingRight == true)
+            {
+                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            else
+            {
+                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+
+        }
+
+        public override void DoCollision(GameObject otherObject)
+        {
+            base.DoCollision(otherObject);
+
         }
     }
 }

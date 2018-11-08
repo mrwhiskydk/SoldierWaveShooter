@@ -10,7 +10,7 @@ namespace SoldierWaveShooter
     public class Projectile : GameObject
     {
         private Vector2 direction;
-        private int damage;
+        public int damage;
         private int speed;
 
         public Projectile(Vector2 startPosition, string spriteName, Vector2 direction, int damage, int speed) : base(startPosition, spriteName)
@@ -34,5 +34,22 @@ namespace SoldierWaveShooter
         {
             
         }
+    }
+            if (!Gameworld.ScreenSize.Intersects(CollisionBox))
+            {
+                Gameworld.RemoveGameObject(this);
+            }
+        }
+
+        //public override void DoCollision(GameObject otherObject)
+        //{
+        //    if (otherObject is Enemy)
+        //    {
+        //        Enemy enemy = (Enemy)otherObject;
+        //        enemy.enemyHealth -= damage;
+        //        Console.WriteLine($"{enemy.enemyHealth}");
+        //    }
+        //}
+
     }
 }

@@ -14,9 +14,10 @@ namespace SoldierWaveShooter
     {
         Rectangle[] animationRectangles;
         protected bool isFacingRight;
-        float animationFPS = 10;
+        float animationFPS;
         int currentAnimationIndex = 0;
-        double timeElapsed = 0;     
+        double timeElapsed = 0;
+        protected float walkingspeed = 50;
 
         public override Rectangle CollisionBox
         {
@@ -27,6 +28,11 @@ namespace SoldierWaveShooter
         }
 
         public AnimatedGameObject(int frameCount, float animationFPS, string spriteName) : this(frameCount, animationFPS, Vector2.Zero, spriteName)
+        {
+
+        }
+
+        public AnimatedGameObject(int frameCount, float animationFPS, string spriteName, float walkingspeed) : this(frameCount, animationFPS, Vector2.Zero, spriteName)
         {
 
         }
@@ -42,6 +48,16 @@ namespace SoldierWaveShooter
             currentAnimationIndex = 0;
         }
 
+        public AnimatedGameObject(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(startPostion, spriteName)
+        {
+            this.animationFPS = animationFPS;
+            animationRectangles = new Rectangle[frameCount];
+            for (int i = 0; i < frameCount; i++)
+            {
+                animationRectangles[i] = new Rectangle(i * (sprite.Width / 3), 0, (sprite.Width / 3), (sprite.Height / 4));
+            }
+            currentAnimationIndex = 0;
+        }
 
 
         /// <summary>

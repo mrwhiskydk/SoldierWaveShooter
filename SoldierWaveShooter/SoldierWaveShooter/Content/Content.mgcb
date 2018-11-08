@@ -25,6 +25,30 @@
 /processorParam:TextureFormat=Color
 /build:Ak47Pixel.png
 
+#begin bat.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bat.png
+
+#begin bat2.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bat2.gif
+
 #begin Bazooka.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,6 +72,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bullet.png
+
+#begin castleHalf.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:castleHalf.png
 
 #begin BulletCasing.png
 /importer:TextureImporter
@@ -85,6 +121,18 @@
 /processorParam:TextureFormat=Color
 /build:CollisionTexture.png
 
+#begin ColtPiskel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ColtPiskel.png
+
 #begin ColtPixel.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -96,6 +144,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ColtPixel.png
+
+#begin ExampleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:ExampleFont.spritefont
 
 #begin grass.png
 /importer:TextureImporter
@@ -169,6 +224,30 @@
 /processorParam:TextureFormat=Color
 /build:Mp5Pixel.png
 
+#begin p1_walk2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:p1_walk2.png
+
+#begin p2_walk2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:p2_walk2.png
+
 #begin Player.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -193,6 +272,18 @@
 /processorParam:TextureFormat=Color
 /build:PlayerRun.png
 
+#begin PlayerShootArm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerShootArm.png
+
 #begin Rocket.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -216,4 +307,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shotgun.png
+
+#begin slimeWalk1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:slimeWalk1.png
 

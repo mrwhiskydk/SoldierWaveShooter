@@ -3,14 +3,14 @@
   <Class Name="SoldierWaveShooter.Player">
     <Position X="14.25" Y="8.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAIAAAAAAAAAAACgAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAQACAIAABAAIAAAAAAAAAAACgAAAEAAAAAAECAAAAg=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARgEEAAAAAABwAJAAIEQAAAAAAAAEhBAAAAAAgAAAQ=</HashCode>
+      <HashCode>AAZgEEAAAAACBwAJAAIkYAAAAAAAAEhRAAAAAAgAAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -43,21 +43,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Ranged">
-    <Position X="8.75" Y="10.25" Width="1.5" />
+    <Position X="3.25" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Ranged.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Melee">
-    <Position X="10.5" Y="10.25" Width="1.5" />
+    <Position X="6" Y="12.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Boss">
-    <Position X="12.25" Y="10.25" Width="1.5" />
+    <Position X="8" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Boss.cs</FileName>
@@ -66,7 +66,7 @@
   <Class Name="SoldierWaveShooter.Enemy">
     <Position X="6.25" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAIAAgAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,7 +87,7 @@
   <Class Name="SoldierWaveShooter.AnimatedGameObject">
     <Position X="5.75" Y="2" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAQAoAAAAAAAAgAAAAAAAAAAAgAAIAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAQAoAAAAAAAAgAAAAAAQAAAAgIAIAAAAAAAAAAAAQA=</HashCode>
       <FileName>AnimatedGameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -101,7 +101,7 @@
   <Class Name="SoldierWaveShooter.Weapon">
     <Position X="1.75" Y="3" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AgQAAAAAAAAAhBAAAAAAAAAAAAIAAAAAAAAAAAAgAAA=</HashCode>
+      <HashCode>AgQEAAAAAAAAhhAAABAAAAAAAAIAAAAAAACAAAAgAAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -136,8 +136,15 @@
   <Class Name="SoldierWaveShooter.Character">
     <Position X="11.75" Y="4.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAACEAAAg=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAACEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoldierWaveShooter.Flying">
+    <Position X="9.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Flying.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

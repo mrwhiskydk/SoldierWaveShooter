@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="AnimatedGameObject.cs" />
+    <Compile Include="Flying.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Gameworld.cs" />
     <Compile Include="InGameMenu.cs" />

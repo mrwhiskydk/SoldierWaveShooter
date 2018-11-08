@@ -11,17 +11,22 @@ namespace SoldierWaveShooter
         protected float movementSpeed = 300;
         protected bool isGrounded;
         protected bool isAlive;
-
+        protected bool canJump;
         
         protected int health;
 
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
             gravity = true;
+            
 
-            //isGrounded = !gravity;
         }
 
+        public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
+        {
+            gravity = true;
+
+        }
 
         public override void Update(GameTime gameTime)
         {
