@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Ak47Pixel.png
 
-#begin bat.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:bat.png
-
 #begin bat2.gif
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -73,7 +61,7 @@
 /processorParam:TextureFormat=Color
 /build:Bullet.png
 
-#begin BulletCasing.png
+#begin CollisionTexture.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -83,7 +71,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BulletCasing.png
+/build:CollisionTexture.png
 
 #begin BulletTrail.png
 /importer:TextureImporter
@@ -119,7 +107,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:CollisionTexture.png
+/build:ColtPiskel.png
 
 #begin ColtPiskel.png
 /importer:TextureImporter
@@ -284,6 +272,31 @@
 /processorParam:TextureFormat=Color
 /build:PlayerRunSW.png
 
+#begin PlayerRunSW.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerRunSW.png
+
+#begin PlayerRunSW.png
+#begin PlayerRunSW.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PlayerRunSW.png
+
 #begin PlayerShootArm.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -294,7 +307,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:PlayerShootArm.png
+/build:PlayerRunSW.png
 
 #begin Rocket.png
 /importer:TextureImporter
@@ -318,9 +331,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Shotgun.png
+/build:PlayerShootArm.png
 
-#begin slimeWalk1.png
+#begin Shotgun.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -330,5 +343,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:slimeWalk1.png
+/build:Shotgun.png
 
