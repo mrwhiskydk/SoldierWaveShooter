@@ -14,7 +14,7 @@ namespace SoldierWaveShooter
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
 
-        private const float jumpPower = 800;
+        private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
         private bool canJump = false;
 

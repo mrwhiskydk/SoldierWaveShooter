@@ -29,20 +29,5 @@ namespace SoldierWaveShooter
                 Gameworld.RemoveGameObject(this);
             }
         }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            
-        }
     }
 }
-
-        //public override void DoCollision(GameObject otherObject)
-        //{
-        //    if (otherObject is Enemy)
-        //    {
-        //        Enemy enemy = (Enemy)otherObject;
-        //        enemy.enemyHealth -= damage;
-        //        Console.WriteLine($"{enemy.enemyHealth}");
-        //    }
-        //}
