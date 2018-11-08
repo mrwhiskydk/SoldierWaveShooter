@@ -11,11 +11,12 @@ namespace SoldierWaveShooter
     class Player : Character
     {        
         protected Vector2 direction = new Vector2(0, 0);
-        private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };      
+        private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
 
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
+        private bool canJump = false;
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
@@ -46,15 +47,16 @@ namespace SoldierWaveShooter
                 position.X += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 750;
-            Console.WriteLine(jumpForce);
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
+            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 1500;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && canJump)
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
+            if (Keyboard.GetState().IsKeyUp(Keys.W))
+            {
+                canJump = false;
+            }
         }
 
         private void WeaponSystem()
@@ -105,6 +107,7 @@ namespace SoldierWaveShooter
             {
                 isGrounded = true;
                 gravity = false;
+                canJump = true;
                 jumpForce = jumpPower;
             }
             
