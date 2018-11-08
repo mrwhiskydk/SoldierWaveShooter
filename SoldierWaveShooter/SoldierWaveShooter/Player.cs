@@ -18,7 +18,6 @@ namespace SoldierWaveShooter
         private double jumpForce = jumpPower;
         private bool canJump = false;
 
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         
         private int health;
         public int Health
@@ -136,17 +135,6 @@ namespace SoldierWaveShooter
                     }
 
                 }
-            }
-        }
-
-        public override void DoCollision(GameObject otherObject)
-        {
-            if (otherObject is Platform)
-            {
-                isGrounded = true;
-                gravity = false;
-                canJump = true;
-                jumpForce = jumpPower;
             }
         }
     }

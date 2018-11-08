@@ -35,11 +35,7 @@ namespace SoldierWaveShooter
             
         }
     }
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox))
-            {
-                Gameworld.RemoveGameObject(this);
-            }
-        }
+}
 
         //public override void DoCollision(GameObject otherObject)
         //{
@@ -50,6 +46,3 @@ namespace SoldierWaveShooter
         //        Console.WriteLine($"{enemy.enemyHealth}");
         //    }
         //}
-
-    }
-}
