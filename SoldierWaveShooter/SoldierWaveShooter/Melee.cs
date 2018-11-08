@@ -9,7 +9,7 @@ namespace SoldierWaveShooter
     public class Melee : Enemy
     {
         
-        public Melee() : base(3, 12, new Vector2(1600, 870), "p2_walk2", 50)
+        public Melee() : base(3, 12, new Vector2(1600, 870), "Melee")
         {
             enemyHealth = 50;
         }

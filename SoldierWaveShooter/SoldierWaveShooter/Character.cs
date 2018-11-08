@@ -19,7 +19,6 @@ namespace SoldierWaveShooter
         {
             gravity = true;
             
-
         }
 
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
