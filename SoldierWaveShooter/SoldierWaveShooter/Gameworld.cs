@@ -21,6 +21,7 @@ namespace SoldierWaveShooter
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
+        private Enemy boss;
         private Platform platform;
         private Texture2D collisionTexture;
         private float gravityStrength = 5f;
@@ -105,6 +106,8 @@ namespace SoldierWaveShooter
             gameObjects.Add(enemyRanged);
             enemyFlying = new Flying();
             gameObjects.Add(enemyFlying);
+            boss = new Boss();
+            gameObjects.Add(boss);
 
 
 
