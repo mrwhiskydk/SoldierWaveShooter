@@ -13,6 +13,7 @@ namespace SoldierWaveShooter
             projectileSpeed = 50;
             damage = 100;
             spread = 0f;
+            bulletSprite = "BulletTrail";
         }
     }
 }
