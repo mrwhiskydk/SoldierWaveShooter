@@ -138,7 +138,7 @@ namespace SoldierWaveShooter
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
-                    //go.Velocity = new Vector2(go.Velocity.X, go.Velocity.Y);
+                    //go.Velocity = new Vector2(go.Velocity.X, go.Velocity.Y + gravityStrength);
 
                 }
 

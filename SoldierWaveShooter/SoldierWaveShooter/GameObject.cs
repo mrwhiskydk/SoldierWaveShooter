@@ -14,8 +14,7 @@ namespace SoldierWaveShooter
         protected float rotation;
 
         public Vector2 position;
-        //public Vector2 velocity = new Vector2(0, 0);
-        //protected Vector2 gravityScale = new Vector2(0, 2f);
+        //public Vector2 velocity = new Vector2(0, -2f);
 
         protected bool gravity = false;
 

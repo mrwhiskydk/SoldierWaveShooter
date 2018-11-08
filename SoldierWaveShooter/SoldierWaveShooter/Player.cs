@@ -31,7 +31,6 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-
             base.Update(gameTime);
             HandleMovement(gameTime);
             WeaponSystem();
@@ -39,7 +38,8 @@ namespace SoldierWaveShooter
 
         protected override void HandleMovement(GameTime gameTime)
         {
-            Gravity = true;
+            gravity = true;
+
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 isFacingRight = false;
@@ -123,14 +123,22 @@ namespace SoldierWaveShooter
                         weapon = weapons[slot];
                         weapon.equipped = true;
                     }
-                    
+
                 }
             }
-
-    
         }
-
-
+        public override void DoCollision(GameObject otherObject)
+        {
+            if (otherObject is Platform)
+            {
+                
+                gravity = false;
+                jumpForce = jumpPower;
+                canJump = true;
+            }
+            
+            
+        }
 
 
     }
