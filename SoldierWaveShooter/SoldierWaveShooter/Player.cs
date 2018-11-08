@@ -19,7 +19,7 @@ namespace SoldierWaveShooter
 
         private bool canJump;
 
-        public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
+        public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRunSW")
         {
             weapon = weapons[0];
         }
