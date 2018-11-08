@@ -6,12 +6,13 @@ using Microsoft.Xna.Framework;
 
 namespace SoldierWaveShooter
 {
-    public class Melee : Enemy
+    public class Flying : Enemy
     {
-        
-        public Melee() : base(3, 12, new Vector2(1600, 870), "p2_walk2", 50)
+        public Flying() : base(5, 12, new Vector2(1600,600), "bat2")
         {
-            enemyHealth = 50;
+            isFacingRight = true;
+            enemyHealth = 100;
+
         }
 
         public override void Update(GameTime gameTime)
@@ -27,15 +28,16 @@ namespace SoldierWaveShooter
 
         protected override void HandleMovement(GameTime gameTime)
         {
-            if (isFacingRight == true)
+            Gravity = false;
+            if (isFacingRight == false)
             {
                 position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            else
-	        {
+            else if (isFacingRight == true)
+            {
                 position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-           
+
         }
 
         public override void DoCollision(GameObject otherObject)

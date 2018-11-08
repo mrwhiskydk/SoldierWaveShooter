@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Boss : Enemy
     {
-        public Boss(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
+        public Boss(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
         {
         }
     }

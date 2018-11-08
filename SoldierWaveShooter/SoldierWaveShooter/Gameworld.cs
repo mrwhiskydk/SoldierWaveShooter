@@ -13,11 +13,14 @@ namespace SoldierWaveShooter
     {
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        private SpriteFont font;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
         private Player player;
+        private Enemy enemyMelee;
+        private Enemy enemyRanged;
+        private Enemy enemyFlying;
         private Platform platform;
         private Texture2D collisionTexture;
         private float gravityStrength = 5f;
@@ -82,7 +85,7 @@ namespace SoldierWaveShooter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            font = Content.Load<SpriteFont>("ExampleFont");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             for (int i = 0; i < 28; i++)
             {
@@ -96,6 +99,14 @@ namespace SoldierWaveShooter
             gameObjects.Add(platform);
             player = new Player();
             gameObjects.Add(player);
+            enemyMelee = new Melee();
+            gameObjects.Add(enemyMelee);
+            enemyRanged = new Ranged();
+            gameObjects.Add(enemyRanged);
+            enemyFlying = new Flying();
+            gameObjects.Add(enemyFlying);
+
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -171,7 +182,7 @@ namespace SoldierWaveShooter
 #endif
             }
 
-
+            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 

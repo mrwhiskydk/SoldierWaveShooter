@@ -10,6 +10,7 @@ namespace SoldierWaveShooter
         public Standard() : base("ColtPixel")
         {
             equipped = true;
+            damage = 10;
         }
     }
 }

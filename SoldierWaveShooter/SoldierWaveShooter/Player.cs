@@ -14,12 +14,19 @@ namespace SoldierWaveShooter
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun() };      
         private Weapon weapon;
 
-        private const float jumpPower = 1000;
+        private const float jumpPower = 800;
         private double jumpForce = jumpPower;
+        
+        private int health;
+        public int Health
+        {
+            get { return health; }
+        }
 
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
             weapon = weapons[0];
+            health = 100;
         }
 
         public override void Update(GameTime gameTime)
@@ -47,17 +54,14 @@ namespace SoldierWaveShooter
 
             jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 750;
             Console.WriteLine(jumpForce);
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && canJump)
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
- 
-                isGrounded = false;
             }
-
-            //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
-            //position += velocity * (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-            //velocity += gravityScale * (float)(gameTime.ElapsedGameTime.TotalSeconds);
-            
+            if (Keyboard.GetState().IsKeyUp(Keys.W))
+            {
+                canJump = false;
+            }
         }
 
         public override void DoCollision(GameObject otherObject)
@@ -66,6 +70,18 @@ namespace SoldierWaveShooter
             {
                 isGrounded = true;
                 Gravity = false;
+                jumpForce = jumpPower;
+                canJump = true;
+            }
+
+            if (otherObject is Melee)
+            {
+                health -= 5;
+            }
+
+            if (otherObject is Ranged)
+            {
+                health -= 1;
             }
 
         }

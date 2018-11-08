@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
         protected int ammo;
         protected float firerate = 0.2f;
         protected int projectileSpeed = 20;
-        protected int damage = 10;
+        public int damage = 10;
         protected double lastShot;
         protected Random rnd = new Random();
         protected float spread = 30f;
