@@ -17,11 +17,6 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
             HandleMovement(gameTime);
-
-            if (enemyHealth == 0)
-            {
-                Gameworld.RemoveGameObject(this);
-            }
         }
 
         protected override void HandleMovement(GameTime gameTime)

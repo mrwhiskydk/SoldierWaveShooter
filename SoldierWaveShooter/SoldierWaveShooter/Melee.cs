@@ -11,18 +11,13 @@ namespace SoldierWaveShooter
         
         public Melee() : base(3, 12, new Vector2(1600, 870), "p2_walk2", 50)
         {
-            enemyHealth = 50;
+            enemyHealth = 100;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             HandleMovement(gameTime);
-
-            if (enemyHealth == 0)
-            {
-                Gameworld.RemoveGameObject(this);
-            }
         }
 
         protected override void HandleMovement(GameTime gameTime)
