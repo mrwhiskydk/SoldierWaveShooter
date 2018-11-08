@@ -17,6 +17,8 @@ namespace SoldierWaveShooter
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
 
+        private bool canJump;
+
         public Player() : base(8, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRun")
         {
             weapon = weapons[0];
@@ -24,7 +26,6 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-
             base.Update(gameTime);
             HandleMovement(gameTime);
             WeaponSystem();
@@ -48,11 +49,13 @@ namespace SoldierWaveShooter
 
             jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 750;
             Console.WriteLine(jumpForce);
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && canJump)
             {
-                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
- 
-                isGrounded = false;
+                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);               
+            }
+            if (Keyboard.GetState().IsKeyUp(Keys.W))
+            {
+                canJump = false;
             }
 
             //position += direction * (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
@@ -96,17 +99,18 @@ namespace SoldierWaveShooter
                         weapon = weapons[slot];
                         weapon.equipped = true;
                     }
-                    
+
                 }
             }
-
+        }
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
             {
-                isGrounded = true;
+                
                 gravity = false;
                 jumpForce = jumpPower;
+                canJump = true;
             }
             
             

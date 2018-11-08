@@ -22,6 +22,11 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
             position += new Vector2(direction.X + speed, direction.Y);
+
+            if (!Gameworld.ScreenSize.Intersects(CollisionBox))
+            {
+                Gameworld.RemoveGameObject(this);
+            }
         }
     }
 }
