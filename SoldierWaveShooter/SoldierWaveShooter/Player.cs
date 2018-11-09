@@ -90,11 +90,6 @@ namespace SoldierWaveShooter
                 health -= 10;
             }
 
-            if (Keyboard.GetState().IsKeyUp(Keys.W))
-            {
-                canJump = false;
-            }
-
             if (otherObject is Boss)
             {
                 health -= 25;
