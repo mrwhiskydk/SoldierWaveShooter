@@ -44,6 +44,7 @@ namespace SoldierWaveShooter
             {
                 Projectile bullet = (Projectile)otherObject;
                 enemyHealth -= bullet.damage;
+
             }
 
             if (otherObject is Projectile)

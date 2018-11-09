@@ -17,7 +17,7 @@ namespace SoldierWaveShooter
         //public Vector2 velocity = new Vector2(0, -2f);
 
         protected bool gravity = false;
-
+        Rectangle[] Collisionbox;
         
 
 

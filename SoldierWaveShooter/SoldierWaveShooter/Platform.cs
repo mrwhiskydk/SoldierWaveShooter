@@ -16,5 +16,10 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
         }
+
+        public override void DoCollision(GameObject otherObject)
+        {
+            base.DoCollision(otherObject);
+        }
     }
 }
