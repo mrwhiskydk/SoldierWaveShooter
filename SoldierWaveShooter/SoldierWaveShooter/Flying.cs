@@ -8,6 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Flying : Enemy
     {
+
         public Flying() : base(5, 12, new Vector2(1600,600), "bat2")
         {
             isFacingRight = true;
