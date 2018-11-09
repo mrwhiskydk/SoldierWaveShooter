@@ -65,6 +65,11 @@ namespace SoldierWaveShooter
             }
         }
 
+        private void TakingDamage()
+        {
+            
+        }
+
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
