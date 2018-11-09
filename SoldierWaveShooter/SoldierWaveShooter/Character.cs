@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SoldierWaveShooter
 {
@@ -11,7 +12,6 @@ namespace SoldierWaveShooter
         protected float movementSpeed = 300;
         protected bool isGrounded;
         protected bool isAlive;
-        protected bool canJump;
         
         protected int health;
 
@@ -33,6 +33,10 @@ namespace SoldierWaveShooter
             gravity = true;
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch); 
+        }
 
         protected abstract void HandleMovement(GameTime gameTime);
 

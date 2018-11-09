@@ -108,9 +108,6 @@ namespace SoldierWaveShooter
             gameObjects.Add(enemyFlying);
             boss = new Boss();
             gameObjects.Add(boss);
-
-
-
             // TODO: use this.Content to load your game content here
         }
 
