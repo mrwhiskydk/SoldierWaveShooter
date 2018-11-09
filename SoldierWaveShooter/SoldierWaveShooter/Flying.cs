@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Flying : Enemy
     {
-        public Flying() : base(5, 12, new Vector2(1600,600), "bat2")
+        public Flying() : base(3, 9, new Vector2(1600,600), "Flying2")
         {
             isFacingRight = true;
             enemyHealth = 100;
@@ -43,6 +43,10 @@ namespace SoldierWaveShooter
                 Gameworld.RemoveGameObject(this);
             }
             base.DoCollision(otherObject);
+            if (otherObject is Player)
+	        {
+                Gameworld.RemoveGameObject(this);
+	        }
 
         }
     }
