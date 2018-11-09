@@ -20,7 +20,9 @@ namespace SoldierWaveShooter
         private bool canJump = false;
         private bool takingDamage = false;
 
-       
+        private float immortalDuration = 3.0f;
+        private double immortalTime;
+        private bool isImmortal;
         
         private int health;
         public int Health
@@ -38,6 +40,13 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
             HandleMovement(gameTime);
+
+            immortalTime += gameTime.ElapsedGameTime.TotalSeconds;
+            if (immortalTime > immortalDuration)
+            {
+                isImmortal = false;
+                immortalTime = 0;
+            }
             WeaponSystem();
         }
 
@@ -67,7 +76,6 @@ namespace SoldierWaveShooter
                 canJump = false;
             }
 
-        }
 
         public override void DoCollision(GameObject otherObject)
         {
@@ -79,6 +87,14 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
+            if (otherObject is Enemy && !isImmortal)
+            {
+                Enemy enemy = (Enemy)otherObject;
+                health -= enemy.enemyDamage;
+                takingDamage = true;
+                isImmortal = true;
+                
+            }
             if (otherObject is Enemy)
             {
                 Enemy enemy = (Enemy)otherObject;
@@ -106,10 +122,6 @@ namespace SoldierWaveShooter
             //    canJump = false;
             //}
 
-            //if (otherObject is Boss)
-            //{
-            //    health -= 25;
-            //}
         }
 
 
