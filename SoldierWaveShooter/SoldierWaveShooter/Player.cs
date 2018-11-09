@@ -17,7 +17,8 @@ namespace SoldierWaveShooter
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
         private bool canJump = false;
-
+        private bool takingDamage = false;
+        
         
         private int health;
         public int Health
@@ -65,10 +66,7 @@ namespace SoldierWaveShooter
             }
         }
 
-        private void TakingDamage()
-        {
-            
-        }
+        
 
         public override void DoCollision(GameObject otherObject)
         {
@@ -80,30 +78,13 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
-            //if (otherObject is Melee)
-            //{
-            //    health -= 5;
-            //}
+            if (otherObject is Enemy)
+            {
+                Enemy enemy = (Enemy)otherObject;
+                health -= enemy.enemyDamage;
+                takingDamage = true;
+            }
 
-            //if (otherObject is Ranged)
-            //{
-            //    health -= 1;
-            //}
-
-            //if (otherObject is Flying)
-            //{
-            //    health -= 10;
-            //}
-
-            //if (Keyboard.GetState().IsKeyUp(Keys.W))
-            //{
-            //    canJump = false;
-            //}
-
-            //if (otherObject is Boss)
-            //{
-            //    health -= 25;
-            //}
         }
 
         private void WeaponSystem()
