@@ -12,7 +12,7 @@ namespace SoldierWaveShooter
         {
             isFacingRight = true;
             enemyHealth = 100;
-
+            enemyDamage = 5;
         }
 
         public override void Update(GameTime gameTime)
@@ -20,6 +20,16 @@ namespace SoldierWaveShooter
             base.Update(gameTime);
             HandleMovement(gameTime);
 
+            if (enemyHealth <= 0)
+	        {
+                Gravity = true;
+                
+	        }
+
+            if (!Gameworld.ScreenSize.Intersects(CollisionBox))
+            {
+                Gameworld.RemoveGameObject(this);
+            }
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -42,12 +52,20 @@ namespace SoldierWaveShooter
             {
                 Gameworld.RemoveGameObject(this);
             }
-            base.DoCollision(otherObject);
-            if (otherObject is Player)
-	        {
-                Gameworld.RemoveGameObject(this);
-	        }
 
+            if (otherObject is Projectile)
+            {
+                Projectile bullet = (Projectile)otherObject;
+                enemyHealth -= bullet.damage;
+            }
+
+            if (otherObject is Projectile)
+            {
+                Gameworld.RemoveGameObject(otherObject);
+            }
+
+
+             
         }
     }
 }

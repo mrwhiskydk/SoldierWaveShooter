@@ -75,30 +75,30 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
-            if (otherObject is Melee)
-            {
-                health -= 5;
-            }
+            //if (otherObject is Melee)
+            //{
+            //    health -= 5;
+            //}
 
-            if (otherObject is Ranged)
-            {
-                health -= 1;
-            }
+            //if (otherObject is Ranged)
+            //{
+            //    health -= 1;
+            //}
 
-            if (otherObject is Flying)
-            {
-                health -= 10;
-            }
+            //if (otherObject is Flying)
+            //{
+            //    health -= 10;
+            //}
 
-            if (Keyboard.GetState().IsKeyUp(Keys.W))
-            {
-                canJump = false;
-            }
+            //if (Keyboard.GetState().IsKeyUp(Keys.W))
+            //{
+            //    canJump = false;
+            //}
 
-            if (otherObject is Boss)
-            {
-                health -= 25;
-            }
+            //if (otherObject is Boss)
+            //{
+            //    health -= 25;
+            //}
         }
 
         private void WeaponSystem()

@@ -12,6 +12,7 @@ namespace SoldierWaveShooter
         public Melee() : base(3, 12, new Vector2(1600, 870), "Melee")
         {
             enemyHealth = 100;
+            enemyDamage = 10;
         }
 
         public override void Update(GameTime gameTime)

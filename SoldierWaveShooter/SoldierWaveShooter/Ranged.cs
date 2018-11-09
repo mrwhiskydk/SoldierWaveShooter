@@ -12,6 +12,7 @@ namespace SoldierWaveShooter
         {
             isFacingRight = true;
             enemyHealth = 100;
+            enemyDamage = 10;
         }
         public override void Update(GameTime gameTime)
         {
