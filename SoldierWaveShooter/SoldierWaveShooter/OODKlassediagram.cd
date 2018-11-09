@@ -42,13 +42,6 @@
       <FileName>InGameMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Ranged">
-    <Position X="3.25" Y="12.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
-      <FileName>Ranged.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SoldierWaveShooter.Melee">
     <Position X="6" Y="12.5" Width="1.5" />
     <TypeIdentifier>
@@ -101,7 +94,7 @@
   <Class Name="SoldierWaveShooter.Weapon">
     <Position X="1.75" Y="3" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AgQEAAAAAAAAhhAAABAAAAAAAAIAAAAAAACAAAAgAAA=</HashCode>
+      <HashCode>AgQEBAAAAAAAhhAAABAAAAAAAAIAAAAAACCAAAAgAAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -138,6 +131,13 @@
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAAAACEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoldierWaveShooter.Ranged">
+    <Position X="3.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Ranged.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SoldierWaveShooter.Flying">

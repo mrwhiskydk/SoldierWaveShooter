@@ -212,18 +212,6 @@
 /processorParam:TextureFormat=Color
 /build:Melee.png
 
-#begin MP5.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Melee.png
-
 #begin Mp5Pixel.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -235,30 +223,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Mp5Pixel.png
-
-#begin p1_walk2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:p1_walk2.png
-
-#begin p2_walk2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:p2_walk2.png
 
 #begin PlayerRunSW.png
 /importer:TextureImporter
@@ -294,7 +258,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:PlayerRunSW.png
+/build:Ranged.png
 
 #begin Rocket.png
 /importer:TextureImporter

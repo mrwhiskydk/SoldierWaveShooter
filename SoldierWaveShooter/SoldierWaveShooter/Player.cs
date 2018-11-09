@@ -94,6 +94,11 @@ namespace SoldierWaveShooter
             {
                 canJump = false;
             }
+
+            if (otherObject is Boss)
+            {
+                health -= 25;
+            }
         }
 
         private void WeaponSystem()
