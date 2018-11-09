@@ -12,6 +12,7 @@ namespace SoldierWaveShooter
         //protected Enemy[] enemies = {new Melee(), new Ranged()}
         public int enemyHealth;
 
+
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
         {
         }
@@ -27,6 +28,11 @@ namespace SoldierWaveShooter
                 Gameworld.RemoveGameObject(this);
             }
             base.Update(gameTime);
+            
+            if (enemyHealth <= 0)
+            {
+                Gameworld.RemoveGameObject(this);
+            }
         }
 
         protected override void HandleMovement(GameTime gameTime)

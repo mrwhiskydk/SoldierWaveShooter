@@ -17,7 +17,6 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
             HandleMovement(gameTime);
-
         }
 
         protected override void HandleMovement(GameTime gameTime)
