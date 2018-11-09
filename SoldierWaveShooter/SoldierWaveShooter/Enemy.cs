@@ -23,6 +23,10 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+            if (enemyHealth <= 0)
+            {
+                Gameworld.RemoveGameObject(this);
+            }
             base.Update(gameTime);
             
             if (enemyHealth <= 0)
@@ -53,6 +57,7 @@ namespace SoldierWaveShooter
             {
                 Gameworld.RemoveGameObject(otherObject);
             }
+
         }
 
     }
