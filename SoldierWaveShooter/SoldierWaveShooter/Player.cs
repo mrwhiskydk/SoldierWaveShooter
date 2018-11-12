@@ -9,9 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
-    class Player : Character
+    public class Player : Character
     {        
-        protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
         private Player[] playerAnimations = new Player[6];

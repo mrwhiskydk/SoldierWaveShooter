@@ -17,7 +17,7 @@ namespace SoldierWaveShooter
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
-        private Player player;
+        public static Player player;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
@@ -43,7 +43,6 @@ namespace SoldierWaveShooter
                 return _content;
             }
         }
-
 
         public Gameworld()
         {

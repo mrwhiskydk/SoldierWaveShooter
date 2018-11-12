@@ -8,6 +8,8 @@ namespace SoldierWaveShooter
 {
     public class Flying : Enemy
     {
+        private bool goDown = false;
+
         public Flying() : base(3, 9, new Vector2(1600,600), "FlyingGreen")
         {
             isFacingRight = true;
@@ -30,18 +32,29 @@ namespace SoldierWaveShooter
             {
                 Gameworld.RemoveGameObject(this);
             }
+
+            if (Gameworld.player.position.Y >= position.Y)
+            {
+                goDown = true;            
+            }
+            else
+            {
+                goDown = false;
+            }
         }
 
         protected override void HandleMovement(GameTime gameTime)
         {
             Gravity = false;
-            if (isFacingRight == false)
+            base.HandleMovement(gameTime);
+
+            if (goDown == true && goToPlayer == true)
             {
-                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-            else if (isFacingRight == true)
+            if (goDown == false && goToPlayer == true)
             {
-                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
 
         }
