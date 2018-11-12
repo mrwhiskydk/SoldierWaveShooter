@@ -183,7 +183,7 @@ namespace SoldierWaveShooter
 #endif
             }
             //Add spriteBatch for healthbar
-            spriteBatch.Draw(bar, new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
+            spriteBatch.Draw(bar, new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here

@@ -33,7 +33,7 @@ namespace SoldierWaveShooter
                 Gameworld.RemoveGameObject(this);
             }
 
-            if (Gameworld.player.position.Y >= position.Y)
+            if (Gameworld.player.Position.Y >= position.Y)
             {
                 goDown = true;            
             }
@@ -75,10 +75,7 @@ namespace SoldierWaveShooter
             if (otherObject is Projectile)
             {
                 Gameworld.RemoveGameObject(otherObject);
-            }
-
-
-             
+            }             
         }
     }
 }
