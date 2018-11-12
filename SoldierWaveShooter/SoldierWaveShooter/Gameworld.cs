@@ -182,7 +182,7 @@ namespace SoldierWaveShooter
 #endif
             }
 
-            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
