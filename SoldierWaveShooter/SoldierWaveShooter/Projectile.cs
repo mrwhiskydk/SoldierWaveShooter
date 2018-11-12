@@ -18,11 +18,17 @@ namespace SoldierWaveShooter
             this.direction = direction;
             this.damage = damage;
             this.speed = speed;
+
+
+            /*if (direction != Vector2.Zero)
+            {
+                this.direction.Normalize();
+            }*/
         }
 
         public override void Update(GameTime gameTime)
         {
-            position += new Vector2(direction.X + speed, direction.Y);
+            position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!Gameworld.ScreenSize.Intersects(CollisionBox))
             {

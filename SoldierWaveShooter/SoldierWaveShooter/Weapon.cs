@@ -12,7 +12,7 @@ namespace SoldierWaveShooter
     {
         protected int ammo;
         protected float firerate = 0.2f;
-        protected int projectileSpeed = 20;
+        protected int projectileSpeed = 1000;
         protected int damage = 10;
         protected float spread = 30f;
         protected string bulletSprite = "Bullet";
@@ -24,7 +24,7 @@ namespace SoldierWaveShooter
 
         public Weapon(string spriteName) : base(spriteName)
         {
-            Gameworld.AddGameObject(this);
+            
         }
 
         public virtual void Shoot()
@@ -33,9 +33,10 @@ namespace SoldierWaveShooter
             {
                 for (int i = 0; i < bulletAmount; i++)
                 {
+                    Vector2 mousePos = Gameworld.mouse.Position - position;
+                    mousePos.Normalize();
                     //Send the bullet in a random direction depending on weapon spread
-                    float rndSpread = (float)rnd.Next(-100 + (100 - (int)spread), 100 - (100 - (int)spread)) / 100;
-
+                    float rndSpread = (float)rnd.Next(-100 + (100 - (int)spread), 100 - (100 - (int)spread)) / 1000;
 #if DEBUG
                 if (rndSpread > spread || rndSpread < -spread)
                 {
@@ -43,22 +44,20 @@ namespace SoldierWaveShooter
                 }
                 Console.WriteLine(rndSpread);
 #endif
-                    Gameworld.AddGameObject(new Projectile(position, bulletSprite, new Vector2(1, rndSpread), damage, projectileSpeed));
+                    //new Vector2(1, rndSpread)
+                    new Projectile(position, bulletSprite, new Vector2(mousePos.X + rndSpread, mousePos.Y + rndSpread), damage, projectileSpeed);
                     lastShot = 0;
                 }
                 
-
                 //Spawn a bullet casing flying in a semi random upwards direction
-                float direction = (float)(rnd.Next(0, 2) * 2 - 1) * rnd.Next(0, 135);
-                Console.WriteLine(direction);
-                Console.WriteLine("x direction is: " + MathHelper.ToRadians(direction));
-                Gameworld.AddGameObject(new BulletCasing(position, new Vector2(direction, 0)));
+                new BulletCasing(position);
             }
         }
 
         public override void Update(GameTime gameTime)
         {
             lastShot += gameTime.ElapsedGameTime.TotalSeconds;
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace SoldierWaveShooter
@@ -14,6 +15,8 @@ namespace SoldierWaveShooter
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
+        //Insert healthbar SpriteFont
+        private Texture2D bar;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
@@ -24,6 +27,7 @@ namespace SoldierWaveShooter
         private Enemy boss;
         private Platform platform;
         private Texture2D collisionTexture;
+        public static Crosshair mouse;
         private float gravityStrength = 5f;
 
 
@@ -86,27 +90,23 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
+            //Load healthbar Sprite Content
+            bar = Content.Load<Texture2D>("barBaseSW");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
+            mouse = new Crosshair();
+
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "castle"));
+                new Platform(new Vector2((i*70) + 35, 1016), "castle");
             }
             platform = new Platform(new Vector2(750, 890), "castleHalf");
-            gameObjects.Add(platform);
             platform = new Platform(new Vector2(900, 800), "castleHalf");
-            gameObjects.Add(platform);
             platform = new Platform(new Vector2(1050, 890), "castleHalf");
-            gameObjects.Add(platform);
             player = new Player();
-            gameObjects.Add(player);
             enemyMelee = new Melee();
-            gameObjects.Add(enemyMelee);
             enemyRanged = new Ranged();
-            gameObjects.Add(enemyRanged);
             enemyFlying = new Flying();
-            gameObjects.Add(enemyFlying);
             boss = new Boss();
-            gameObjects.Add(boss);
             // TODO: use this.Content to load your game content here
         }
 
@@ -130,6 +130,8 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
+
+            
 
             foreach (GameObject go in gameObjects)
             {
@@ -180,8 +182,9 @@ namespace SoldierWaveShooter
                 DrawCollisionBox(go);
 #endif
             }
-
-            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
+            //Add spriteBatch for healthbar
+            spriteBatch.Draw(bar, new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 

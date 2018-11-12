@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:Ak47Pixel.png
 
+#begin barBaseSW.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:barBaseSW.png
+
 #begin bat2.gif
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,6 +156,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ColtPiskel.png
+
+#begin crosshair.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:crosshair.png
 
 #begin ExampleFont.spritefont
 /importer:FontDescriptionImporter
@@ -307,6 +331,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shotgun.png
+
+#begin ShotgunPiskelSW.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ShotgunPiskelSW.png
 
 #begin Sniper rifle.png
 /importer:TextureImporter

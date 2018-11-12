@@ -78,7 +78,6 @@ namespace SoldierWaveShooter
             }
         }
 
-
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
@@ -120,9 +119,11 @@ namespace SoldierWaveShooter
                 CheckSlot(3);
             }
 
+            
+
             weapon.Position = position;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 weapon.Shoot();
             }
