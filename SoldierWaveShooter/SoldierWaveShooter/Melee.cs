@@ -28,10 +28,10 @@ namespace SoldierWaveShooter
                 position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             else
-	        {
+            {
                 position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-           
+
         }
 
         public override void DoCollision(GameObject otherObject)
