@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Boss : Enemy
     {
-        public Boss() : base(5, 5, new Vector2(200, 600), "Boss")
+        public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
             enemyHealth = 2000;

@@ -99,18 +99,59 @@ namespace SoldierWaveShooter
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             mouse = new Crosshair();
 
+            // Castle platforme
             for (int i = 0; i < 28; i++)
             {
                 new Platform(new Vector2((i*70) + 35, 1016), "castle");
             }
-            platform = new Platform(new Vector2(750, 890), "castleHalf");
-            platform = new Platform(new Vector2(900, 800), "castleHalf");
-            platform = new Platform(new Vector2(1050, 890), "castleHalf");
+            platform = new Platform(new Vector2(120, 760), "castleHalf");
+            platform = new Platform(new Vector2(260, 890), "castleHalf");
+            platform = new Platform(new Vector2(400, 760), "castleHalf");
+            platform = new Platform(new Vector2(540, 890), "castleHalf");
+            platform = new Platform(new Vector2(680, 760), "castleHalf");
+            platform = new Platform(new Vector2(820, 890), "castleHalf");
+            platform = new Platform(new Vector2(Gameworld.ScreenSize.Width/2, 760), "castleHalf");
+            platform = new Platform(new Vector2(1080, 890), "castleHalf");
+            platform = new Platform(new Vector2(1220, 760), "castleHalf");
+            platform = new Platform(new Vector2(1360, 890), "castleHalf");
+            platform = new Platform(new Vector2(1500, 760), "castleHalf");
+            platform = new Platform(new Vector2(1640, 890), "castleHalf");
+            platform = new Platform(new Vector2(1780, 760), "castleHalf");
+            platform = new Platform(new Vector2(120, 280), "castleHalf");
+            platform = new Platform(new Vector2(190, 280), "castleHalf");
+            platform = new Platform(new Vector2(330, 380), "castleHalf");
+            platform = new Platform(new Vector2(400, 380), "castleHalf");
+            platform = new Platform(new Vector2(540, 480), "castleHalf");
+            platform = new Platform(new Vector2(610, 480), "castleHalf");
+            platform = new Platform(new Vector2(750, 580), "castleHalf");
+            platform = new Platform(new Vector2(820, 580), "castleHalf");
+            platform = new Platform(new Vector2(1080, 580), "castleHalf");
+            platform = new Platform(new Vector2(1150, 580), "castleHalf");
+            platform = new Platform(new Vector2(1290, 480), "castleHalf");
+            platform = new Platform(new Vector2(1360, 480), "castleHalf");
+            platform = new Platform(new Vector2(1500, 380), "castleHalf");
+            platform = new Platform(new Vector2(1570, 380), "castleHalf");
+            platform = new Platform(new Vector2(1710, 280), "castleHalf");
+            platform = new Platform(new Vector2(1780, 280), "castleHalf");
+            platform = new Platform(new Vector2(910, 350), "castleHalf");
+            platform = new Platform(new Vector2(980, 350), "castleHalf");
+
+
+            // Kæder
+            platform = new Platform(new Vector2(120, 540), "chain");
+            platform = new Platform(new Vector2(120, 470), "chain");
+            platform = new Platform(new Vector2(120, 400), "chain");
+            platform = new Platform(new Vector2(120, 330), "chain");
+
+            platform = new Platform(new Vector2(1780, 540), "chain");
+            platform = new Platform(new Vector2(1780, 470), "chain");
+            platform = new Platform(new Vector2(1780, 400), "chain");
+            platform = new Platform(new Vector2(1780, 330), "chain");
+
             player = new Player();
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
-            boss = new Boss();
             // TODO: use this.Content to load your game content here
         }
 
