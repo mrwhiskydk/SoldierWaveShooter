@@ -75,7 +75,7 @@ namespace SoldierWaveShooter
             {
                 canJump = false;
             }
-
+        }
 
         public override void DoCollision(GameObject otherObject)
         {
@@ -95,12 +95,7 @@ namespace SoldierWaveShooter
                 isImmortal = true;
                 
             }
-            if (otherObject is Enemy)
-            {
-                Enemy enemy = (Enemy)otherObject;
-                health -= enemy.enemyDamage;
-                takingDamage = true;
-            }
+            
 
             //if (otherObject is Melee)
             //{

@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
         protected float movementSpeed = 300;
         protected bool isGrounded;
         protected bool isAlive;
-        protected bool canJump;
+        
         
         protected int health;
 
