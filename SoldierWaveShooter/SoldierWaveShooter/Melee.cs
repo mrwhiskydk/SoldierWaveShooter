@@ -9,9 +9,10 @@ namespace SoldierWaveShooter
     public class Melee : Enemy
     {
         
-        public Melee() : base(3, 12, new Vector2(1600, 870), "p2_walk2", 50)
+        public Melee() : base(3, 12, new Vector2(1600, 870), "Melee2")
         {
             enemyHealth = 100;
+            enemyDamage = 10;
         }
 
         public override void Update(GameTime gameTime)
@@ -27,10 +28,10 @@ namespace SoldierWaveShooter
                 position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             else
-	        {
+            {
                 position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-           
+
         }
 
         public override void DoCollision(GameObject otherObject)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
@@ -13,11 +14,16 @@ namespace SoldierWaveShooter
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
+        private Player[] playerAnimations = new Player[6];
 
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
         private bool canJump = false;
+        private bool takingDamage = false;
 
+        private float immortalDuration = 3.0f;
+        private double immortalTime;
+        public bool isImmortal;
         
         private int health;
         public int Health
@@ -35,6 +41,13 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
             HandleMovement(gameTime);
+
+            immortalTime += gameTime.ElapsedGameTime.TotalSeconds;
+            if (immortalTime > immortalDuration)
+            {
+                isImmortal = false;
+                immortalTime = 0;
+            }
             WeaponSystem();
         }
 
@@ -59,6 +72,7 @@ namespace SoldierWaveShooter
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             }
+
             if (Keyboard.GetState().IsKeyUp(Keys.W))
             {
                 canJump = false;
@@ -75,21 +89,17 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
-            if (otherObject is Melee)
+            if (otherObject is Enemy && !isImmortal)
             {
-                health -= 5;
+                Enemy enemy = (Enemy)otherObject;
+                health -= enemy.enemyDamage;
+                takingDamage = true;
+                isImmortal = true;
+                
             }
 
-            if (otherObject is Ranged)
-            {
-                health -= 1;
-            }
-
-            if (otherObject is Flying)
-            {
-                health -= 10;
-            }
         }
+
 
         private void WeaponSystem()
         {
@@ -133,6 +143,27 @@ namespace SoldierWaveShooter
 
                 }
             }
+            
+
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            if (isImmortal == true && isFacingRight == false)
+            {
+
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
+
+            }
+
+            if (isImmortal == true && isFacingRight == true)
+            {
+
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+
+            }
+
         }
     }
 }

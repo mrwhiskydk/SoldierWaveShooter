@@ -8,8 +8,38 @@ namespace SoldierWaveShooter
 {
     public class Boss : Enemy
     {
-        public Boss(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
+        public Boss() : base(5, 5, new Vector2(200, 600), "Boss")
         {
+            isFacingRight = false;
+            enemyHealth = 2000;
+            enemyDamage = 25;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+
+            base.Update(gameTime);
+            HandleMovement(gameTime);
+        }
+
+        protected override void HandleMovement(GameTime gameTime)
+        {
+            Gravity = false;
+            /*if (isFacingRight == true)
+            {
+                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            else
+	        {
+                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }*/
+           
+        }
+
+        public override void DoCollision(GameObject otherObject)
+        {
+            base.DoCollision(otherObject);
+
         }
     }
 }

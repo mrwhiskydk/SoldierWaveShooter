@@ -22,6 +22,7 @@ namespace SoldierWaveShooter
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
+        private Enemy boss;
         private Platform platform;
         private Texture2D collisionTexture;
         public static Crosshair mouse;
@@ -102,9 +103,9 @@ namespace SoldierWaveShooter
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
-
-
-
+            gameObjects.Add(enemyFlying);
+            boss = new Boss();
+            gameObjects.Add(boss);
             // TODO: use this.Content to load your game content here
         }
 
@@ -181,7 +182,7 @@ namespace SoldierWaveShooter
 #endif
             }
 
-            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 

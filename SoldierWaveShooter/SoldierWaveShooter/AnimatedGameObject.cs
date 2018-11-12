@@ -12,10 +12,10 @@ namespace SoldierWaveShooter
     /// </summary>
     public class AnimatedGameObject : GameObject
     {
-        Rectangle[] animationRectangles;
+        protected Rectangle[] animationRectangles;
         protected bool isFacingRight;
-        float animationFPS;
-        int currentAnimationIndex = 0;
+        protected float animationFPS;
+        protected int currentAnimationIndex = 0;
         double timeElapsed = 0;
         protected float walkingspeed = 50;
 
@@ -76,8 +76,13 @@ namespace SoldierWaveShooter
                 currentAnimationIndex = 0;
                 timeElapsed = 0;
             }
-
             base.Update(gameTime);
+        }
+
+        public override void DoCollision(GameObject otherObject)
+        {
+
+            base.DoCollision(otherObject);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -90,7 +95,7 @@ namespace SoldierWaveShooter
             {
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
             }
-   
+
         }
 
 

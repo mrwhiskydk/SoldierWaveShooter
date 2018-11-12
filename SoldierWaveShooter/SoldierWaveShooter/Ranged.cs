@@ -8,10 +8,11 @@ namespace SoldierWaveShooter
 {
     public class Ranged : Enemy
     {
-        public Ranged() : base(3, 12, new Vector2(50, 870), "p1_walk2", 50)
+        public Ranged() : base(6, 6, new Vector2(50, 870), "Ranged2")
         {
             isFacingRight = true;
             enemyHealth = 100;
+            enemyDamage = 10;
         }
         public override void Update(GameTime gameTime)
         {
