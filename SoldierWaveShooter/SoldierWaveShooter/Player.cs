@@ -13,13 +13,10 @@ namespace SoldierWaveShooter
     {        
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
-        private Player[] playerAnimations = new Player[6];
-
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
         private bool canJump = false;
         private bool takingDamage = false;
-
         private float immortalDuration = 3.0f;
         private double immortalTime;
         public bool isImmortal;
@@ -98,7 +95,6 @@ namespace SoldierWaveShooter
             }
 
         }
-
 
         private void WeaponSystem()
         {

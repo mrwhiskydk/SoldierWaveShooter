@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Ranged : Enemy
     {
-        public Ranged() : base(6, 6, new Vector2(50, 870), "Ranged2")
+        public Ranged() : base(4, 4, new Vector2(50, 870), "Ranged")
         {
             isFacingRight = true;
             enemyHealth = 100;
@@ -21,6 +21,10 @@ namespace SoldierWaveShooter
             if (Gameworld.player.Position.X <= position.X)
             {
                 isFacingRight = false;
+            }
+            else if (Gameworld.player.Position.X == position.X)
+            {
+                isFacingRight = true;
             }
             else
             {
