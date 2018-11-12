@@ -25,14 +25,6 @@ namespace SoldierWaveShooter
         protected override void HandleMovement(GameTime gameTime)
         {
             Gravity = false;
-            /*if (isFacingRight == true)
-            {
-                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }
-            else
-	        {
-                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }*/
            
         }
 

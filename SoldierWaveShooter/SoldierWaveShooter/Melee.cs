@@ -18,20 +18,12 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            HandleMovement(gameTime);
+
         }
 
         protected override void HandleMovement(GameTime gameTime)
         {
-            if (isFacingRight == true)
-            {
-                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }
-            else
-            {
-                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }
-
+            base.HandleMovement(gameTime);
         }
 
         public override void DoCollision(GameObject otherObject)

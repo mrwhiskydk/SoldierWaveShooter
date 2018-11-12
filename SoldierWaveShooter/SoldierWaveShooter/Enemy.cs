@@ -8,10 +8,12 @@ namespace SoldierWaveShooter
 {
     public class Enemy : Character
     {
-        protected Vector2 direction = new Vector2(0, 0);
+
         //protected Enemy[] enemies = {new Melee(), new Ranged()}
         public int enemyHealth;
         public int enemyDamage;
+        protected bool goToPlayer = false;
+        protected bool goLeft = false;
 
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
         {
@@ -23,13 +25,35 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
+            if (Gameworld.player.position.X != position.X)
+            {
+                goToPlayer = true;
+            }
 
-            base.Update(gameTime);
+            if (Gameworld.player.position.X <= position.X)
+            {
+                goLeft = true;
+            }
+            else
+            {
+                goLeft = false;
+            }
             
+            base.Update(gameTime);
+            HandleMovement(gameTime);
         }
 
         protected override void HandleMovement(GameTime gameTime)
         {
+            if (goToPlayer == true && goLeft == true)
+            {
+                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
+
+            if (goToPlayer == true && goLeft == false)
+            {
+                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+            }
 
         }
 
@@ -56,6 +80,7 @@ namespace SoldierWaveShooter
             {
                 Gameworld.RemoveGameObject(this);
             }
+
         }
 
     }

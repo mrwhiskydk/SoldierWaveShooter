@@ -22,7 +22,7 @@ namespace SoldierWaveShooter
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
-        private Player player;
+        public static Player player;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
@@ -49,7 +49,6 @@ namespace SoldierWaveShooter
                 return _content;
             }
         }
-
 
         public Gameworld()
         {
@@ -102,18 +101,16 @@ namespace SoldierWaveShooter
 
             for (int i = 0; i < 28; i++)
             {
-                new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf");
+                new Platform(new Vector2((i*70) + 35, 1016), "castle");
             }
-            platform = new Platform(new Vector2(750, 890), "GrassHalf");
-            platform = new Platform(new Vector2(900, 800), "GrassHalf");
-            platform = new Platform(new Vector2(1050, 890), "GrassHalf");
+            platform = new Platform(new Vector2(750, 890), "castleHalf");
+            platform = new Platform(new Vector2(900, 800), "castleHalf");
+            platform = new Platform(new Vector2(1050, 890), "castleHalf");
             player = new Player();
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
-            gameObjects.Add(enemyFlying);
             boss = new Boss();
-            gameObjects.Add(boss);
             // TODO: use this.Content to load your game content here
         }
 
