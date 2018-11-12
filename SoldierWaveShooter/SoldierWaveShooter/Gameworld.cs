@@ -17,6 +17,8 @@ namespace SoldierWaveShooter
         private SpriteFont font;
         //Insert healthbar SpriteFont
         private Texture2D bar;
+        private Texture2D barMid;
+        private Texture2D barTop;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
@@ -92,6 +94,8 @@ namespace SoldierWaveShooter
             font = Content.Load<SpriteFont>("ExampleFont");
             //Load healthbar Sprite Content
             bar = Content.Load<Texture2D>("barBaseSW");
+            barMid = Content.Load<Texture2D>("barMidLayer");
+            barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             mouse = new Crosshair();
 
@@ -183,8 +187,10 @@ namespace SoldierWaveShooter
 #endif
             }
             //Add spriteBatch for healthbar
-            spriteBatch.Draw(bar, new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
-            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
+            spriteBatch.Draw(bar, new Vector2(70, 35), Color.White);
+            spriteBatch.Draw(barMid, new Vector2(94, 59), Color.White);
+            spriteBatch.Draw(barTop, new Vector2(94, 59), Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
