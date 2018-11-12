@@ -18,6 +18,14 @@ namespace SoldierWaveShooter
         {
             base.Update(gameTime);
 
+            if (Gameworld.player.Position.X <= position.X)
+            {
+                isFacingRight = false;
+            }
+            else
+            {
+                isFacingRight = true;
+            }
         }
 
         protected override void HandleMovement(GameTime gameTime)
