@@ -109,18 +109,6 @@
 /processorParam:TextureFormat=Color
 /build:castleHalf.png
 
-#begin castleHalf.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:castleHalf.png
-
 #begin CollisionTexture.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -212,6 +200,18 @@
 /processorParam:TextureFormat=Color
 /build:M16.png
 
+#begin Machinegun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Machinegun.png
+
 #begin Melee.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -284,6 +284,18 @@
 /processorParam:TextureFormat=Color
 /build:Ranged.png
 
+#begin Ranged2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Ranged2.png
+
 #begin Rocket.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -307,4 +319,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shotgun.png
+
+#begin Sniper rifle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sniper rifle.png
 
