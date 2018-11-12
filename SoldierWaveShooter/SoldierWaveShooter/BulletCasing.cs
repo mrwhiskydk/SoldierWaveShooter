@@ -13,13 +13,15 @@ namespace SoldierWaveShooter
         private bool hitTheGround = false;
         private double jumpForce = 300;
         private double timeAlive;
-        private Vector2 direction;
+        private float direction;
         private Random rnd = new Random();
 
-        public BulletCasing(Vector2 startPosition, Vector2 direction) : base(startPosition, "BulletCasing")
+        public BulletCasing(Vector2 startPosition) : base(startPosition, "BulletCasing")
         {
-            this.direction = direction;
             rotation = rnd.Next(0, 360);
+
+            direction = (float)(rnd.Next(0, 2) * 2 - 1) * rnd.Next(0, 180);
+
         }
 
         public override void Update(GameTime gameTime)
@@ -36,7 +38,7 @@ namespace SoldierWaveShooter
 
                 jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 1000;
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
-                position.X += MathHelper.ToRadians(direction.X);
+                position.X += MathHelper.ToRadians(direction);
             }
         }
 

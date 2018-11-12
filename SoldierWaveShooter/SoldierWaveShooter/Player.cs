@@ -120,9 +120,11 @@ namespace SoldierWaveShooter
                 CheckSlot(3);
             }
 
+            
+
             weapon.Position = position;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 weapon.Shoot();
             }
