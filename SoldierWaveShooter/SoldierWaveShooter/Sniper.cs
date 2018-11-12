@@ -7,7 +7,7 @@ namespace SoldierWaveShooter
 {
     public class Sniper : Weapon
     {
-        public Sniper() : base("HuntingRifle")
+        public Sniper() : base("Sniper rifle")
         {
             firerate = 1f;
             projectileSpeed = 50;
