@@ -93,7 +93,7 @@ namespace SoldierWaveShooter
 
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf"));
+                new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf");
             }
             platform = new Platform(new Vector2(750, 890), "GrassHalf");
             platform = new Platform(new Vector2(900, 800), "GrassHalf");
