@@ -11,7 +11,7 @@ namespace SoldierWaveShooter
         public Shotgun() : base("Shotgun")
         {
             firerate = 0.75f;
-            projectileSpeed = 20;
+            projectileSpeed = 1250;
             damage = 10;
             spread = 80f;
             bulletAmount = 8;

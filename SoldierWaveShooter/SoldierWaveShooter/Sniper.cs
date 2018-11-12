@@ -10,7 +10,7 @@ namespace SoldierWaveShooter
         public Sniper() : base("HuntingRifle")
         {
             firerate = 1f;
-            projectileSpeed = 50;
+            projectileSpeed = 3000;
             damage = 100;
             spread = 0f;
             bulletSprite = "BulletTrail";

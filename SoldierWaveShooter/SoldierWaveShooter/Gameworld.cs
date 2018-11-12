@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace SoldierWaveShooter
@@ -23,6 +24,7 @@ namespace SoldierWaveShooter
         private Enemy enemyFlying;
         private Platform platform;
         private Texture2D collisionTexture;
+        public static Crosshair mouse;
         private float gravityStrength = 5f;
 
 
@@ -87,24 +89,19 @@ namespace SoldierWaveShooter
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
+            mouse = new Crosshair();
+
             for (int i = 0; i < 28; i++)
             {
                 gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "GrassHalf"));
             }
             platform = new Platform(new Vector2(750, 890), "GrassHalf");
-            gameObjects.Add(platform);
             platform = new Platform(new Vector2(900, 800), "GrassHalf");
-            gameObjects.Add(platform);
             platform = new Platform(new Vector2(1050, 890), "GrassHalf");
-            gameObjects.Add(platform);
             player = new Player();
-            gameObjects.Add(player);
             enemyMelee = new Melee();
-            gameObjects.Add(enemyMelee);
             enemyRanged = new Ranged();
-            gameObjects.Add(enemyRanged);
             enemyFlying = new Flying();
-            gameObjects.Add(enemyFlying);
 
 
 
@@ -131,6 +128,8 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
+
+            
 
             foreach (GameObject go in gameObjects)
             {
