@@ -15,6 +15,8 @@ namespace SoldierWaveShooter
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
+        //Insert healthbar SpriteFont
+        private Texture2D bar;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
@@ -89,6 +91,8 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
+            //Load healthbar Sprite Content
+            bar = Content.Load<Texture2D>("barBaseSW");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             mouse = new Crosshair();
 
@@ -179,8 +183,9 @@ namespace SoldierWaveShooter
                 DrawCollisionBox(go);
 #endif
             }
-
-            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
+            //Add spriteBatch for healthbar
+            spriteBatch.Draw(bar, new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
