@@ -90,7 +90,7 @@ namespace SoldierWaveShooter
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "castleHalf"));
+                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "castle"));
             }
             platform = new Platform(new Vector2(750, 890), "castleHalf");
             gameObjects.Add(platform);
@@ -108,9 +108,6 @@ namespace SoldierWaveShooter
             gameObjects.Add(enemyFlying);
             boss = new Boss();
             gameObjects.Add(boss);
-
-
-
             // TODO: use this.Content to load your game content here
         }
 

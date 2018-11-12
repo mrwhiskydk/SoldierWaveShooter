@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
@@ -22,7 +23,7 @@ namespace SoldierWaveShooter
 
         private float immortalDuration = 3.0f;
         private double immortalTime;
-        private bool isImmortal;
+        public bool isImmortal;
         
         private int health;
         public int Health
@@ -71,6 +72,7 @@ namespace SoldierWaveShooter
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             }
+
             if (Keyboard.GetState().IsKeyUp(Keys.W))
             {
                 canJump = false;
@@ -95,27 +97,6 @@ namespace SoldierWaveShooter
                 isImmortal = true;
                 
             }
-            
-
-            //if (otherObject is Melee)
-            //{
-            //    health -= 5;
-            //}
-
-            //if (otherObject is Ranged)
-            //{
-            //    health -= 1;
-            //}
-
-            //if (otherObject is Flying)
-            //{
-            //    health -= 10;
-            //}
-
-            //if (Keyboard.GetState().IsKeyUp(Keys.W))
-            //{
-            //    canJump = false;
-            //}
 
         }
 
@@ -159,6 +140,26 @@ namespace SoldierWaveShooter
                     }
 
                 }
+            }
+            
+
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            if (isImmortal == true && isFacingRight == false)
+            {
+
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
+
+            }
+
+            if (isImmortal == true && isFacingRight == true)
+            {
+
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+
             }
 
         }

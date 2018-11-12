@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:BulletTrail.png
 
-#begin castleHalf.png
+#begin castle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,7 +107,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:castleHalf.png
+/build:castle.png
 
 #begin castleHalf.png
 /importer:TextureImporter
@@ -152,7 +152,7 @@
 /processorParam:TextureFormat=Compressed
 /build:ExampleFont.spritefont
 
-#begin Flying2.png
+#begin Flying.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -162,7 +162,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Flying2.png
+/build:Flying.png
+
+#begin FlyingGreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:FlyingGreen.png
 
 #begin grass.png
 /importer:TextureImporter
@@ -188,7 +200,7 @@
 /processorParam:TextureFormat=Color
 /build:grassHalf.png
 
-#begin HuntingRifle.png
+#begin Machinegun.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -198,19 +210,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:HuntingRifle.png
-
-#begin M16.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:M16.png
+/build:Machinegun.png
 
 #begin Melee.png
 /importer:TextureImporter
@@ -224,7 +224,7 @@
 /processorParam:TextureFormat=Color
 /build:Melee.png
 
-#begin Mp5Pixel.png
+#begin Melee2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -234,7 +234,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Mp5Pixel.png
+/build:Melee2.png
 
 #begin PlayerRunSW.png
 /importer:TextureImporter
@@ -272,6 +272,18 @@
 /processorParam:TextureFormat=Color
 /build:Ranged.png
 
+#begin Ranged2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Ranged2.png
+
 #begin Rocket.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -295,4 +307,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Shotgun.png
+
+#begin Sniper rifle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sniper rifle.png
 
