@@ -28,9 +28,13 @@ namespace SoldierWaveShooter
         private Enemy enemyFlying;
         private Enemy boss;
         private Platform platform;
+        private UI ui;
         private Texture2D collisionTexture;
         public static Crosshair mouse;
         private float gravityStrength = 5f;
+
+        private Vector2 barPosition;
+        private Rectangle barPos;
 
 
         public static Rectangle ScreenSize
@@ -135,7 +139,10 @@ namespace SoldierWaveShooter
 
             // TODO: Add your update logic here
 
-            
+            //Directional Rectangle for the healthbar
+            barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2 + 22, barTop.Height);
+            barPosition = new Vector2(94, 59);
+            //barPos.Width = player.Health;
 
             foreach (GameObject go in gameObjects)
             {
@@ -178,6 +185,8 @@ namespace SoldierWaveShooter
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+
             spriteBatch.Begin();
             foreach (GameObject go in gameObjects)
             {
@@ -186,10 +195,13 @@ namespace SoldierWaveShooter
                 DrawCollisionBox(go);
 #endif
             }
+            
+            
+            
             //Add spriteBatch for healthbar
             spriteBatch.Draw(bar, new Vector2(70, 35), Color.White);
             spriteBatch.Draw(barMid, new Vector2(94, 59), Color.White);
-            spriteBatch.Draw(barTop, new Vector2(94, 59), Color.White);
+            spriteBatch.Draw(barTop, barPos, Color.White);
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here

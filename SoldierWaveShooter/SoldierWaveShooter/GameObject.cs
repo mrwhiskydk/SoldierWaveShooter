@@ -97,7 +97,7 @@ namespace SoldierWaveShooter
         {
 
             spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, SpriteEffects.None, 0f);
-
+            
         }
 
 

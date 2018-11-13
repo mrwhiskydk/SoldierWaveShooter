@@ -33,7 +33,7 @@ namespace SoldierWaveShooter
                 Gameworld.RemoveGameObject(this);
             }
 
-            if (Gameworld.player.position.Y >= position.Y)
+            if (Gameworld.player.Position.Y >= position.Y)
             {
                 goDown = true;            
             }
