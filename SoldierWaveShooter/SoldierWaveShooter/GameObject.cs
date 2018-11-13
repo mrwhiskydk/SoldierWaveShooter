@@ -75,7 +75,7 @@ namespace SoldierWaveShooter
             Gameworld.AddGameObject(this);
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             Gameworld.RemoveGameObject(this);
         }
