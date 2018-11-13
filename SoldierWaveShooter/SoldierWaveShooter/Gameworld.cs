@@ -42,7 +42,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 20.0f;
+        private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 3.0f;   //Field used for player respawn in update
@@ -210,9 +210,8 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(1150, 410), "chain");
 
             player = new Player();
-            enemyMelee = new Melee();
-            enemyRanged = new Ranged();
-            enemyFlying = new Flying();
+
+            mouse = new Crosshair();
             // TODO: use this.Content to load your game content here
         }
 
@@ -370,7 +369,6 @@ namespace SoldierWaveShooter
             
             
             //Add spriteBatch for healthbar
-            spriteBatch.Draw(bar, new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(70, 140), Color.White);
             spriteBatch.DrawString(font, $"magazineCapacity:{player.weapon.magazineCapacity}", new Vector2(70, 175), Color.White);

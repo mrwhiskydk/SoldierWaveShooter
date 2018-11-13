@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
         public Flying() : base(3, 9, new Vector2(1850,50), "FlyingGreen")
         {
             isFacingRight = true;
-            enemyHealth = 100;
+            enemyHealth = 50;
             enemyDamage = 5;
             movementSpeed = 30;
         }
