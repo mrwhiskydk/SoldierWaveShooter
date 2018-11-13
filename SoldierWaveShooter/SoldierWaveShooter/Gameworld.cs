@@ -15,7 +15,6 @@ namespace SoldierWaveShooter
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
-        //Insert healthbar SpriteFont
         private Texture2D bar;
         private Texture2D barMid;
         private Texture2D barTop;
@@ -183,7 +182,6 @@ namespace SoldierWaveShooter
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
-            //barPos.Width = player.Health;
 
             foreach (GameObject go in gameObjects)
             {
@@ -191,7 +189,6 @@ namespace SoldierWaveShooter
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
-                    //go.Velocity = new Vector2(go.Velocity.X, go.Velocity.Y + gravityStrength);
 
                 }
 
