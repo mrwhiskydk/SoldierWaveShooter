@@ -16,9 +16,8 @@ namespace SoldierWaveShooter
         protected Vector2 position;
         //public Vector2 velocity = new Vector2(0, -2f);
 
-        protected bool gravity = false;
+        protected bool gravity = false;       
 
-        
 
 
         /// <summary>
@@ -31,6 +30,7 @@ namespace SoldierWaveShooter
         //public Vector2 GravityScale { get => gravityScale; set => gravityScale = value; }
 
         public bool Gravity { get => gravity; set => gravity = value; }
+        
 
         public virtual Rectangle CollisionBox
         {

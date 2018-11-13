@@ -31,6 +31,8 @@ namespace SoldierWaveShooter
         private Texture2D collisionTexture;
         public static Crosshair mouse;
         private float gravityStrength = 5f;
+        private float respawnDuration = 3.0f;   //Field used for player respawn in update
+        private double respawnTime; //Field used for player respawn in update
 
         private Vector2 barPosition;
         private Rectangle barPos;
@@ -95,7 +97,6 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
-            //Load healthbar Sprite Content
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
             barTop = Content.Load<Texture2D>("barTopLayer");
@@ -155,6 +156,7 @@ namespace SoldierWaveShooter
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -166,6 +168,7 @@ namespace SoldierWaveShooter
         {
             // TODO: Unload any non ContentManager content here
         }
+      
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -178,11 +181,28 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
+            if (player.Health <= 0)
+            {
+                
+                RemoveGameObject(player);
+                
+                respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
+                if (respawnTime > respawnDuration)
+                {
+                    player = new Player();
 
+                        
+                    respawnTime = 0;
+                 }
+                    
+                
+            }           
+
+            
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
-
+            
             foreach (GameObject go in gameObjects)
             {
                 //Apply gravity
@@ -203,7 +223,7 @@ namespace SoldierWaveShooter
                     }
                 }
             }
-
+            
             foreach (GameObject go in toBeRemoved)
             {
                 gameObjects.Remove(go);
