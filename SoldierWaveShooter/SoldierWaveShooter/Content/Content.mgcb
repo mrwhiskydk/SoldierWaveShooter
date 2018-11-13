@@ -25,6 +25,30 @@
 /processorParam:TextureFormat=Color
 /build:barBaseSW.png
 
+#begin barMidLayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:barMidLayer.png
+
+#begin barTopLayer.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:barTopLayer.png
+
 #begin Bazooka.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -109,6 +133,18 @@
 /processorParam:TextureFormat=Color
 /build:castleHalf.png
 
+#begin chain.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:chain.png
+
 #begin CollisionTexture.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -152,18 +188,6 @@
 /processorParam:TextureFormat=Compressed
 /build:ExampleFont.spritefont
 
-#begin Flying.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Flying.png
-
 #begin FlyingGreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -187,18 +211,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Machinegun.png
-
-#begin Melee.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Melee.png
 
 #begin Melee2.png
 /importer:TextureImporter
@@ -247,18 +259,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Ranged.png
-
-#begin Ranged2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Ranged2.png
 
 #begin Rocket.png
 /importer:TextureImporter

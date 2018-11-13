@@ -15,9 +15,8 @@ namespace SoldierWaveShooter
 
         protected Vector2 position;
 
-        protected bool gravity = false;
+        protected bool gravity = false;       
 
-        
 
 
         /// <summary>
@@ -28,6 +27,7 @@ namespace SoldierWaveShooter
         //public Vector2 Velocity { get => velocity; set => velocity = value; }
 
         public bool Gravity { get => gravity; set => gravity = value; }
+        
 
         public virtual Rectangle CollisionBox
         {
@@ -97,9 +97,7 @@ namespace SoldierWaveShooter
         /// <param name="spriteBatch">The spritebatch to use for drawing</param>
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-
             spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, SpriteEffects.None, 0f);
-
         }
 
 

@@ -9,9 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
-    class Player : Character
+    public class Player : Character
     {        
-        protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         public Weapon weapon;
         private Player[] playerAnimations = new Player[6];
@@ -20,36 +19,37 @@ namespace SoldierWaveShooter
         private double jumpForce = jumpPower;
         private bool canJump = false;
         private bool takingDamage = false;
-
-        private float immortalDuration = 3.0f;
+        private float immortalDuration = 1.0f;
         private double immortalTime;
         public bool isImmortal;
-        
-        private int health;
-        public int Health
-        {
-            get { return health; }
-        }
+            
 
         public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 500), "PlayerRunSW")
         {
             weapon = weapons[0];
-            health = 100;
+            if (isAlive)
+            {
+                health = 110;
+            }
+           
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-            HandleMovement(gameTime);
-
-            immortalTime += gameTime.ElapsedGameTime.TotalSeconds;
-            if (immortalTime > immortalDuration)
+            if (isAlive)
             {
-                isImmortal = false;
-                immortalTime = 0;
+                base.Update(gameTime);               
+                HandleMovement(gameTime);
+
+                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;
+                if (immortalTime > immortalDuration)
+                {
+                    isImmortal = false;
+                    immortalTime = 0;
+                }
+                WeaponSystem();
             }
-            WeaponSystem();
-            gravity = false;
+            
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -85,6 +85,7 @@ namespace SoldierWaveShooter
             }
         }
 
+
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
@@ -95,13 +96,17 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
+
             if (otherObject is Enemy && !isImmortal)
             {
                 Enemy enemy = (Enemy)otherObject;
-                health -= enemy.enemyDamage;
-                takingDamage = true;
+                health -= enemy.enemyDamage;               
                 isImmortal = true;
-                
+
+                if (enemy.enemyHealth > 0)
+                {
+                    takingDamage = true;
+                }
             }
 
             if (otherObject is Weapon)
@@ -122,7 +127,6 @@ namespace SoldierWaveShooter
                 }
             }
         }
-
 
         private void WeaponSystem()
         {
@@ -173,14 +177,14 @@ namespace SoldierWaveShooter
         {
             base.Draw(spriteBatch);
 
-            if (isImmortal == true && isFacingRight == false)
+            if (isImmortal == true && isFacingRight == false && takingDamage == true)
             {
 
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
 
             }
 
-            if (isImmortal == true && isFacingRight == true)
+            if (isImmortal == true && isFacingRight == true && takingDamage == true)
             {
 
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
