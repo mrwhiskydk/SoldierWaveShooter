@@ -25,7 +25,7 @@ namespace SoldierWaveShooter
             if (enemyHealth <= 0)
 	        {
                 Gravity = true;
-                
+                enemyDamage = 0;
 	        }
 
             if (!Gameworld.ScreenSize.Intersects(CollisionBox))
@@ -61,7 +61,7 @@ namespace SoldierWaveShooter
 
         public override void DoCollision(GameObject otherObject)
         {
-            if (otherObject is Player)
+            if (otherObject is Player && enemyHealth > 0)
             {
                 enemyHealth -= enemyHealth;
             }
@@ -75,10 +75,7 @@ namespace SoldierWaveShooter
             if (otherObject is Projectile)
             {
                 Gameworld.RemoveGameObject(otherObject);
-            }
-
-
-             
+            }             
         }
     }
 }

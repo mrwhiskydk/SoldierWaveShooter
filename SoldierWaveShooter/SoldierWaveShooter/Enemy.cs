@@ -25,9 +25,13 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            if (Gameworld.player.Position.X != position.X)
+            if (Gameworld.player.Position.X != position.X && enemyHealth > 0)
             {
                 goToPlayer = true;
+            }
+            else
+            {
+                goToPlayer = false;
             }
 
             if (Gameworld.player.Position.X <= position.X)

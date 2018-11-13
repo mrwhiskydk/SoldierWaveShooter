@@ -62,6 +62,7 @@ namespace SoldierWaveShooter
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+
             if (equipped)
             {
                 base.Draw(spriteBatch);
