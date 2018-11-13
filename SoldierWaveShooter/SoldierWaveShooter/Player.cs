@@ -20,22 +20,19 @@ namespace SoldierWaveShooter
         private float immortalDuration = 1.0f;
         private double immortalTime;
         public bool isImmortal;
-            
+
 
         public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRunSW")
         {
             weapon = weapons[0];
-            if (isAlive)
-            {
-                health = 110;
-            }
-           
-        }
+
+            health = 110;
+
+        }  
+        
 
         public override void Update(GameTime gameTime)
         {
-            if (isAlive)
-            {
                 base.Update(gameTime);               
                 HandleMovement(gameTime);
 
@@ -45,9 +42,7 @@ namespace SoldierWaveShooter
                     isImmortal = false;
                     immortalTime = 0;
                 }
-                WeaponSystem();
-            }
-            
+                WeaponSystem();            
         }
 
         protected override void HandleMovement(GameTime gameTime)
