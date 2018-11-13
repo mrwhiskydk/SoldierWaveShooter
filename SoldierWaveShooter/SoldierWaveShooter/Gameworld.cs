@@ -102,8 +102,6 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(750, 890), "castleHalf");
             platform = new Platform(new Vector2(900, 800), "castleHalf");
             platform = new Platform(new Vector2(1050, 890), "castleHalf");
-            player = new Player();
-            new Machinegun(new Vector2(player.Position.X + 100, player.Position.Y), true);
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
