@@ -181,7 +181,7 @@ namespace SoldierWaveShooter
             // TODO: Add your update logic here
 
             //Directional Rectangle for the healthbar
-            barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2 + 22, barTop.Height);
+            barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
             //barPos.Width = player.Health;
 
@@ -243,7 +243,7 @@ namespace SoldierWaveShooter
             spriteBatch.Draw(bar, new Vector2(70, 35), Color.White);
             spriteBatch.Draw(barMid, new Vector2(94, 59), Color.White);
             spriteBatch.Draw(barTop, barPos, Color.White);
-            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
+            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
