@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Ammunition.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="BulletCasing.cs" />
     <Compile Include="Character.cs" />

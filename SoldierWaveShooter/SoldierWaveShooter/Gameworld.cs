@@ -94,7 +94,6 @@ namespace SoldierWaveShooter
             //Load healthbar Sprite Content
             bar = Content.Load<Texture2D>("barBaseSW");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
-            mouse = new Crosshair();
 
             for (int i = 0; i < 28; i++)
             {
@@ -104,10 +103,14 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(900, 800), "castleHalf");
             platform = new Platform(new Vector2(1050, 890), "castleHalf");
             player = new Player();
+            new Machinegun(new Vector2(player.Position.X + 100, player.Position.Y), true);
             enemyMelee = new Melee();
             enemyRanged = new Ranged();
             enemyFlying = new Flying();
             boss = new Boss();
+
+            //keep last
+            mouse = new Crosshair();
             // TODO: use this.Content to load your game content here
         }
 
@@ -184,8 +187,11 @@ namespace SoldierWaveShooter
 #endif
             }
             //Add spriteBatch for healthbar
-            spriteBatch.Draw(bar, new Vector2(player.position.X - 40, player.position.Y - 65), Color.White);
+            spriteBatch.Draw(bar, new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
+            spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(70, 140), Color.White);
+            spriteBatch.DrawString(font, $"magazineCapacity:{player.weapon.magazineCapacity}", new Vector2(70, 175), Color.White);
+            spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(70, 210), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 

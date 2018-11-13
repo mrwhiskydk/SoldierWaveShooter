@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
     {        
         protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
-        private Weapon weapon;
+        public Weapon weapon;
         private Player[] playerAnimations = new Player[6];
 
         private const float jumpPower = 1000;
@@ -31,7 +31,7 @@ namespace SoldierWaveShooter
             get { return health; }
         }
 
-        public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 870), "PlayerRunSW")
+        public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 500), "PlayerRunSW")
         {
             weapon = weapons[0];
             health = 100;
@@ -49,6 +49,7 @@ namespace SoldierWaveShooter
                 immortalTime = 0;
             }
             WeaponSystem();
+            gravity = false;
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -77,6 +78,11 @@ namespace SoldierWaveShooter
             {
                 canJump = false;
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                weapon.Reload();
+            }
         }
 
         public override void DoCollision(GameObject otherObject)
@@ -98,6 +104,23 @@ namespace SoldierWaveShooter
                 
             }
 
+            if (otherObject is Weapon)
+            {
+                Weapon obj = (Weapon)otherObject;
+                if (obj.isAmmo)
+                {
+                    foreach (Weapon weap in weapons)
+                    {
+                        if (obj.GetType() == weap.GetType())
+                        {
+                            Console.WriteLine(weap.GetType());
+                            weap.ammo += weap.magazineCapacity;
+                            obj.Destroy();
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
 

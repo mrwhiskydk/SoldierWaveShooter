@@ -14,7 +14,6 @@ namespace SoldierWaveShooter
         protected float rotation;
 
         protected Vector2 position;
-        //public Vector2 velocity = new Vector2(0, -2f);
 
         protected bool gravity = false;
 
@@ -27,8 +26,6 @@ namespace SoldierWaveShooter
         public Vector2 Position { get => position; set => position = value; }
 
         //public Vector2 Velocity { get => velocity; set => velocity = value; }
-
-        //public Vector2 GravityScale { get => gravityScale; set => gravityScale = value; }
 
         public bool Gravity { get => gravity; set => gravity = value; }
 
@@ -78,6 +75,11 @@ namespace SoldierWaveShooter
             position = startPosition;
             sprite = Gameworld.ContentManager.Load<Texture2D>(spriteName);
             Gameworld.AddGameObject(this);
+        }
+
+        public void Destroy()
+        {
+            Gameworld.RemoveGameObject(this);
         }
 
         /// <summary>

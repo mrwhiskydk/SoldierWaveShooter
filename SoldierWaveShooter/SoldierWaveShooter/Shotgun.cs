@@ -15,6 +15,10 @@ namespace SoldierWaveShooter
             damage = 10;
             spread = 80f;
             bulletAmount = 8;
+            infiniteAmmo = false;
+            magazineCapacity = 8;
+            magazine = 0;
+            timeToReload = 2;
         }
     }
 }
