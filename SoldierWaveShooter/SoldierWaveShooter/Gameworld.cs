@@ -369,8 +369,7 @@ namespace SoldierWaveShooter
             
             
             
-            //Add spriteBatch for healthbar
-            spriteBatch.Draw(bar, new Vector2(player.Position.X - 40, player.Position.Y - 65), Color.White);
+            //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(70, 140), Color.White);
             spriteBatch.DrawString(font, $"magazineCapacity:{player.weapon.magazineCapacity}", new Vector2(70, 175), Color.White);
