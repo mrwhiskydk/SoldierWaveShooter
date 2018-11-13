@@ -8,13 +8,13 @@ namespace SoldierWaveShooter
 {
     public class Melee : Enemy
     {
-
         private bool climb = false;
 
-        public Melee() : base(3, 12, new Vector2(1600, 870), "Melee2")
+        public Melee() : base(3, 12, new Vector2(1830, 950), "Melee2")
         {
             enemyHealth = 100;
             enemyDamage = 10;
+            walkingspeed = 70;
         }
 
         public override void Update(GameTime gameTime)
@@ -33,8 +33,10 @@ namespace SoldierWaveShooter
 
         }
 
+
         protected override void HandleMovement(GameTime gameTime)
         {
+            Gravity = true;
             base.HandleMovement(gameTime);
             if (climb == true && goToPlayer == true)
             {
@@ -44,7 +46,9 @@ namespace SoldierWaveShooter
             {
                 position.Y -= (float)(walkingspeed/2 * gameTime.ElapsedGameTime.TotalSeconds);
             }
+
         }
+
 
         public override void DoCollision(GameObject otherObject)
         {

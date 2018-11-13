@@ -77,6 +77,7 @@ namespace SoldierWaveShooter
 
         public override void DoCollision(GameObject otherObject)
         {
+
             if (otherObject is Platform)
             {
                 isGrounded = true;

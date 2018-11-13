@@ -8,12 +8,11 @@ namespace SoldierWaveShooter
 {
     public class Enemy : Character
     {
-
-        //protected Enemy[] enemies = {new Melee(), new Ranged()}
         public int enemyHealth;
         public int enemyDamage;
         protected bool goToPlayer = false;
         protected bool goLeft = false;
+
 
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
         {
@@ -42,7 +41,7 @@ namespace SoldierWaveShooter
             {
                 goLeft = false;
             }
-            
+
             base.Update(gameTime);
             HandleMovement(gameTime);
         }

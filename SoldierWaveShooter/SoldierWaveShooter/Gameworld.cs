@@ -12,6 +12,7 @@ namespace SoldierWaveShooter
     /// </summary>
     public class Gameworld : Game
     {
+
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
@@ -26,12 +27,24 @@ namespace SoldierWaveShooter
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
-        private Enemy boss;
+        private Enemy enemyBoss;
         private Platform platform;
         private Texture2D collisionTexture;
         public static Crosshair mouse;
         private float gravityStrength = 5f;
-
+        private double spawnMeleeTimer;
+        private const float spawnMeleeCooldown = 7.0f;
+        private bool spawnMelee = false;
+        private double spawnFlyingTimer;
+        private const float spawnFlyingCooldown = 3.0f;
+        private bool spawnFlying = false;
+        private double spawnRangedTimer;
+        private const float spawnRangedCooldown = 5.0f;
+        private bool spawnRanged = false;
+        private double spawnBossTimer;
+        private const float spawnBossCooldown = 20.0f;
+        private bool spawnBoss = true;
+        private bool wavePhase = true;
 
         public static Rectangle ScreenSize
         {
@@ -104,19 +117,12 @@ namespace SoldierWaveShooter
             {
                 new Platform(new Vector2((i*70) + 35, 1016), "castle");
             }
-            platform = new Platform(new Vector2(120, 760), "castleHalf");
             platform = new Platform(new Vector2(260, 890), "castleHalf");
-            platform = new Platform(new Vector2(400, 760), "castleHalf");
             platform = new Platform(new Vector2(540, 890), "castleHalf");
-            platform = new Platform(new Vector2(680, 760), "castleHalf");
             platform = new Platform(new Vector2(820, 890), "castleHalf");
-            platform = new Platform(new Vector2(Gameworld.ScreenSize.Width/2, 760), "castleHalf");
             platform = new Platform(new Vector2(1080, 890), "castleHalf");
-            platform = new Platform(new Vector2(1220, 760), "castleHalf");
             platform = new Platform(new Vector2(1360, 890), "castleHalf");
-            platform = new Platform(new Vector2(1500, 760), "castleHalf");
             platform = new Platform(new Vector2(1640, 890), "castleHalf");
-            platform = new Platform(new Vector2(1780, 760), "castleHalf");
             platform = new Platform(new Vector2(120, 280), "castleHalf");
             platform = new Platform(new Vector2(190, 280), "castleHalf");
             platform = new Platform(new Vector2(330, 380), "castleHalf");
@@ -135,6 +141,11 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(1780, 280), "castleHalf");
             platform = new Platform(new Vector2(910, 350), "castleHalf");
             platform = new Platform(new Vector2(980, 350), "castleHalf");
+            platform = new Platform(new Vector2(750, 150), "castleHalf");
+            platform = new Platform(new Vector2(680, 150), "castleHalf");
+            platform = new Platform(new Vector2(1150, 150), "castleHalf");
+            platform = new Platform(new Vector2(1220, 150), "castleHalf");
+
 
 
             // Kæder
@@ -142,16 +153,62 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(120, 470), "chain");
             platform = new Platform(new Vector2(120, 400), "chain");
             platform = new Platform(new Vector2(120, 330), "chain");
+            platform = new Platform(new Vector2(120, 610), "chain");
+            platform = new Platform(new Vector2(120, 680), "chain");
+            platform = new Platform(new Vector2(120, 750), "chain");
+
+            platform = new Platform(new Vector2(330, 430), "chain");
+            platform = new Platform(new Vector2(330, 500), "chain");
+            platform = new Platform(new Vector2(330, 570), "chain");
+            platform = new Platform(new Vector2(330, 640), "chain");
+            platform = new Platform(new Vector2(330, 710), "chain");
+
+            platform = new Platform(new Vector2(540, 530), "chain");
+            platform = new Platform(new Vector2(540, 600), "chain");
+            platform = new Platform(new Vector2(540, 670), "chain");
+            platform = new Platform(new Vector2(540, 740), "chain");
+
+            platform = new Platform(new Vector2(750, 630), "chain");
+            platform = new Platform(new Vector2(750, 700), "chain");
+            platform = new Platform(new Vector2(750, 770), "chain");
+
+            platform = new Platform(new Vector2(1150, 630), "chain");
+            platform = new Platform(new Vector2(1150, 700), "chain");
+            platform = new Platform(new Vector2(1150, 770), "chain");
+
+            platform = new Platform(new Vector2(1360, 530), "chain");
+            platform = new Platform(new Vector2(1360, 600), "chain");
+            platform = new Platform(new Vector2(1360, 670), "chain");
+            platform = new Platform(new Vector2(1360, 740), "chain");
+
+            platform = new Platform(new Vector2(1570, 430), "chain");
+            platform = new Platform(new Vector2(1570, 500), "chain");
+            platform = new Platform(new Vector2(1570, 570), "chain");
+            platform = new Platform(new Vector2(1570, 640), "chain");
+            platform = new Platform(new Vector2(1570, 710), "chain");
 
             platform = new Platform(new Vector2(1780, 540), "chain");
             platform = new Platform(new Vector2(1780, 470), "chain");
             platform = new Platform(new Vector2(1780, 400), "chain");
             platform = new Platform(new Vector2(1780, 330), "chain");
+            platform = new Platform(new Vector2(1780, 610), "chain");
+            platform = new Platform(new Vector2(1780, 680), "chain");
+            platform = new Platform(new Vector2(1780, 750), "chain");
+
+            platform = new Platform(new Vector2(750, 200), "chain");
+            platform = new Platform(new Vector2(750, 270), "chain");
+            platform = new Platform(new Vector2(750, 340), "chain");
+            platform = new Platform(new Vector2(750, 410), "chain");
+
+            platform = new Platform(new Vector2(1150, 200), "chain");
+            platform = new Platform(new Vector2(1150, 270), "chain");
+            platform = new Platform(new Vector2(1150, 340), "chain");
+            platform = new Platform(new Vector2(1150, 410), "chain");
 
             player = new Player();
-            enemyMelee = new Melee();
-            enemyRanged = new Ranged();
-            enemyFlying = new Flying();
+
+
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -173,11 +230,6 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
-            
-
             foreach (GameObject go in gameObjects)
             {
                 //Apply gravity
@@ -191,7 +243,7 @@ namespace SoldierWaveShooter
                 go.Update(gameTime);
                 foreach (GameObject other in gameObjects)
                 {
-                    
+
                     if (go != other && go.IsColliding(other))
                     {
                         go.DoCollision(other);
@@ -210,6 +262,63 @@ namespace SoldierWaveShooter
             toBeAdded.Clear();
 
             base.Update(gameTime);
+
+
+            // Spawner Melee
+            spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (spawnMeleeTimer >= spawnMeleeCooldown)
+            {
+                spawnMelee = true;
+                spawnMeleeTimer = 0;
+            }
+
+            if (spawnMelee == true && wavePhase == true)
+            {
+                enemyMelee = new Melee();
+                spawnMelee = false;
+            }
+
+            // Spawner Ranged
+            spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (spawnRangedTimer >= spawnRangedCooldown)
+            {
+                spawnRanged = true;
+                spawnRangedTimer = 0;
+            }
+
+            if (spawnRanged == true && wavePhase == true)
+            {
+                enemyRanged = new Ranged();
+                spawnRanged = false;
+            }
+
+            // Spawner Flying
+            spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (spawnFlyingTimer >= spawnFlyingCooldown)
+            {
+                spawnFlying = true;
+                spawnFlyingTimer = 0;
+            }
+
+            if (spawnFlying == true && wavePhase == true)
+            {
+                enemyFlying = new Flying();
+                spawnFlying = false;
+            }
+
+            // Spawner Boss og stopper andre enemies fra at spawne
+            spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (spawnBossTimer >= spawnBossCooldown)
+            {
+                wavePhase = false;
+            }
+
+            if (spawnBoss == true && wavePhase == false)
+            {
+                enemyBoss = new Boss();
+                spawnBoss = false;
+            }
+
         }
 
         /// <summary>

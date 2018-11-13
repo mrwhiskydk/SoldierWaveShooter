@@ -14,12 +14,8 @@ namespace SoldierWaveShooter
         protected float rotation;
 
         protected Vector2 position;
-        //public Vector2 velocity = new Vector2(0, -2f);
 
         protected bool gravity = false;
-
-        
-
 
         /// <summary>
         /// Property that gets the position of GameObject
