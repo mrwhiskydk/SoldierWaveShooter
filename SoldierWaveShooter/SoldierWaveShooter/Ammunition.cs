@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
+using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
-    public class InGameMenu : UI
+    class Ammunition
     {
     }
 }

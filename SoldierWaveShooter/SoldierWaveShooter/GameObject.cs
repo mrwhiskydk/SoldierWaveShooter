@@ -15,7 +15,7 @@ namespace SoldierWaveShooter
 
         protected Vector2 position;
 
-        protected bool gravity = false;
+        protected bool gravity = false;       
 
         /// <summary>
         /// Property that gets the position of GameObject
@@ -24,9 +24,8 @@ namespace SoldierWaveShooter
 
         //public Vector2 Velocity { get => velocity; set => velocity = value; }
 
-        //public Vector2 GravityScale { get => gravityScale; set => gravityScale = value; }
-
         public bool Gravity { get => gravity; set => gravity = value; }
+        
 
         public virtual Rectangle CollisionBox
         {
@@ -74,6 +73,11 @@ namespace SoldierWaveShooter
             position = startPosition;
             sprite = Gameworld.ContentManager.Load<Texture2D>(spriteName);
             Gameworld.AddGameObject(this);
+        }
+
+        public void Destroy()
+        {
+            Gameworld.RemoveGameObject(this);
         }
 
         /// <summary>
