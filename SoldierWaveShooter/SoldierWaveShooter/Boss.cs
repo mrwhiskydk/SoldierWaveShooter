@@ -16,17 +16,17 @@ namespace SoldierWaveShooter
         private double lastShot;
         private double attackCooldown = 1;
         private float spread = 1000;
-        private int projectileSpeed = 350;
-        private int bulletAmount = 12;
+        private int projectileSpeed = 300;
+        private int bulletAmount = 10;
         private int projectileDamage = 5;
         private Random rnd = new Random();
 
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 200;
-            enemyDamage = 25;
-            movementSpeed = 5;
+            enemyHealth = 500;
+            enemyDamage = 15;
+            movementSpeed = 25;
         }
 
         /// <summary>

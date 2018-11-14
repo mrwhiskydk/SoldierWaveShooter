@@ -295,32 +295,36 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
-
-            //Statement below checks if player is dead, and removes him from the game if true
-            if (player.Health <= 0) 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.R))
             {
-                player.Destroy();
-                isAlive = false;
+                player.Health = ;
+            }
 
-                //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
-                respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
-                if (respawnTime > respawnDuration)
+                // TODO: Add your update logic here
+
+                //Statement below checks if player is dead, and removes him from the game if true
+                if (player.Health <= 0) 
                 {
-                    player = new Player();
-                    isAlive = true;
+                    player.Destroy();
+                    isAlive = false;
 
-                    respawnTime = 0;
-
-                    //Statement below enables the boss to spawn again if the player dies
-                    if (!wavePhase && !spawnBoss)
+                    //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
+                    respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
+                    if (respawnTime > respawnDuration)
                     {
-                        spawnBoss = true;
-                    }
-                }
+                        player = new Player();
+                        isAlive = true;
+                        
+                        respawnTime = 0;
 
-            } 
+                        //Statement below enables the boss to spawn again if the player dies
+                        if (!wavePhase && !spawnBoss)
+                        {
+                            spawnBoss = true;
+                        }
+                    }
+
+                } 
 
             //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)

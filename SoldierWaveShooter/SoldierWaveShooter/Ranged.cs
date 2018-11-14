@@ -17,7 +17,7 @@ namespace SoldierWaveShooter
         private int projectileSpeed = 500;
         private Random rnd = new Random();
 
-        public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
+        public Ranged() : base(4, 1, new Vector2(120, 200), "Ranged")
         {
             enemyHealth = 70;
             enemyDamage = 10;
