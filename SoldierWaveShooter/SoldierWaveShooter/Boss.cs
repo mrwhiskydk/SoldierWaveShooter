@@ -21,37 +21,45 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
 
-            base.Update(gameTime);
-            HandleMovement(gameTime);
-
-            if (enemyHealth <= 0)
+            if (Gameworld.isAlive)
             {
-                Gravity = true;
-                enemyDamage = 0;
-            }
+                base.Update(gameTime);
+                HandleMovement(gameTime);
 
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
+                if (enemyHealth <= 0)
+                {
+                    Gravity = true;
+                    enemyDamage = 0;
+                }
+
+                if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
+                {
+                    Gameworld.RemoveGameObject(this);
+                }
+
+                if (Gameworld.player.Position.Y >= position.Y)
+                {
+                    goDown = true;
+                }
+                else
+                {
+                    goDown = false;
+                }
+
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = true;
+                }
+                else
+                {
+                    isFacingRight = false;
+                }
+            }
+            else
             {
                 Gameworld.RemoveGameObject(this);
             }
-
-            if (Gameworld.player.Position.Y >= position.Y)
-            {
-                goDown = true;
-            }
-            else
-            {
-                goDown = false;
-            }
-
-            if (Gameworld.player.Position.X <= position.X)
-            {
-                isFacingRight = true;
-            }
-            else
-            {
-                isFacingRight = false;
-            }
+            
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -67,6 +75,7 @@ namespace SoldierWaveShooter
                 position.Y -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
+
 
         public override void DoCollision(GameObject otherObject)
         {

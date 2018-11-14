@@ -19,17 +19,25 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-            HandleMovement(gameTime);
-
-            if (Gameworld.player.Position.Y >= position.Y)
+            if (Gameworld.isAlive)
             {
-                climb = true;
+                base.Update(gameTime);
+                HandleMovement(gameTime);
+
+                if (Gameworld.player.Position.Y >= position.Y)
+                {
+                    climb = true;
+                }
+                else
+                {
+                    climb = false;
+                }
             }
             else
             {
-                climb = false;
+                Gameworld.RemoveGameObject(this);
             }
+            
 
         }
 

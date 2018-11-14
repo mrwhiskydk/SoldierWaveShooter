@@ -42,15 +42,16 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 60.0f;
+        private const float spawnBossCooldown = 15.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
-        private float respawnDuration = 3.0f;   //Field used for player respawn in update
+        private float respawnDuration = 4.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
 
         private Vector2 barPosition;
         private Rectangle barPos;
-
+        public static bool isAlive = true;
+        
 
         public static Rectangle ScreenSize
         {
@@ -210,6 +211,7 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(1150, 410), "chain");
 
             player = new Player();
+            
 
             mouse = new Crosshair();
             // TODO: use this.Content to load your game content here
@@ -238,21 +240,21 @@ namespace SoldierWaveShooter
             // TODO: Add your update logic here
             if (player.Health <= 0)
             {
-                
-                RemoveGameObject(player);
-                
+                player.Destroy();
+                isAlive = false;
+                            
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
                     player = new Player();
-
-                        
-                    respawnTime = 0;
-                 }
+                    isAlive = true;
                     
-                
+
+                    respawnTime = 0;
+                 }                                   
             }           
 
+            
             
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
@@ -291,60 +293,64 @@ namespace SoldierWaveShooter
             base.Update(gameTime);
 
 
-            // Spawner Melee
-            spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnMeleeTimer >= spawnMeleeCooldown)
+            if (isAlive)
             {
-                spawnMelee = true;
-                spawnMeleeTimer = 0;
-            }
+                // Spawner Melee
+                spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnMeleeTimer >= spawnMeleeCooldown)
+                {
+                    spawnMelee = true;
+                    spawnMeleeTimer = 0;
+                }
 
-            if (spawnMelee == true && wavePhase == true)
-            {
-                enemyMelee = new Melee();
-                spawnMelee = false;
-            }
+                if (spawnMelee == true && wavePhase == true)
+                {
+                    enemyMelee = new Melee();
+                    spawnMelee = false;
+                }
 
-            // Spawner Ranged
-            spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnRangedTimer >= spawnRangedCooldown)
-            {
-                spawnRanged = true;
-                spawnRangedTimer = 0;
-            }
+                // Spawner Ranged
+                spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnRangedTimer >= spawnRangedCooldown)
+                {
+                    spawnRanged = true;
+                    spawnRangedTimer = 0;
+                }
 
-            if (spawnRanged == true && wavePhase == true)
-            {
-                enemyRanged = new Ranged();
-                spawnRanged = false;
-            }
+                if (spawnRanged == true && wavePhase == true)
+                {
+                    enemyRanged = new Ranged();
+                    spawnRanged = false;
+                }
 
-            // Spawner Flying
-            spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnFlyingTimer >= spawnFlyingCooldown)
-            {
-                spawnFlying = true;
-                spawnFlyingTimer = 0;
-            }
+                // Spawner Flying
+                spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnFlyingTimer >= spawnFlyingCooldown)
+                {
+                    spawnFlying = true;
+                    spawnFlyingTimer = 0;
+                }
 
-            if (spawnFlying == true && wavePhase == true)
-            {
-                enemyFlying = new Flying();
-                spawnFlying = false;
-            }
+                if (spawnFlying == true && wavePhase == true)
+                {
+                    enemyFlying = new Flying();
+                    spawnFlying = false;
+                }
 
-            // Spawner Boss og stopper andre enemies fra at spawne
-            spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnBossTimer >= spawnBossCooldown)
-            {
-                wavePhase = false;
-            }
+                // Spawner Boss og stopper andre enemies fra at spawne
+                spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnBossTimer >= spawnBossCooldown)
+                {
+                    wavePhase = false;
+                }
 
-            if (spawnBoss == true && wavePhase == false)
-            {
-                enemyBoss = new Boss();
-                spawnBoss = false;
+                if (spawnBoss == true && wavePhase == false)
+                {
+                    enemyBoss = new Boss();
+                    spawnBoss = false;
+                }
             }
+            
 
         }
 

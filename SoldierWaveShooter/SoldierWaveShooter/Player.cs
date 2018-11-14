@@ -28,7 +28,7 @@ namespace SoldierWaveShooter
         {
             weapon = weapons[0];
 
-            health = 110;
+            health = 55;
 
         }  
         
@@ -78,6 +78,15 @@ namespace SoldierWaveShooter
             {
                 weapon.Reload();
             }
+        }
+
+        public override void Destroy()
+        {
+            foreach(Weapon weapon in weapons)
+            {
+                weapon.Destroy();
+            }
+            base.Destroy();           
         }
 
 

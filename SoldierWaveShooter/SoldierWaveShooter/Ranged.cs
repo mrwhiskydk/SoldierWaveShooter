@@ -17,16 +17,24 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
-            if (Gameworld.player.Position.X <= position.X)
+            if (Gameworld.isAlive)
             {
-                isFacingRight = false;
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = false;
+                }
+                else
+                {
+                    isFacingRight = true;
+                }
             }
             else
             {
-                isFacingRight = true;
+                Gameworld.RemoveGameObject(this);
             }
+            base.Update(gameTime);
+
+            
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -34,6 +42,7 @@ namespace SoldierWaveShooter
             base.HandleMovement(gameTime);
 
         }
+
 
         public override void DoCollision(GameObject otherObject)
         {
