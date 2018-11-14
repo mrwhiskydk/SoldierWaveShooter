@@ -21,7 +21,7 @@ namespace SoldierWaveShooter
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 2000;
+            enemyHealth = 20;
             enemyDamage = 25;
             movementSpeed = 5;
         }
@@ -29,28 +29,19 @@ namespace SoldierWaveShooter
         public override void Update(GameTime gameTime)
         {
 
-            base.Update(gameTime);
-            HandleMovement(gameTime);
-
-            if (enemyHealth <= 0)
+            if (Gameworld.isAlive)
             {
-                Gravity = true;
-                enemyDamage = 0;
-            }
+                base.Update(gameTime);
+                HandleMovement(gameTime);
 
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
-            {
-                Gameworld.RemoveGameObject(this);
-            }
-
-            if (Gameworld.player.Position.Y >= position.Y)
-            {
+                if (Gameworld.player.Position.Y >= position.Y)
+                {
                 goDown = true;
-            }
-            else
-            {
+                }
+                else
+                {
                 goDown = false;
-            }
+                }
 
             if (Gameworld.player.Position.X <= position.X)
             {
@@ -77,6 +68,21 @@ namespace SoldierWaveShooter
 
                     new Projectile(position, "Bullet", new Vector2(direction.X + rndSpread, direction.Y + rndSpread2), projectileDamage, projectileSpeed, "enemy");
                 }
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = true;
+                }
+                else
+                {
+                    isFacingRight = false;
+                }
+            }
+            else
+            {
+                Gameworld.RemoveGameObject(this);
+            }
+            
+        }
 
                 //Spawn a bullet casing flying in a semi random upwards direction
                 new BulletCasing(position);
@@ -99,6 +105,7 @@ namespace SoldierWaveShooter
             }
         }
 
+
         public override void DoCollision(GameObject otherObject)
         {
             base.DoCollision(otherObject);
@@ -115,6 +122,11 @@ namespace SoldierWaveShooter
             {
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0.91f);
             }
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
         }
     }
 }

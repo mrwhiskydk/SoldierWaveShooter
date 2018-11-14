@@ -16,7 +16,7 @@ namespace SoldierWaveShooter
 
         public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
         {
-            enemyHealth = 100;
+            enemyHealth = 70;
             enemyDamage = 10;
             movementSpeed = 20;
         }
@@ -53,11 +53,32 @@ namespace SoldierWaveShooter
             }
         }
 
+            if (Gameworld.isAlive)
+            {
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = false;
+                }
+                else
+                {
+                    isFacingRight = true;
+                }
+            }
+            else
+            {
+                Gameworld.RemoveGameObject(this);
+            }
+            base.Update(gameTime);
+
+            
+        }
+
         protected override void HandleMovement(GameTime gameTime)
         {
             base.HandleMovement(gameTime);
 
         }
+
 
         public override void DoCollision(GameObject otherObject)
         {

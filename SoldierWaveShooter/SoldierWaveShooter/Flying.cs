@@ -20,28 +20,36 @@ namespace SoldierWaveShooter
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-            HandleMovement(gameTime);
-
-            if (enemyHealth <= 0)
-	        {
-                Gravity = true;
-                enemyDamage = 0;
-	        }
-
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
+            if (Gameworld.isAlive)
             {
-                Gameworld.RemoveGameObject(this);
-            }
+                base.Update(gameTime);
+                HandleMovement(gameTime);
 
-            if (Gameworld.player.Position.Y >= position.Y)
-            {
-                goDown = true;            
+                if (enemyHealth <= 0)
+                {
+                    Gravity = true;
+                    enemyDamage = 0;
+                }
+
+                if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
+                {
+                    Gameworld.RemoveGameObject(this);
+                }
+
+                if (Gameworld.player.Position.Y >= position.Y)
+                {
+                    goDown = true;
+                }
+                else
+                {
+                    goDown = false;
+                }
             }
             else
             {
-                goDown = false;
+                Gameworld.RemoveGameObject(this);
             }
+            
         }
 
         protected override void HandleMovement(GameTime gameTime)
@@ -59,6 +67,7 @@ namespace SoldierWaveShooter
             }
 
         }
+
 
         public override void DoCollision(GameObject otherObject)
         {

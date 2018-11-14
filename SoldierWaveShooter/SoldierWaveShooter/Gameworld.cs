@@ -23,6 +23,7 @@ namespace SoldierWaveShooter
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
         public static Player player;
+        public static Boss boss;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
@@ -42,14 +43,19 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 60.0f;
+        private const float spawnBossCooldown = 20.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
-        private float respawnDuration = 3.0f;   //Field used for player respawn in update
+        private float respawnDuration = 10.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
-
+        private Texture2D winScreen;
+        private Rectangle winRect;
         private Vector2 barPosition;
         private Rectangle barPos;
+        public static bool isAlive = true;
+        
+        private bool winGame = false;
+        private bool bossIsAlive = false;
 
 
         public static Rectangle ScreenSize
@@ -110,6 +116,8 @@ namespace SoldierWaveShooter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            winScreen = Content.Load<Texture2D>("YouWin");
+
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
@@ -210,6 +218,7 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(1150, 410), "chain");
 
             player = new Player();
+            
 
             mouse = new Crosshair();
             new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
@@ -224,7 +233,7 @@ namespace SoldierWaveShooter
         {
             // TODO: Unload any non ContentManager content here
         }
-      
+
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -239,26 +248,44 @@ namespace SoldierWaveShooter
             // TODO: Add your update logic here
             if (player.Health <= 0)
             {
-                
-                RemoveGameObject(player);
-                
+                player.Destroy();
+                isAlive = false;
+
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
                     player = new Player();
+                    isAlive = true;
 
-                        
                     respawnTime = 0;
-                 }
-                    
-                
-            }           
 
-            
+                    if (!wavePhase && !spawnBoss)
+                    {
+                        spawnBoss = true;
+                    }
+                }
+
+            }
+
+            if (bossIsAlive == true)
+            {
+                if (enemyBoss.enemyHealth <= 0)
+                {
+                    enemyBoss.Destroy();
+                    enemyBoss.enemyDamage = 0;
+                    winGame = true;
+                    if (winGame == true)
+                    {
+                        winRect = new Rectangle(0, 0, 1920, 1080);
+                    }
+
+                }
+            }
+
+
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
-            
             foreach (GameObject go in gameObjects)
             {
                 //Apply gravity
@@ -279,7 +306,7 @@ namespace SoldierWaveShooter
                     }
                 }
             }
-            
+
             foreach (GameObject go in toBeRemoved)
             {
                 gameObjects.Remove(go);
@@ -292,60 +319,67 @@ namespace SoldierWaveShooter
             base.Update(gameTime);
 
 
-            // Spawner Melee
-            spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnMeleeTimer >= spawnMeleeCooldown)
+            if (isAlive)
             {
-                spawnMelee = true;
-                spawnMeleeTimer = 0;
-            }
+                // Spawner Melee
+                spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnMeleeTimer >= spawnMeleeCooldown)
+                {
+                    spawnMelee = true;
+                    spawnMeleeTimer = 0;
+                }
 
-            if (spawnMelee == true && wavePhase == true)
-            {
-                enemyMelee = new Melee();
-                spawnMelee = false;
-            }
+                if (spawnMelee == true && wavePhase == true)
+                {
+                    enemyMelee = new Melee();
+                    spawnMelee = false;
+                }
 
-            // Spawner Ranged
-            spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnRangedTimer >= spawnRangedCooldown)
-            {
-                spawnRanged = true;
-                spawnRangedTimer = 0;
-            }
+                // Spawner Ranged
+                spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnRangedTimer >= spawnRangedCooldown)
+                {
+                    spawnRanged = true;
+                    spawnRangedTimer = 0;
+                }
 
-            if (spawnRanged == true && wavePhase == true)
-            {
-                enemyRanged = new Ranged();
-                spawnRanged = false;
-            }
+                if (spawnRanged == true && wavePhase == true)
+                {
+                    enemyRanged = new Ranged();
+                    spawnRanged = false;
+                }
 
-            // Spawner Flying
-            spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnFlyingTimer >= spawnFlyingCooldown)
-            {
-                spawnFlying = true;
-                spawnFlyingTimer = 0;
-            }
+                // Spawner Flying
+                spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnFlyingTimer >= spawnFlyingCooldown)
+                {
+                    spawnFlying = true;
+                    spawnFlyingTimer = 0;
+                }
 
-            if (spawnFlying == true && wavePhase == true)
-            {
-                enemyFlying = new Flying();
-                spawnFlying = false;
-            }
+                if (spawnFlying == true && wavePhase == true)
+                {
+                    enemyFlying = new Flying();
+                    spawnFlying = false;
+                }
 
-            // Spawner Boss og stopper andre enemies fra at spawne
-            spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (spawnBossTimer >= spawnBossCooldown)
-            {
-                wavePhase = false;
-            }
+                // Spawner Boss og stopper andre enemies fra at spawne
+                spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (spawnBossTimer >= spawnBossCooldown)
+                {
+                    wavePhase = false;
+                }
 
-            if (spawnBoss == true && wavePhase == false)
-            {
-                enemyBoss = new Boss();
-                spawnBoss = false;
+                if (spawnBoss == true && wavePhase == false)
+                {
+                    enemyBoss = new Boss();
+                    spawnBoss = false;
+                    bossIsAlive = true;
+                }
+
+
             }
+        
 
         }
 
@@ -358,7 +392,12 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack);
+            spriteBatch.Begin();
+
+  
+            spriteBatch.Draw(winScreen, winRect, Color.White);
+            
+
             foreach (GameObject go in gameObjects)
             {
                 go.Draw(spriteBatch);
