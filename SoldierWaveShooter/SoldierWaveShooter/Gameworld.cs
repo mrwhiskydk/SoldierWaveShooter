@@ -23,6 +23,7 @@ namespace SoldierWaveShooter
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
         public static Player player;
+        public static Boss boss;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
@@ -42,14 +43,17 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 60.0f;
+        private const float spawnBossCooldown = 6.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 3.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
-
+        private Texture2D winScreen;
+        private Rectangle winRect;
         private Vector2 barPosition;
         private Rectangle barPos;
+        private bool winGame = false;
+        private bool bossIsAlive = false;
 
 
         public static Rectangle ScreenSize
@@ -110,6 +114,8 @@ namespace SoldierWaveShooter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            winScreen = Content.Load<Texture2D>("YouWin");
+
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
@@ -251,13 +257,27 @@ namespace SoldierWaveShooter
                  }
                     
                 
-            }           
+            }
 
-            
+            if (bossIsAlive == true)
+            {
+                if (enemyBoss.enemyHealth <= 0)
+                {
+                    enemyBoss.Destroy();
+                    enemyBoss.enemyDamage = 0;
+                    winGame = true;
+                    if (winGame == true)
+                    {
+                        winRect = new Rectangle(0, 0, 1920, 1080);
+                    }
+
+                }
+            }
+
+
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
-            
             foreach (GameObject go in gameObjects)
             {
                 //Apply gravity
@@ -344,7 +364,9 @@ namespace SoldierWaveShooter
             {
                 enemyBoss = new Boss();
                 spawnBoss = false;
+                bossIsAlive = true;
             }
+
 
         }
 
@@ -358,6 +380,11 @@ namespace SoldierWaveShooter
 
 
             spriteBatch.Begin();
+
+  
+            spriteBatch.Draw(winScreen, winRect, Color.White);
+            
+
             foreach (GameObject go in gameObjects)
             {
                 go.Draw(spriteBatch);

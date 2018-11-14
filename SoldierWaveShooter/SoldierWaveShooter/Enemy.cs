@@ -14,10 +14,6 @@ namespace SoldierWaveShooter
         protected bool goLeft = false;
 
 
-        public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
-        {
-        }
-
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
         }

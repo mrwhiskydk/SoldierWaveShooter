@@ -30,12 +30,6 @@ namespace SoldierWaveShooter
             
         }
 
-        public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
-        {
-            gravity = true;
-            isAlive = true;
-        }
-
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 2000;
+            enemyHealth = 20;
             enemyDamage = 25;
             movementSpeed = 7;
         }
@@ -23,17 +23,6 @@ namespace SoldierWaveShooter
 
             base.Update(gameTime);
             HandleMovement(gameTime);
-
-            if (enemyHealth <= 0)
-            {
-                Gravity = true;
-                enemyDamage = 0;
-            }
-
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
-            {
-                Gameworld.RemoveGameObject(this);
-            }
 
             if (Gameworld.player.Position.Y >= position.Y)
             {
@@ -72,6 +61,11 @@ namespace SoldierWaveShooter
         {
             base.DoCollision(otherObject);
 
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
         }
     }
 }

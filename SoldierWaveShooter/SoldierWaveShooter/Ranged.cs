@@ -10,7 +10,7 @@ namespace SoldierWaveShooter
     {
         public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
         {
-            enemyHealth = 100;
+            enemyHealth = 70;
             enemyDamage = 10;
             movementSpeed = 20;
         }
