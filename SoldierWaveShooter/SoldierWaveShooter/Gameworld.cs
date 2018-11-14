@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// This is the main type for the game
@@ -75,7 +75,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 10.0f;
+        private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
@@ -286,14 +286,7 @@ namespace SoldierWaveShooter
             platform = new Platform(new Vector2(1150, 410), "chain");
 
             player = new Player();
-            
-
             mouse = new Crosshair();
-            new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
-            new PowerUpMedkit(new Vector2(500, 500));
-            new PowerUpMedkit(new Vector2(500, 700));
-            new PowerUpMedkit(new Vector2(300, 500));
-            new PowerUp2x(new Vector2(300, 300));
             // TODO: use this.Content to load your game content here
         }
 
@@ -509,9 +502,8 @@ namespace SoldierWaveShooter
             }
             
             
-            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
-            spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
-            spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
+            spriteBatch.DrawString(font, $"Ammo: {player.weapon.ammo}", new Vector2(350, 60), Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
+            spriteBatch.DrawString(font, $"Magazine: {player.weapon.magazine}", new Vector2(350, 90), Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
             spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
             spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
             spriteBatch.Draw(barTop, barPosition, barPos, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.992f);

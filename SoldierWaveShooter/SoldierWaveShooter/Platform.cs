@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// Class that represents a Platform

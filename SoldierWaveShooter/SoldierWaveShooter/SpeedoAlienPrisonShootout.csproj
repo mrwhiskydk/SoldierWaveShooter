@@ -41,7 +41,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Ammunition.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="BulletCasing.cs" />
     <Compile Include="Character.cs" />
@@ -51,9 +50,7 @@
     <Compile Include="Flying.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Gameworld.cs" />
-    <Compile Include="InGameMenu.cs" />
     <Compile Include="Machinegun.cs" />
-    <Compile Include="MainMenu.cs" />
     <Compile Include="Melee.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
@@ -68,7 +65,6 @@
     <Compile Include="Sniper.cs" />
     <Compile Include="Sound.cs" />
     <Compile Include="Standard.cs" />
-    <Compile Include="UI.cs" />
     <Compile Include="Weapon.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// Class that enables animated sprites through the use of a sprite strip

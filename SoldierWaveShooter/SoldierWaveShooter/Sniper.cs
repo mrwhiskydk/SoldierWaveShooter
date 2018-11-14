@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     public class Sniper : Weapon
     {
@@ -21,6 +21,11 @@ namespace SoldierWaveShooter
             timeToReload = 2;
         }
 
+        /// <summary>
+        /// Constructor for spawning a weapon in the world to later pick up as ammo
+        /// </summary>
+        /// <param name="startPosition">Position</param>
+        /// <param name="isAmmo">True if spawned as a pickup from enemy for ammo</param>
         public Sniper(Vector2 startPosition, bool isAmmo) : base(startPosition, "Sniper rifle", isAmmo)
         {
             this.isAmmo = isAmmo;

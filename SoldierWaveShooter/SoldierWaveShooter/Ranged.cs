@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// The Ranged class describes all ranged enemies in the game. It overrides some methods from the Enemy class, because it has unique features.
@@ -15,6 +15,7 @@ namespace SoldierWaveShooter
         private double attackCooldown = 1;
         private float spread = 50f;
         private int projectileSpeed = 500;
+        private Sound sound = new Sound("Sound/Weapons/standard");
 
         public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
         {
@@ -58,6 +59,7 @@ namespace SoldierWaveShooter
                     new BulletCasing(position);
 
                     lastShot = 0;
+                    sound.Play();
                 }
             }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// The Melee class describes all melee enemies in the game. It overrides a lot of methods from the Enemy class, because it has unique features.

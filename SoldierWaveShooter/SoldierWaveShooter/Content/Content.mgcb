@@ -344,6 +344,12 @@
 /processorParam:TextureFormat=Color
 /build:Sniper rifle.png
 
+#begin Sound/Weapons/casing.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sound/Weapons/casing.wav
+
 #begin Sound/Weapons/dryfire.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     class PowerUp2x : PowerUp
     {

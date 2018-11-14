@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     public class Sound
     {
@@ -16,6 +16,9 @@ namespace SoldierWaveShooter
             this.sound = Gameworld.ContentManager.Load<SoundEffect>(sound);
         }
 
+        /// <summary>
+        /// Play the sound file
+        /// </summary>
         public void Play()
         {
             sound.Play();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     public class Standard : Weapon
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
 #if WINDOWS || LINUX
     /// <summary>

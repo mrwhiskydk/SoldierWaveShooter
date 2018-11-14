@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     /// <summary>
     /// The Boss class describes the boss enemy. It overrides a lot of methods from the Enemy class, because it has unique features.
@@ -19,6 +19,7 @@ namespace SoldierWaveShooter
         private int projectileSpeed = 350;
         private int bulletAmount = 12;
         private int projectileDamage = 5;
+        private Sound sound = new Sound("Sound/Weapons/shotgun");
 
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
@@ -79,6 +80,7 @@ namespace SoldierWaveShooter
                     //Spawn a bullet casing flying in a semi random upwards direction
                     new BulletCasing(position);
                     lastShot = 0;
+                    sound.Play();
                 }
                 
             }
@@ -86,6 +88,11 @@ namespace SoldierWaveShooter
             {
                 Destroy();
             }
+        }
+
+        public override void Destroy()
+        {
+            Gameworld.RemoveGameObject(this);
         }
 
         /// <summary>

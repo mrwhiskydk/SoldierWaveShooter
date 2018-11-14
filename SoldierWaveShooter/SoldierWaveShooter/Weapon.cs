@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     public abstract class Weapon : GameObject
     {
@@ -44,14 +44,17 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Constructor
+        /// Constructor for spawning a weapon in the world to later pick up as ammo
         /// </summary>
-        /// <param name="startPosition">Start position of the objcet</param>
-        /// <param name="spriteName">Name of the sprite</param>
-        /// <param name="isAmmo">True if spawned as a pickup from enemy</param>
+        /// <param name="startPosition">Position</param>
+        /// <param name="spriteName">name of the sprite</param>
+        /// <param name="isAmmo">True if spawned as a pickup from enemy for ammo</param>
         public Weapon(Vector2 startPosition, string spriteName, bool isAmmo) : base(startPosition, spriteName)
         {
-
+            if (isAmmo)
+            {
+                gravity = true;
+            }
         }
 
         /// <summary>
@@ -93,6 +96,7 @@ namespace SoldierWaveShooter
                 {
                     Reload();
                 }
+                //if we dont have any ammo to reload with then dryfire
                 else
                 {
                     dryFire.Play();

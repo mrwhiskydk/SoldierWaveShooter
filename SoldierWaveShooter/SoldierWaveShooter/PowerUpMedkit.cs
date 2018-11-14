@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SoldierWaveShooter
+namespace SpeedoAlienPrisonShootout
 {
     class PowerUpMedkit : PowerUp
     {
@@ -23,14 +23,12 @@ namespace SoldierWaveShooter
 
         public override void DoCollision(GameObject otherObject)
         {
+            //if we collide with a player then give him health
             if (otherObject is Player)
             {
-                Console.WriteLine(Gameworld.player.Health);
                 Player player = (Player)otherObject;
                 player.Health += healthBoost;
                 Destroy();
-
-                Console.WriteLine("After collision " + Gameworld.player.Health);
             }
             base.DoCollision(otherObject);
         }
