@@ -1,146 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="SoldierWaveShooter.Player">
+  <Class Name="SpeedoAlienPrisonShootout.Player">
     <Position X="14.25" Y="8.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAIAABAAAgAAAAAAAAAEDgAAQEAAAAAAECAAQAI=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Gameworld" Collapsed="true">
+  <Class Name="SpeedoAlienPrisonShootout.Gameworld" Collapsed="true">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAZgGkAAAAACFyAJAhakYEAAMACAAEhRAAQAAElUAAQ=</HashCode>
       <FileName>Gameworld.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.GameObject">
+  <Class Name="SpeedoAlienPrisonShootout.GameObject">
     <Position X="10" Y="0.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAgAAAAIAgAgAACAIAAAAhBAAAAAAAAAAAIAAQA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.UI">
+  <Class Name="SpeedoAlienPrisonShootout.UI">
     <Position X="4" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.MainMenu" Collapsed="true">
+  <Class Name="SpeedoAlienPrisonShootout.MainMenu" Collapsed="true">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.InGameMenu" Collapsed="true">
+  <Class Name="SpeedoAlienPrisonShootout.InGameMenu" Collapsed="true">
     <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>InGameMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Melee">
+  <Class Name="SpeedoAlienPrisonShootout.Melee">
     <Position X="7" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAABAAAACAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Boss">
+  <Class Name="SpeedoAlienPrisonShootout.Boss">
     <Position X="8.75" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAACAAAAA=</HashCode>
       <FileName>Boss.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Enemy">
+  <Class Name="SpeedoAlienPrisonShootout.Enemy">
     <Position X="12" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAQAAAAgAAAAAAAgAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.PowerUp">
+  <Class Name="SpeedoAlienPrisonShootout.PowerUp">
     <Position X="14" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PowerUp.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Platform">
+  <Class Name="SpeedoAlienPrisonShootout.Platform">
     <Position X="9.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAACAAAAAAAAAAAAAAAAAgAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Platform.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.AnimatedGameObject">
+  <Class Name="SpeedoAlienPrisonShootout.AnimatedGameObject">
     <Position X="5.75" Y="2" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAQAoAAAAAAAAgAAAAAAQAAAAgIAIAAAAAAAAAAAAQA=</HashCode>
       <FileName>AnimatedGameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Projectile">
+  <Class Name="SpeedoAlienPrisonShootout.Projectile">
     <Position X="2" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAogAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Projectile.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Weapon">
+  <Class Name="SpeedoAlienPrisonShootout.Weapon">
     <Position X="1.75" Y="3" Width="2.5" />
     <TypeIdentifier>
       <HashCode>CgQEBAAABCAAhjAAABAAAAAAIAYAAAAACCCAAQAgAAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Standard">
+  <Class Name="SpeedoAlienPrisonShootout.Standard">
     <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Standard.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Machinegun">
+  <Class Name="SpeedoAlienPrisonShootout.Machinegun">
     <Position X="2.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Machinegun.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Shotgun">
+  <Class Name="SpeedoAlienPrisonShootout.Shotgun">
     <Position X="4.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shotgun.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Sniper">
+  <Class Name="SpeedoAlienPrisonShootout.Sniper">
     <Position X="6.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Sniper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Character">
+  <Class Name="SpeedoAlienPrisonShootout.Character">
     <Position X="13.75" Y="4" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQACAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAACEAAAg=</HashCode>
       <FileName>Character.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Ranged">
+  <Class Name="SpeedoAlienPrisonShootout.Ranged">
     <Position X="12.25" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Ranged.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SoldierWaveShooter.Flying">
+  <Class Name="SpeedoAlienPrisonShootout.Flying">
     <Position X="10.5" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAACAAAAA=</HashCode>

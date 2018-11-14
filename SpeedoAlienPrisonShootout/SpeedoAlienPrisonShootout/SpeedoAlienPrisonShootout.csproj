@@ -9,13 +9,13 @@
     <ProjectGuid>{896C542E-1A35-4A3B-AE64-93602CDFE45C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SoldierWaveShooter</RootNamespace>
-    <AssemblyName>SoldierWaveShooter</AssemblyName>
+    <RootNamespace>SpeedoAlienPrisonShootout</RootNamespace>
+    <AssemblyName>SpeedoAlienPrisonShootout</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\jonathan\source\repos\mrwhiskydk\SoldierWaveShooter\</PublishUrl>
+    <PublishUrl>C:\Users\jonathan\source\repos\mrwhiskydk\SpeedoAlienPrisonShootout\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -60,7 +60,7 @@
     <ManifestCertificateThumbprint>57F5D60FA57499A9732FC4876D1B8A188D56FDFF</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SoldierWaveShooter_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SpeedoAlienPrisonShootout_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
