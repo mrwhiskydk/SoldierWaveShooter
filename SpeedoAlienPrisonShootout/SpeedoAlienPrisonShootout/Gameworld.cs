@@ -72,7 +72,7 @@ namespace SpeedoAlienPrisonShootout
         private const float spawnFlyingCooldown = 4.5f;
         private bool spawnFlying = false;
         private double spawnRangedTimer;
-        private const float spawnRangedCooldown = 5.0f;
+        private const float spawnRangedCooldown = 5f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
         private const float spawnBossCooldown = 60.0f;
@@ -128,7 +128,8 @@ namespace SpeedoAlienPrisonShootout
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 1020;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferHeight = 1080;   // set this value to the desired height of your window
+            graphics.ToggleFullScreen();
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
             _content = Content;

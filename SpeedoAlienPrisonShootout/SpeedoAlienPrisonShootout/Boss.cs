@@ -24,7 +24,7 @@ namespace SpeedoAlienPrisonShootout
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 3000;
+            enemyHealth = 2500;
             enemyDamage = 15;
             movementSpeed = 30;
         }
