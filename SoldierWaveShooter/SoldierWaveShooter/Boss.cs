@@ -23,7 +23,7 @@ namespace SoldierWaveShooter
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 500;
+            enemyHealth = 50;
             enemyDamage = 15;
             movementSpeed = 25;
         }

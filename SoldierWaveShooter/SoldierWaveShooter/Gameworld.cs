@@ -78,7 +78,7 @@ namespace SoldierWaveShooter
         private const float spawnBossCooldown = 10.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
-        private float respawnDuration = 10.0f;   //Field used for player respawn in update
+        private float respawnDuration = 5.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
         private Texture2D winScreen;
         private Rectangle winRect;
@@ -316,22 +316,19 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.T))
-            {
-                player.Health = 0;
-            }
 
             // TODO: Add your update logic here
 
             //Statement below checks if player is dead, and removes him from the game if true
             if (player.Health <= 0) 
             {
-                if (!loseSoundPlayed)
+                if (!loseSoundPlayed )
                 {
                     music.Stop();
                     loseSound.Play();
                     loseSoundPlayed = true;
                 }
+
                 player.Destroy();
                 isAlive = false;
 
@@ -346,14 +343,14 @@ namespace SoldierWaveShooter
 
                     respawnTime = 0;
 
-                        //Statement below enables the boss to spawn again if the player dies
-                        if (!wavePhase && !spawnBoss)
-                        {
-                            spawnBoss = true;
-                        }
+                    //Statement below enables the boss to spawn again if the player dies
+                    if (!wavePhase && !spawnBoss)
+                    {
+                        spawnBoss = true;
                     }
+                }
 
-                } 
+            } 
 
             //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)
@@ -529,7 +526,7 @@ namespace SoldierWaveShooter
             }
 
             winRect = new Rectangle(0, 0, 1920, 1080);
-            if (winGame == true)
+            if (winGame == true && isAlive == true)
             {
                 spriteBatch.Draw(winScreen, Vector2.Zero, winRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
             }
