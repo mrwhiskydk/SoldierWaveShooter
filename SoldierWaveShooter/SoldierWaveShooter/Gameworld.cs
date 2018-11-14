@@ -21,33 +21,41 @@ namespace SoldierWaveShooter
         private Texture2D barTop;
 
         /// <summary>
-        /// 
+        /// Used to set the texture of the default background sprite
+        /// </summary>
+        private Texture2D backGround;
+        private Rectangle BackGroundRect;
+
+        /// <summary>
+        /// List that contains the different GameObjects in the game
         /// </summary>
         public List<GameObject> gameObjects = new List<GameObject>();
+
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
 
         /// <summary>
-        /// 
+        /// Enables access to the Player in other classes
         /// </summary>
         public static Player player;
 
         /// <summary>
-        /// 
+        /// Enables acces to the Boss in other classes
         /// </summary>
         public static Boss boss;
+
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
         private Enemy enemyBoss;
         private Platform platform;
-        private UI ui;
         private Texture2D collisionTexture;
 
         /// <summary>
-        /// 
+        /// Enables acces to the Crosshair in other classes
         /// </summary>
         public static Crosshair mouse;
+
         private float gravityStrength = 5f;
         private double spawnMeleeTimer;
         private const float spawnMeleeCooldown = 7.0f;
@@ -59,7 +67,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 40.0f;
+        private const float spawnBossCooldown = 10.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
@@ -72,7 +80,7 @@ namespace SoldierWaveShooter
         private Rectangle barPos;
 
         /// <summary>
-        /// 
+        /// Enables use access in other classes. Handles player and enemy deaths and spawns in Gameworld update method
         /// </summary>
         public static bool isAlive = true;
         
@@ -80,7 +88,7 @@ namespace SoldierWaveShooter
         private bool bossIsAlive = false;
 
         /// <summary>
-        /// 
+        /// Sets the screensize of the game
         /// </summary>
         public static Rectangle ScreenSize
         {
@@ -93,7 +101,7 @@ namespace SoldierWaveShooter
         private static ContentManager _content;
 
         /// <summary>
-        /// 
+        /// Method that enables loading of resources
         /// </summary>
         public static ContentManager ContentManager
         {
@@ -104,7 +112,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// 
+        /// Constructor for the Gameworld
         /// </summary>
         public Gameworld()
         {
@@ -117,18 +125,18 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// 
+        /// Method that adds the current GameObject to the game
         /// </summary>
-        /// <param name="go"></param>
+        /// <param name="go">GameObject that should be added to the game</param>
         public static void AddGameObject(GameObject go)
         {
             toBeAdded.Add(go);
         }
 
         /// <summary>
-        /// 
+        /// Method that removes current GameObject from the game
         /// </summary>
-        /// <param name="go"></param>
+        /// <param name="go">GameObject that should be removed from the game</param>
         public static void RemoveGameObject(GameObject go)
         {
             toBeRemoved.Add(go);
@@ -153,17 +161,21 @@ namespace SoldierWaveShooter
         /// </summary>
         protected override void LoadContent()
         {
+            // TODO: use this.Content to load your game content here
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
             loseScreen = Content.Load<Texture2D>("GameOver");
+            backGround = Content.Load<Texture2D>("PrisonBackground");
+            BackGroundRect = new Rectangle(0, 0, 1920, 1080);
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
             barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
-            // Castle platforme
+            // Castle Platforms
             for (int i = 0; i < 28; i++)
             {
                 new Platform(new Vector2((i*70) + 35, 1016), "castle");
@@ -199,7 +211,7 @@ namespace SoldierWaveShooter
 
 
 
-            // Kæder
+            // Chains
             platform = new Platform(new Vector2(120, 540), "chain");
             platform = new Platform(new Vector2(120, 470), "chain");
             platform = new Platform(new Vector2(120, 400), "chain");
@@ -290,12 +302,13 @@ namespace SoldierWaveShooter
 
             // TODO: Add your update logic here
 
-            //if statement checks if player is dead, and removes him from the game if true
+            //Statement below checks if player is dead, and removes him from the game if true
             if (player.Health <= 0) 
             {
                 player.Destroy();
                 isAlive = false;
 
+                //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
@@ -304,6 +317,7 @@ namespace SoldierWaveShooter
 
                     respawnTime = 0;
 
+                    //Statement below enables the boss to spawn again if the player dies
                     if (!wavePhase && !spawnBoss)
                     {
                         spawnBoss = true;
@@ -312,24 +326,42 @@ namespace SoldierWaveShooter
 
             } 
 
+            //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)
             {
                 if (enemyBoss.enemyHealth <= 0)
                 {
                     enemyBoss.Destroy();
                     enemyBoss.enemyDamage = 0;
-                    winGame = true;                 
-                    winRect = new Rectangle(0, 0, 1920, 1080);                   
+                    winGame = true;     
+                    
                 }
             }
 
+            if (winGame == true)
+            {
+
+                foreach (GameObject gameobject in gameObjects)
+                {
+                    if (gameobject is Projectile)
+                    {
+                        gameobject.Destroy();
+                    }
+
+                    if (gameobject is Enemy)
+                    {
+                        gameobject.Destroy();
+                    }
+
+                }
+            }
 
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
             barPosition = new Vector2(94, 59);
             foreach (GameObject go in gameObjects)
             {
-                //Apply gravity
+                //Applies gravity to GameObject
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
@@ -359,10 +391,10 @@ namespace SoldierWaveShooter
 
             base.Update(gameTime);
 
-
+            //Statement below enables different enemy GameObjects to spawn (depending on their timer) if the player is alive
             if (isAlive)
             {
-                // Spawner Melee
+                // Spawns the Melee GameObject, once spawnMeleeTimer is up
                 spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnMeleeTimer >= spawnMeleeCooldown)
                 {
@@ -376,7 +408,7 @@ namespace SoldierWaveShooter
                     spawnMelee = false;
                 }
 
-                // Spawner Ranged
+                // Spawns the Ranged GameObject, once spawnRangedTimer is up
                 spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnRangedTimer >= spawnRangedCooldown)
                 {
@@ -390,7 +422,7 @@ namespace SoldierWaveShooter
                     spawnRanged = false;
                 }
 
-                // Spawner Flying
+                // Spawns the Flying GameObject, once spawnFlyingTimer is up
                 spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnFlyingTimer >= spawnFlyingCooldown)
                 {
@@ -404,7 +436,8 @@ namespace SoldierWaveShooter
                     spawnFlying = false;
                 }
 
-                // Spawner Boss og stopper andre enemies fra at spawne
+                
+                // Spawns the Boss GameObject, once spawnBossTimer is up, and disables other Enemy GameObjects from spawning
                 spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnBossTimer >= spawnBossCooldown)
                 {
@@ -433,14 +466,8 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
+            // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack);
-            loseRect = new Rectangle(0, 0, 1920, 1080);
-            if (isAlive == false)
-            {
-                spriteBatch.Draw(loseScreen, loseRect, Color.White);
-            }
-
-            spriteBatch.Draw(winScreen, winRect, Color.White);
 
 
             foreach (GameObject go in gameObjects)
@@ -452,22 +479,40 @@ namespace SoldierWaveShooter
             }
             
             
-            
-            //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
             spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
             spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
             spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
             spriteBatch.Draw(barTop, barPosition, barPos, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.992f);
-            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
+            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);            
+            spriteBatch.Draw(backGround, Vector2.Zero, BackGroundRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.01f);
+           
+            loseRect = new Rectangle(0, 0, 1920, 1080);
+            if (isAlive == false)
+            {
+                spriteBatch.Draw(loseScreen, Vector2.Zero, loseRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+            }
+
+            winRect = new Rectangle(0, 0, 1920, 1080);
+            if (winGame == true)
+            {
+                spriteBatch.Draw(winScreen, Vector2.Zero, winRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+            }
+
             spriteBatch.End();
-            // TODO: Add your drawing code here
+
+
+
 
             base.Draw(gameTime);
+
         }
 
-
+        /// <summary>
+        /// Method that draws the CollisionBox of the GameObject
+        /// </summary>
+        /// <param name="go">CollisionBox of the GameObject</param>
         private void DrawCollisionBox(GameObject go)
         {
             Rectangle collisionBox = go.CollisionBox;

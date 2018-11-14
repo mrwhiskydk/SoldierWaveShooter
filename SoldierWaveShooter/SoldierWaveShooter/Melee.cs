@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace SoldierWaveShooter
 {
+    /// <summary>
+    /// The Melee class describes all melee enemies in the game. It overrides a lot of methods from the Enemy class, because it has unique features.
+    /// </summary>
     public class Melee : Enemy
     {
         private bool climb = false;
@@ -14,9 +17,14 @@ namespace SoldierWaveShooter
         {
             enemyHealth = 100;
             enemyDamage = 10;
-            walkingspeed = 70;
+            movementSpeed = 70;
+
         }
 
+        /// <summary>
+        /// The update method for Melee enemies. Has been overrided from the Enemy class, since Melee enemies has unique features.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         public override void Update(GameTime gameTime)
         {
             if (Gameworld.isAlive)
@@ -41,6 +49,10 @@ namespace SoldierWaveShooter
 
         }
 
+        /// <summary>
+        /// The method for handling movement for Melee enemies. Has been overridden from the Enemy class, since Melee enemies has unique features.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         protected override void HandleMovement(GameTime gameTime)
         {
             base.HandleMovement(gameTime);
@@ -54,6 +66,10 @@ namespace SoldierWaveShooter
             }
         }
 
+        /// <summary>
+        /// The method for handling collision between Melee enemies and other game objects.
+        /// </summary>
+        /// <param name="otherObject">otherObject is refering to other objects than objects of a diferent class.</param>
         public override void DoCollision(GameObject otherObject)
         {
             base.DoCollision(otherObject);

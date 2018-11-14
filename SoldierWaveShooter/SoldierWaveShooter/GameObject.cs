@@ -14,7 +14,7 @@ namespace SoldierWaveShooter
     public class GameObject
     {
         /// <summary>
-        /// used to set the loaded texture of current GameObject
+        /// used to set the texture of current GameObject sprite
         /// </summary>
         protected Texture2D sprite;
 
@@ -65,7 +65,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Enabled the GameObject to handle collisions in a custom way
+        /// Enables the GameObject to handle collisions in a custom way
         /// </summary>
         /// <param name="otherObject">The GameObject that the current GameObject collides with</param>
         public virtual void DoCollision(GameObject otherObject)

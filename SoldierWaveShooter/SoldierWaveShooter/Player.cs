@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 namespace SoldierWaveShooter
 {
     /// <summary>
-    /// Sub-class that represents the Player
+    /// Class that represents the Player
     /// </summary>
     public class Player : Character
     {        
@@ -41,6 +41,7 @@ namespace SoldierWaveShooter
             maxHealth = 110;   //Maximum amount of player health.
             health = maxHealth;
 
+            movementSpeed = 300;
         }  
         
         /// <summary>
@@ -117,26 +118,23 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Collision method that handles player collision with other GameObjects. Used to handle damage taken from Enemy collision
+        /// Method that handles player collision with other GameObjects. Used to handle damage taken from Enemy collision
         /// </summary>
         /// <param name="otherObject">The GameObject that the player object collides with</param>
         public override void DoCollision(GameObject otherObject)
         {
 
             if (otherObject is Platform)
-            {
-                
+            {              
                 Gravity = false;
                 jumpForce = jumpPower;
                 canJump = true;
             }
 
-
             else if (otherObject is Enemy && !isImmortal)
             {
                 Enemy enemy = (Enemy)otherObject;
                 
-
                 if (enemy.enemyHealth > 0)
                 {
                     takingDamage = true;
@@ -193,9 +191,7 @@ namespace SoldierWaveShooter
             {
                 CheckSlot(3);
             }
-
-            
-
+           
             weapon.Position = position;
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
@@ -222,7 +218,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Enables the player sprite to be drawn, flips the sprite horizontally. Draws the sprite red while immortal
+        /// Draws the player sprite in a red color while immortal, to indicate player immunity, while allowing the sprite to flip horizontally
         /// </summary>
         /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)

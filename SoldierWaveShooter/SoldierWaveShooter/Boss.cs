@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SoldierWaveShooter
 {
+    /// <summary>
+    /// The Boss class describes the boss enemy. It overrides a lot of methods from the Enemy class, because it has unique features.
+    /// </summary>
     public class Boss : Enemy
     {
         private bool goDown = false;
@@ -26,6 +29,10 @@ namespace SoldierWaveShooter
             movementSpeed = 5;
         }
 
+        /// <summary>
+        /// The update method for the Boss enemy. it Has been overridden from the Enemy class, since the Boss enemy has unique features.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         public override void Update(GameTime gameTime)
         {
 
@@ -38,6 +45,7 @@ namespace SoldierWaveShooter
                 {
                     goDown = true;
                 }
+
                 else
                 {
                     goDown = false;
@@ -47,11 +55,11 @@ namespace SoldierWaveShooter
                 {
                     isFacingRight = true;
                 }
+
                 else
                 {
                     isFacingRight = false;
                 }
-
 
                 //shooting
                 lastShot += gameTime.ElapsedGameTime.TotalSeconds;
@@ -80,8 +88,11 @@ namespace SoldierWaveShooter
                 Destroy();
             }
         }
-            
 
+        /// <summary>
+        /// The method for handling movement for the Boss enemy. It has been overridden from the Enemy class, since the Boss enemy has unique features.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         protected override void HandleMovement(GameTime gameTime)
         {
             base.HandleMovement(gameTime);
@@ -94,29 +105,6 @@ namespace SoldierWaveShooter
             {
                 position.Y -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
-        }
-
-
-        public override void DoCollision(GameObject otherObject)
-        {
-            base.DoCollision(otherObject);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if (isFacingRight == true)
-            {
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0.91f);
-            }
-            else if (isFacingRight == false)
-            {
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0.91f);
-            }
-        }
-
-        public override void Destroy()
-        {
-            base.Destroy();
         }
     }
 }
