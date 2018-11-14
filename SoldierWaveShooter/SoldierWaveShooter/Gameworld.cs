@@ -223,6 +223,7 @@ namespace SoldierWaveShooter
             
 
             mouse = new Crosshair();
+            new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
             // TODO: use this.Content to load your game content here
         }
 
@@ -411,12 +412,12 @@ namespace SoldierWaveShooter
             
             //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
-            spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(70, 140), Color.White);
+            spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
             spriteBatch.DrawString(font, $"magazineCapacity:{player.weapon.magazineCapacity}", new Vector2(70, 175), Color.White);
-            spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(70, 210), Color.White);
-            spriteBatch.Draw(bar, new Vector2(70, 35), Color.White);
-            spriteBatch.Draw(barMid, new Vector2(94, 59), Color.White);
-            spriteBatch.Draw(barTop, barPos, Color.White);
+            spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
+            spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
+            spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
+            spriteBatch.Draw(barTop, barPosition, barPos, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.992f);
             //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here

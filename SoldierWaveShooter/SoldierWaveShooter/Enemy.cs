@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SoldierWaveShooter
 {
@@ -63,24 +64,21 @@ namespace SoldierWaveShooter
                 Gravity = false;
             }
 
-            if (otherObject is Projectile)
+            else if (otherObject is Projectile)
             {
                 Projectile bullet = (Projectile)otherObject;
-                enemyHealth -= bullet.damage;
-
+                if (bullet.team == "player")
+                {
+                    enemyHealth -= bullet.damage;
+                    bullet.Destroy();
+                    
+                    //if we have 0 or less health then we die
+                    if (enemyHealth <= 0)
+                    {
+                        Destroy();
+                    }
+                }
             }
-
-            if (otherObject is Projectile)
-            {
-                Gameworld.RemoveGameObject(otherObject);
-            }
-
-            if (enemyHealth <= 0)
-            {
-                Gameworld.RemoveGameObject(this);
-            }
-
         }
-
     }
 }

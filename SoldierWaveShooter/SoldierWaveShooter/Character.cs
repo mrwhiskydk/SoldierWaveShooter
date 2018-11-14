@@ -69,7 +69,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Abstract method
+        /// Abstract method for player and enemy movement.
         /// </summary>
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         protected abstract void HandleMovement(GameTime gameTime);
