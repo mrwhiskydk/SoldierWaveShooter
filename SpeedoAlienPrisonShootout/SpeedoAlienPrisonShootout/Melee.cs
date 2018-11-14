@@ -58,11 +58,11 @@ namespace SpeedoAlienPrisonShootout
             base.HandleMovement(gameTime);
             if (climb == true && goToPlayer == true)
             {
-                position.Y += (float)(movementSpeed / 2 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y += (float)(movementSpeed / 1.3 * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if (climb == false && goToPlayer == true)
             {
-                position.Y -= (float)(movementSpeed / 2 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(movementSpeed / 1.3 * gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
 
