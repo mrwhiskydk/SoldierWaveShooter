@@ -43,7 +43,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 6.0f;
+        private const float spawnBossCooldown = 20.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
@@ -232,7 +232,7 @@ namespace SoldierWaveShooter
         {
             // TODO: Unload any non ContentManager content here
         }
-      
+
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -249,13 +249,13 @@ namespace SoldierWaveShooter
             {
                 player.Destroy();
                 isAlive = false;
-                            
+
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
                     player = new Player();
                     isAlive = true;
-                    
+
                     respawnTime = 0;
 
                     if (!wavePhase && !spawnBoss)
@@ -263,8 +263,8 @@ namespace SoldierWaveShooter
                         spawnBoss = true;
                     }
                 }
-                
-            }           
+
+            }
 
             if (bossIsAlive == true)
             {
@@ -305,7 +305,7 @@ namespace SoldierWaveShooter
                     }
                 }
             }
-            
+
             foreach (GameObject go in toBeRemoved)
             {
                 gameObjects.Remove(go);
@@ -369,13 +369,16 @@ namespace SoldierWaveShooter
                     wavePhase = false;
                 }
 
-            if (spawnBoss == true && wavePhase == false)
-            {
-                enemyBoss = new Boss();
-                spawnBoss = false;
-                bossIsAlive = true;
-            }
+                if (spawnBoss == true && wavePhase == false)
+                {
+                    enemyBoss = new Boss();
+                    spawnBoss = false;
+                    bossIsAlive = true;
+                }
 
+
+            }
+        
 
         }
 

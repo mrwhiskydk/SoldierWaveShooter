@@ -26,14 +26,14 @@ namespace SoldierWaveShooter
                 base.Update(gameTime);
                 HandleMovement(gameTime);
 
-            if (Gameworld.player.Position.Y >= position.Y)
-            {
+                if (Gameworld.player.Position.Y >= position.Y)
+                {
                 goDown = true;
-            }
-            else
-            {
+                }
+                else
+                {
                 goDown = false;
-            }
+                }
 
                 if (Gameworld.player.Position.X <= position.X)
                 {
