@@ -59,13 +59,15 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 60.0f;
+        private const float spawnBossCooldown = 40.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
         private Texture2D winScreen;
         private Rectangle winRect;
+        private Texture2D loseScreen;
+        private Rectangle loseRect;
         private Vector2 barPosition;
         private Rectangle barPos;
 
@@ -154,7 +156,7 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
-
+            loseScreen = Content.Load<Texture2D>("GameOver");
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
@@ -312,12 +314,8 @@ namespace SoldierWaveShooter
                 {
                     enemyBoss.Destroy();
                     enemyBoss.enemyDamage = 0;
-                    winGame = true;
-                    if (winGame == true)
-                    {
-                        winRect = new Rectangle(0, 0, 1920, 1080);
-                    }
-
+                    winGame = true;                 
+                    winRect = new Rectangle(0, 0, 1920, 1080);                   
                 }
             }
 
@@ -431,11 +429,15 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack);
+            loseRect = new Rectangle(0, 0, 1920, 1080);
+            if (isAlive == false)
+            {
+                spriteBatch.Draw(loseScreen, loseRect, Color.White);
+            }
 
-  
             spriteBatch.Draw(winScreen, winRect, Color.White);
-            
+
 
             foreach (GameObject go in gameObjects)
             {
@@ -450,7 +452,6 @@ namespace SoldierWaveShooter
             //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
-            spriteBatch.DrawString(font, $"magazineCapacity:{player.weapon.magazineCapacity}", new Vector2(70, 175), Color.White);
             spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
             spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
             spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);

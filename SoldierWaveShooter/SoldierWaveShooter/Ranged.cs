@@ -51,19 +51,27 @@ namespace SoldierWaveShooter
                     //Spawn a bullet casing flying in a semi random upwards direction
                     new BulletCasing(position);
 
-                    lastShot = 0;
+                lastShot = 0;
+            }
+
+            if (Gameworld.isAlive)
+            {
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = false;
+                }
+                else
+                {
+                    isFacingRight = true;
                 }
             }
             else
             {
-                Gameworld.RemoveGameObject(this);
+                Destroy();
             }
 
             base.Update(gameTime);
         }
-
-            
-        
 
         protected override void HandleMovement(GameTime gameTime)
         {

@@ -21,7 +21,7 @@ namespace SoldierWaveShooter
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 20;
+            enemyHealth = 200;
             enemyDamage = 25;
             movementSpeed = 5;
         }
@@ -52,6 +52,7 @@ namespace SoldierWaveShooter
                     isFacingRight = false;
                 }
 
+
                 //shooting
                 lastShot += gameTime.ElapsedGameTime.TotalSeconds;
                 if (lastShot >= attackCooldown)
@@ -70,15 +71,16 @@ namespace SoldierWaveShooter
 
                     //Spawn a bullet casing flying in a semi random upwards direction
                     new BulletCasing(position);
-
                     lastShot = 0;
-                }              
+                }
+                
             }
             else
             {
-                Gameworld.RemoveGameObject(this);
+                Destroy();
             }
-        }                  
+        }
+            
 
         protected override void HandleMovement(GameTime gameTime)
         {
@@ -98,7 +100,6 @@ namespace SoldierWaveShooter
         public override void DoCollision(GameObject otherObject)
         {
             base.DoCollision(otherObject);
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
