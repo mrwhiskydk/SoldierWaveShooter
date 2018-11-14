@@ -18,7 +18,7 @@ namespace SpeedoAlienPrisonShootout
             isFacingRight = true;
             enemyHealth = 50;
             enemyDamage = 5;
-            movementSpeed = 30;
+            movementSpeed = 70;
         }
 
         /// <summary>

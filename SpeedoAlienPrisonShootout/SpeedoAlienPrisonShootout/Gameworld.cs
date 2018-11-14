@@ -64,12 +64,12 @@ namespace SpeedoAlienPrisonShootout
         /// </summary>
         public static Crosshair mouse;
 
-        private float gravityStrength = 5f;
+        private float gravityStrength = 7f;
         private double spawnMeleeTimer;
-        private const float spawnMeleeCooldown = 7.0f;
+        private const float spawnMeleeCooldown = 5.5f;
         private bool spawnMelee = false;
         private double spawnFlyingTimer;
-        private const float spawnFlyingCooldown = 3.0f;
+        private const float spawnFlyingCooldown = 4.5f;
         private bool spawnFlying = false;
         private double spawnRangedTimer;
         private const float spawnRangedCooldown = 5.0f;
