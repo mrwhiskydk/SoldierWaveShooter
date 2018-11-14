@@ -316,6 +316,10 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.T))
+            {
+                player.Health = 0;
+            }
 
             // TODO: Add your update logic here
 
@@ -342,14 +346,14 @@ namespace SoldierWaveShooter
 
                     respawnTime = 0;
 
-                    //Statement below enables the boss to spawn again if the player dies
-                    if (!wavePhase && !spawnBoss)
-                    {
-                        spawnBoss = true;
+                        //Statement below enables the boss to spawn again if the player dies
+                        if (!wavePhase && !spawnBoss)
+                        {
+                            spawnBoss = true;
+                        }
                     }
-                }
 
-            } 
+                } 
 
             //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)
