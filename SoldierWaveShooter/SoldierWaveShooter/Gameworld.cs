@@ -42,7 +42,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 15.0f;
+        private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 4.0f;   //Field used for player respawn in update
@@ -249,9 +249,14 @@ namespace SoldierWaveShooter
                     player = new Player();
                     isAlive = true;
                     
-
                     respawnTime = 0;
-                 }                                   
+
+                    if (!wavePhase && !spawnBoss)
+                    {
+                        spawnBoss = true;
+                    }
+                }
+                
             }           
 
             
@@ -349,6 +354,7 @@ namespace SoldierWaveShooter
                     enemyBoss = new Boss();
                     spawnBoss = false;
                 }
+                
             }
             
 
