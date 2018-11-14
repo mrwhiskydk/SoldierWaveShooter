@@ -10,10 +10,12 @@ namespace SoldierWaveShooter
     {
         private bool goDown = false;
 
-        public Flying() : base(3, 9, new Vector2(1600,600), "FlyingGreen")
+        public Flying() : base(3, 9, new Vector2(1850,50), "FlyingGreen")
         {
-            enemyHealth = 100;
+            isFacingRight = true;
+            enemyHealth = 50;
             enemyDamage = 5;
+            movementSpeed = 30;
         }
 
         public override void Update(GameTime gameTime)
@@ -27,7 +29,7 @@ namespace SoldierWaveShooter
                 enemyDamage = 0;
 	        }
 
-            if (!Gameworld.ScreenSize.Intersects(CollisionBox))
+            if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
             {
                 Gameworld.RemoveGameObject(this);
             }

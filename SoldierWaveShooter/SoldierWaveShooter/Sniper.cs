@@ -14,6 +14,10 @@ namespace SoldierWaveShooter
             damage = 100;
             spread = 0f;
             bulletSprite = "BulletTrail";
+            infiniteAmmo = false;
+            magazineCapacity = 5;
+            magazine = 0;
+            timeToReload = 2;
         }
     }
 }

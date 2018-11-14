@@ -20,20 +20,29 @@ namespace SoldierWaveShooter
             this.speed = speed;
 
 
-            /*if (direction != Vector2.Zero)
+            if (direction != Vector2.Zero)
             {
                 this.direction.Normalize();
-            }*/
+                rotation = (float)Math.Atan2(direction.Y, direction.X);
+            }
+
+            //Console.WriteLine("direction : " + this.direction);
         }
 
         public override void Update(GameTime gameTime)
         {
+            Console.WriteLine(direction);
             position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!Gameworld.ScreenSize.Intersects(CollisionBox))
             {
                 Gameworld.RemoveGameObject(this);
             }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, SpriteEffects.None, 0f);
         }
     }
 }

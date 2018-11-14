@@ -8,15 +8,13 @@ namespace SoldierWaveShooter
 {
     public class Melee : Enemy
     {
-        private const float jumpPower = 1000;
-        private double jumpForce = jumpPower;
         private bool climb = false;
 
-
-        public Melee() : base(3, 12, new Vector2(1600, 870), "Melee2")
+        public Melee() : base(3, 12, new Vector2(1830, 950), "Melee2")
         {
             enemyHealth = 100;
             enemyDamage = 10;
+            walkingspeed = 70;
         }
 
         public override void Update(GameTime gameTime)
@@ -31,13 +29,6 @@ namespace SoldierWaveShooter
             else
             {
                 climb = false;
-            }
-
-            jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 1500;
-            if (climb == true)
-            {
-                position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
- 
             }
 
         }
