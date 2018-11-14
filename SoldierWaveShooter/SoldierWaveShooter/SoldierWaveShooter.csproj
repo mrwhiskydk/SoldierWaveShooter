@@ -58,6 +58,7 @@
     <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PowerUp.cs" />
+    <Compile Include="PowerUpMedkit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

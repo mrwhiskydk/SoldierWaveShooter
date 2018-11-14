@@ -30,32 +30,33 @@ namespace SoldierWaveShooter
         /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
-            if (Gameworld.player.Position.X <= position.X)
+            if (Gameworld.isAlive)
             {
-                isFacingRight = false;
-            }
+                base.Update(gameTime);
 
-            else
-            {
-                isFacingRight = true;
-            }
+                if (Gameworld.player.Position.X <= position.X)
+                {
+                    isFacingRight = false;
+                }
+                else
+                {
+                    isFacingRight = true;
+                }
 
-            lastShot += gameTime.ElapsedGameTime.TotalSeconds;
-            if (lastShot >= attackCooldown)
-            {
-                //get the direction to shoot
-                Vector2 direction = Gameworld.player.Position - position;
-                direction.Normalize();
-                //Send the bullet in a random direction depending on weapon spread
-                float rndSpread = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
-                float rndSpread2 = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
+                lastShot += gameTime.ElapsedGameTime.TotalSeconds;
+                if (lastShot >= attackCooldown)
+                {
+                    //get the direction to shoot
+                    Vector2 direction = Gameworld.player.Position - position;
+                    direction.Normalize();
+                    //Send the bullet in a random direction depending on weapon spread
+                    float rndSpread = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
+                    float rndSpread2 = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
 
-                new Projectile(position, "Bullet", new Vector2(direction.X + rndSpread, direction.Y + rndSpread2), enemyDamage, projectileSpeed, "enemy");
+                    new Projectile(position, "Bullet", new Vector2(direction.X + rndSpread, direction.Y + rndSpread2), enemyDamage, projectileSpeed, "enemy");
 
-                //Spawn a bullet casing flying in a semi random upwards direction
-                new BulletCasing(position);
+                    //Spawn a bullet casing flying in a semi random upwards direction
+                    new BulletCasing(position);
 
                 lastShot = 0;
             }

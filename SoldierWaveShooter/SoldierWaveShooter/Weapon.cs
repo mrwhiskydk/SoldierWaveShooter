@@ -27,18 +27,35 @@ namespace SoldierWaveShooter
         public bool isAmmo;
         protected Random rnd = new Random();
         protected Sound gunSound;
+        protected Sound dryFire = new Sound("Sound/Weapons/dryfire");
+        protected Sound reloadSound = new Sound("Sound/Weapons/reload");
         public bool equipped = false;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="spriteName"></param>
+        /// <param name="sound">Sound of the gun firing</param>
         public Weapon(string spriteName, string sound) : base(spriteName)
         {
             gunSound = new Sound(sound);
+
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="startPosition">Start position of the objcet</param>
+        /// <param name="spriteName">Name of the sprite</param>
+        /// <param name="isAmmo">True if spawned as a pickup from enemy</param>
         public Weapon(Vector2 startPosition, string spriteName, bool isAmmo) : base(startPosition, spriteName)
         {
 
         }
 
+        /// <summary>
+        /// Shoot our currently equipped gun
+        /// </summary>
         public virtual void Shoot()
         {
             if (lastShot > firerate)
@@ -69,21 +86,33 @@ namespace SoldierWaveShooter
 
                     gunSound.Play();
                 }
+
+                //if we dont have enough ammo to shoot then reload
                 else if (ammo > 0 && !infiniteAmmo)
                 {
                     Reload();
                 }
+                else
+                {
+                    dryFire.Play();
+                    lastShot = 0;
+                }
             }
         }
 
+        /// <summary>
+        /// Reload our currently equipped weapon
+        /// </summary>
         public virtual void Reload()
         {
-            if (isReloading == false && magazine != magazineCapacity)
+            if (isReloading == false && magazine != magazineCapacity && ammo > 0)
             {
+                reloadSound.Play();
                 reloadTimer = 0;
                 isReloading = true;
             }
         }
+
 
         public override void Update(GameTime gameTime)
         {

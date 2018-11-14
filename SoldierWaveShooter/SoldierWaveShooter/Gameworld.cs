@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace SoldierWaveShooter
 {
     /// <summary>
-    /// This is the main type for your game.
+    /// This is the main type for the game
     /// </summary>
     public class Gameworld : Game
     {
@@ -19,20 +19,39 @@ namespace SoldierWaveShooter
         private Texture2D bar;
         private Texture2D barMid;
         private Texture2D barTop;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Texture2D backGround;
         private Rectangle BackGroundRect;
         public List<GameObject> gameObjects = new List<GameObject>();
+
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Player player;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Boss boss;
+
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
         private Enemy enemyBoss;
         private Platform platform;
         private Texture2D collisionTexture;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Crosshair mouse;
+
         private float gravityStrength = 5f;
         private double spawnMeleeTimer;
         private const float spawnMeleeCooldown = 7.0f;
@@ -55,11 +74,18 @@ namespace SoldierWaveShooter
         private Rectangle loseRect;
         private Vector2 barPosition;
         private Rectangle barPos;
-        public static bool isAlive = true;        
+
+        /// <summary>
+        /// Static bool to check if player is alive or not. Used in the different enemies, boss and Gameworld update to control player and enemy deaths and spawns
+        /// </summary>
+        public static bool isAlive = true;
+        
         private bool winGame = false;
         private bool bossIsAlive = false;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static Rectangle ScreenSize
         {
             get
@@ -69,6 +95,10 @@ namespace SoldierWaveShooter
         }
 
         private static ContentManager _content;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static ContentManager ContentManager
         {
             get
@@ -77,6 +107,9 @@ namespace SoldierWaveShooter
             }
         }
 
+        /// <summary>
+        /// Constructor for the Gameworld
+        /// </summary>
         public Gameworld()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -87,11 +120,19 @@ namespace SoldierWaveShooter
             _content = Content;
         }
 
+        /// <summary>
+        /// Method that adds the current GameObject to the game
+        /// </summary>
+        /// <param name="go">GameObject that should be added to the game</param>
         public static void AddGameObject(GameObject go)
         {
             toBeAdded.Add(go);
         }
 
+        /// <summary>
+        /// Method that removes current GameObject from the game
+        /// </summary>
+        /// <param name="go">GameObject that should be removed from the game</param>
         public static void RemoveGameObject(GameObject go)
         {
             toBeRemoved.Add(go);
@@ -116,6 +157,8 @@ namespace SoldierWaveShooter
         /// </summary>
         protected override void LoadContent()
         {
+            // TODO: use this.Content to load your game content here
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
@@ -128,7 +171,7 @@ namespace SoldierWaveShooter
             barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
-            // Castle platforme
+            // Castle Platforms
             for (int i = 0; i < 28; i++)
             {
                 new Platform(new Vector2((i*70) + 35, 1016), "castle");
@@ -164,7 +207,7 @@ namespace SoldierWaveShooter
 
 
 
-            // Kæder
+            // Chains
             platform = new Platform(new Vector2(120, 540), "chain");
             platform = new Platform(new Vector2(120, 470), "chain");
             platform = new Platform(new Vector2(120, 400), "chain");
@@ -226,7 +269,7 @@ namespace SoldierWaveShooter
 
             mouse = new Crosshair();
             new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
-            // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
@@ -250,11 +293,14 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
-            if (player.Health <= 0)
+
+            //Statement below checks if player is dead, and removes him from the game if true
+            if (player.Health <= 0) 
             {
                 player.Destroy();
                 isAlive = false;
 
+                //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
@@ -263,14 +309,16 @@ namespace SoldierWaveShooter
 
                     respawnTime = 0;
 
+                    //Statement below enables the boss to spawn again if the player dies
                     if (!wavePhase && !spawnBoss)
                     {
                         spawnBoss = true;
                     }
                 }
 
-            }
+            } 
 
+            //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)
             {
                 if (enemyBoss.enemyHealth <= 0)
@@ -305,7 +353,7 @@ namespace SoldierWaveShooter
             barPosition = new Vector2(94, 59);
             foreach (GameObject go in gameObjects)
             {
-                //Apply gravity
+                //Applies gravity to GameObject
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
@@ -335,10 +383,10 @@ namespace SoldierWaveShooter
 
             base.Update(gameTime);
 
-
+            //Statement below enables different enemy GameObjects to spawn (depending on their timer) if the player is alive
             if (isAlive)
             {
-                // Spawner Melee
+                // Spawns the Melee GameObject, once spawnMeleeTimer is up
                 spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnMeleeTimer >= spawnMeleeCooldown)
                 {
@@ -352,7 +400,7 @@ namespace SoldierWaveShooter
                     spawnMelee = false;
                 }
 
-                // Spawner Ranged
+                // Spawns the Ranged GameObject, once spawnRangedTimer is up
                 spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnRangedTimer >= spawnRangedCooldown)
                 {
@@ -366,7 +414,7 @@ namespace SoldierWaveShooter
                     spawnRanged = false;
                 }
 
-                // Spawner Flying
+                // Spawns the Flying GameObject, once spawnFlyingTimer is up
                 spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnFlyingTimer >= spawnFlyingCooldown)
                 {
@@ -380,7 +428,8 @@ namespace SoldierWaveShooter
                     spawnFlying = false;
                 }
 
-                // Spawner Boss og stopper andre enemies fra at spawne
+                
+                // Spawns the Boss GameObject, once spawnBossTimer is up, and disables other Enemy GameObjects from spawning
                 spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnBossTimer >= spawnBossCooldown)
                 {
@@ -409,6 +458,7 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
+            // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack);
 
 
@@ -421,8 +471,6 @@ namespace SoldierWaveShooter
             }
             
             
-            
-            //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
             spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
@@ -445,7 +493,6 @@ namespace SoldierWaveShooter
             }
 
             spriteBatch.End();
-            // TODO: Add your drawing code here
 
 
 
@@ -454,7 +501,10 @@ namespace SoldierWaveShooter
 
         }
 
-
+        /// <summary>
+        /// Method that draws the CollisionBox of the GameObject
+        /// </summary>
+        /// <param name="go">CollisionBox of the GameObject</param>
         private void DrawCollisionBox(GameObject go)
         {
             Rectangle collisionBox = go.CollisionBox;

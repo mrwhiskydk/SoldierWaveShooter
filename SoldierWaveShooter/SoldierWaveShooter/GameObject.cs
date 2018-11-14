@@ -8,25 +8,44 @@ using System.Threading.Tasks;
 
 namespace SoldierWaveShooter
 {
+    /// <summary>
+    /// Super-class that represents a GameObject
+    /// </summary>
     public class GameObject
     {
+        /// <summary>
+        /// used to set the loaded texture of current GameObject
+        /// </summary>
         protected Texture2D sprite;
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected float rotation;
 
+        /// <summary>
+        /// used to set position of current GameOject
+        /// </summary>
         protected Vector2 position;
 
+        /// <summary>
+        /// Sets the default gravity as disabled, for current GameObject
+        /// </summary>
         protected bool gravity = false;       
 
         /// <summary>
-        /// Property that gets the position of GameObject
+        /// Property for the position of current GameObject
         /// </summary>
         public Vector2 Position { get => position; set => position = value; }
 
-        //public Vector2 Velocity { get => velocity; set => velocity = value; }
-
+        /// <summary>
+        /// Property for the gravity of current GameObject
+        /// </summary>
         public bool Gravity { get => gravity; set => gravity = value; }
-        
 
+        /// <summary>
+        /// The Collision Box of the GameObject. The default box is based upon the GameObject position and sprite size
+        /// </summary>
         public virtual Rectangle CollisionBox
         {
             get
@@ -45,6 +64,10 @@ namespace SoldierWaveShooter
             return CollisionBox.Intersects(otherObject.CollisionBox);
         }
 
+        /// <summary>
+        /// Enables the GameObject to handle collisions in a custom way
+        /// </summary>
+        /// <param name="otherObject">The GameObject that the current GameObject collides with</param>
         public virtual void DoCollision(GameObject otherObject)
         {
 
@@ -53,9 +76,7 @@ namespace SoldierWaveShooter
         /// <summary>
         /// The default constructor for a GameObject
         /// </summary>
-        /// <param name="content">Reference to a ContentManager for loading resources</param>
         /// <param name="spriteName">The name of the texture resource the should be used for the sprite</param>
-        /// <exception cref="Microsoft.Xna.Framework.Content.ContentLoadException">Thrown if a matching texture cant be found for spriteName</exception>
         public GameObject(string spriteName) : this(Vector2.Zero, spriteName)
         {
             
@@ -64,10 +85,8 @@ namespace SoldierWaveShooter
         /// <summary>
         /// Constructor the sets the staring position of the GameObject
         /// </summary>
-        /// <param name="startPosition"></param>
-        /// <param name="content">Reference to a ContentManager for loading resources</param>
+        /// <param name="startPosition">Default position of the current GameObject</param>
         /// <param name="spriteName">The name of the texture resource the should be used for the sprite</param>
-        /// <exception cref="Microsoft.Xna.Framework.Content.ContentLoadException">Thrown if a matching texture cant be found for spriteName</exception>
         public GameObject(Vector2 startPosition, string spriteName)
         {
             position = startPosition;
@@ -75,6 +94,9 @@ namespace SoldierWaveShooter
             Gameworld.AddGameObject(this);
         }
 
+        /// <summary>
+        /// Method used to remove current GameObject from the game
+        /// </summary>
         public virtual void Destroy()
         {
             Gameworld.RemoveGameObject(this);
