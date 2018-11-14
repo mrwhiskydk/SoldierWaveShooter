@@ -45,7 +45,7 @@ namespace SoldierWaveShooter
         private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
-        private float respawnDuration = 4.0f;   //Field used for player respawn in update
+        private float respawnDuration = 10.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
 
         private Vector2 barPosition;
