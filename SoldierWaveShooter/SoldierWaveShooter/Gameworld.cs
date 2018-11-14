@@ -75,7 +75,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 10.0f;
+        private const float spawnBossCooldown = 30.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 5.0f;   //Field used for player respawn in update
@@ -320,7 +320,7 @@ namespace SoldierWaveShooter
             // TODO: Add your update logic here
 
             //Statement below checks if player is dead, and removes him from the game if true
-            if (player.Health <= 0) 
+            if (player.Health <= 0 ) 
             {
                 if (!loseSoundPlayed )
                 {
@@ -331,7 +331,7 @@ namespace SoldierWaveShooter
 
                 player.Destroy();
                 isAlive = false;
-
+                spawnBossTimer = 0;
                 //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
