@@ -115,19 +115,16 @@ namespace SoldierWaveShooter
         {
 
             if (otherObject is Platform)
-            {
-                
+            {              
                 Gravity = false;
                 jumpForce = jumpPower;
                 canJump = true;
             }
 
-
             else if (otherObject is Enemy && !isImmortal)
             {
                 Enemy enemy = (Enemy)otherObject;
                 
-
                 if (enemy.enemyHealth > 0)
                 {
                     takingDamage = true;
@@ -184,9 +181,7 @@ namespace SoldierWaveShooter
             {
                 CheckSlot(3);
             }
-
-            
-
+           
             weapon.Position = position;
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
@@ -213,7 +208,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Draws the player sprite, flips the sprite horizontally. Draws the sprite red while immortal
+        /// Draws the player sprite in a red color while immortal, to indicate player immunity, while allowing the sprite to flip horizontally
         /// </summary>
         /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)
