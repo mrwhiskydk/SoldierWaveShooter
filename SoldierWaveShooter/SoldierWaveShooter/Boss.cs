@@ -19,7 +19,6 @@ namespace SoldierWaveShooter
         private int projectileSpeed = 350;
         private int bulletAmount = 12;
         private int projectileDamage = 5;
-        private Random rnd = new Random();
 
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {

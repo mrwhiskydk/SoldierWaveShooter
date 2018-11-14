@@ -18,7 +18,6 @@ namespace SoldierWaveShooter
         public Weapon weapon;
         public int fireRateMultiplier = 1;
         public double fireRateMultiplierTimer;
-        private Player[] playerAnimations = new Player[6];
 
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
