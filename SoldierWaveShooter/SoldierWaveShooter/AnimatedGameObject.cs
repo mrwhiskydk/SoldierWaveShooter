@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
     public class AnimatedGameObject : GameObject
     {
         protected Rectangle[] animationRectangles;
-        protected bool isFacingRight;
+        public bool isFacingRight;
         protected float animationFPS;
         protected int currentAnimationIndex = 0;
         double timeElapsed = 0;

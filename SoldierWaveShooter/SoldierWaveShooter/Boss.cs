@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Boss : Enemy
     {
-        public Boss() : base(5, 5, new Vector2(200, 600), "Boss")
+        public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
             enemyHealth = 2000;
@@ -25,14 +25,6 @@ namespace SoldierWaveShooter
         protected override void HandleMovement(GameTime gameTime)
         {
             Gravity = false;
-            /*if (isFacingRight == true)
-            {
-                position.X += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }
-            else
-	        {
-                position.X -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
-            }*/
            
         }
 

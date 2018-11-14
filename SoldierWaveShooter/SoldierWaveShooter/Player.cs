@@ -9,18 +9,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
-    class Player : Character
+    public class Player : Character
     {        
-        protected Vector2 direction = new Vector2(0, 0);
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
         private Weapon weapon;
-        private Player[] playerAnimations = new Player[6];
-
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
         private bool canJump = false;
         private bool takingDamage = false;
-
         private float immortalDuration = 3.0f;
         private double immortalTime;
         public bool isImmortal;
@@ -79,7 +75,6 @@ namespace SoldierWaveShooter
             }
         }
 
-
         public override void DoCollision(GameObject otherObject)
         {
             if (otherObject is Platform)
@@ -90,17 +85,20 @@ namespace SoldierWaveShooter
                 canJump = true;
             }
 
+
             if (otherObject is Enemy && !isImmortal)
             {
                 Enemy enemy = (Enemy)otherObject;
-                health -= enemy.enemyDamage;
-                takingDamage = true;
+                health -= enemy.enemyDamage;               
                 isImmortal = true;
-                
+
+                if (enemy.enemyHealth > 0)
+                {
+                    takingDamage = true;
+                }
             }
 
         }
-
 
         private void WeaponSystem()
         {
@@ -121,9 +119,11 @@ namespace SoldierWaveShooter
                 CheckSlot(3);
             }
 
+            
+
             weapon.Position = position;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 weapon.Shoot();
             }
@@ -149,14 +149,14 @@ namespace SoldierWaveShooter
         {
             base.Draw(spriteBatch);
 
-            if (isImmortal == true && isFacingRight == false)
+            if (isImmortal == true && isFacingRight == false && takingDamage == true)
             {
 
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
 
             }
 
-            if (isImmortal == true && isFacingRight == true)
+            if (isImmortal == true && isFacingRight == true && takingDamage == true)
             {
 
                 spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);

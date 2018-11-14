@@ -13,7 +13,7 @@ namespace SoldierWaveShooter
         protected Texture2D sprite;
         protected float rotation;
 
-        public Vector2 position;
+        protected Vector2 position;
         //public Vector2 velocity = new Vector2(0, -2f);
 
         protected bool gravity = false;
@@ -63,7 +63,7 @@ namespace SoldierWaveShooter
         /// <exception cref="Microsoft.Xna.Framework.Content.ContentLoadException">Thrown if a matching texture cant be found for spriteName</exception>
         public GameObject(string spriteName) : this(Vector2.Zero, spriteName)
         {
-    
+            
         }
 
         /// <summary>
@@ -77,6 +77,7 @@ namespace SoldierWaveShooter
         {
             position = startPosition;
             sprite = Gameworld.ContentManager.Load<Texture2D>(spriteName);
+            Gameworld.AddGameObject(this);
         }
 
         /// <summary>
@@ -94,9 +95,7 @@ namespace SoldierWaveShooter
         /// <param name="spriteBatch">The spritebatch to use for drawing</param>
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-
             spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, SpriteEffects.None, 0f);
-
         }
 
 

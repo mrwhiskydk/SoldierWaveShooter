@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace SoldierWaveShooter
@@ -14,16 +15,21 @@ namespace SoldierWaveShooter
         static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
+        //Insert healthbar SpriteFont
+        private Texture2D bar;
+        private Texture2D barMid;
+        private Texture2D barTop;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
-        private Player player;
+        public static Player player;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
         private Enemy boss;
         private Platform platform;
         private Texture2D collisionTexture;
+        public static Crosshair mouse;
         private float gravityStrength = 5f;
 
 
@@ -43,7 +49,6 @@ namespace SoldierWaveShooter
                 return _content;
             }
         }
-
 
         public Gameworld()
         {
@@ -87,27 +92,66 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("ExampleFont");
+            //Load healthbar Sprite Content
+            bar = Content.Load<Texture2D>("barBaseSW");
+            barMid = Content.Load<Texture2D>("barMidLayer");
+            barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
+            mouse = new Crosshair();
+
+            // Castle platforme
             for (int i = 0; i < 28; i++)
             {
-                gameObjects.Add(new Platform(new Vector2((i*70) + 35, 1016), "castleHalf"));
+                new Platform(new Vector2((i*70) + 35, 1016), "castle");
             }
-            platform = new Platform(new Vector2(750, 890), "castleHalf");
-            gameObjects.Add(platform);
-            platform = new Platform(new Vector2(900, 800), "castleHalf");
-            gameObjects.Add(platform);
-            platform = new Platform(new Vector2(1050, 890), "castleHalf");
-            gameObjects.Add(platform);
+            platform = new Platform(new Vector2(120, 760), "castleHalf");
+            platform = new Platform(new Vector2(260, 890), "castleHalf");
+            platform = new Platform(new Vector2(400, 760), "castleHalf");
+            platform = new Platform(new Vector2(540, 890), "castleHalf");
+            platform = new Platform(new Vector2(680, 760), "castleHalf");
+            platform = new Platform(new Vector2(820, 890), "castleHalf");
+            platform = new Platform(new Vector2(Gameworld.ScreenSize.Width/2, 760), "castleHalf");
+            platform = new Platform(new Vector2(1080, 890), "castleHalf");
+            platform = new Platform(new Vector2(1220, 760), "castleHalf");
+            platform = new Platform(new Vector2(1360, 890), "castleHalf");
+            platform = new Platform(new Vector2(1500, 760), "castleHalf");
+            platform = new Platform(new Vector2(1640, 890), "castleHalf");
+            platform = new Platform(new Vector2(1780, 760), "castleHalf");
+            platform = new Platform(new Vector2(120, 280), "castleHalf");
+            platform = new Platform(new Vector2(190, 280), "castleHalf");
+            platform = new Platform(new Vector2(330, 380), "castleHalf");
+            platform = new Platform(new Vector2(400, 380), "castleHalf");
+            platform = new Platform(new Vector2(540, 480), "castleHalf");
+            platform = new Platform(new Vector2(610, 480), "castleHalf");
+            platform = new Platform(new Vector2(750, 580), "castleHalf");
+            platform = new Platform(new Vector2(820, 580), "castleHalf");
+            platform = new Platform(new Vector2(1080, 580), "castleHalf");
+            platform = new Platform(new Vector2(1150, 580), "castleHalf");
+            platform = new Platform(new Vector2(1290, 480), "castleHalf");
+            platform = new Platform(new Vector2(1360, 480), "castleHalf");
+            platform = new Platform(new Vector2(1500, 380), "castleHalf");
+            platform = new Platform(new Vector2(1570, 380), "castleHalf");
+            platform = new Platform(new Vector2(1710, 280), "castleHalf");
+            platform = new Platform(new Vector2(1780, 280), "castleHalf");
+            platform = new Platform(new Vector2(910, 350), "castleHalf");
+            platform = new Platform(new Vector2(980, 350), "castleHalf");
+
+
+            // Kæder
+            platform = new Platform(new Vector2(120, 540), "chain");
+            platform = new Platform(new Vector2(120, 470), "chain");
+            platform = new Platform(new Vector2(120, 400), "chain");
+            platform = new Platform(new Vector2(120, 330), "chain");
+
+            platform = new Platform(new Vector2(1780, 540), "chain");
+            platform = new Platform(new Vector2(1780, 470), "chain");
+            platform = new Platform(new Vector2(1780, 400), "chain");
+            platform = new Platform(new Vector2(1780, 330), "chain");
+
             player = new Player();
-            gameObjects.Add(player);
             enemyMelee = new Melee();
-            gameObjects.Add(enemyMelee);
             enemyRanged = new Ranged();
-            gameObjects.Add(enemyRanged);
             enemyFlying = new Flying();
-            gameObjects.Add(enemyFlying);
-            boss = new Boss();
-            gameObjects.Add(boss);
             // TODO: use this.Content to load your game content here
         }
 
@@ -131,6 +175,8 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
+
+            
 
             foreach (GameObject go in gameObjects)
             {
@@ -181,8 +227,11 @@ namespace SoldierWaveShooter
                 DrawCollisionBox(go);
 #endif
             }
-
-            spriteBatch.DrawString(font, $"Health:{player.Health}", Vector2.Zero, Color.White);
+            //Add spriteBatch for healthbar
+            spriteBatch.Draw(bar, new Vector2(70, 35), Color.White);
+            spriteBatch.Draw(barMid, new Vector2(94, 59), Color.White);
+            spriteBatch.Draw(barTop, new Vector2(94, 59), Color.White);
+            spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
             // TODO: Add your drawing code here
 
