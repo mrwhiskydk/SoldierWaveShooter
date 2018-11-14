@@ -316,12 +316,12 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.R))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.T))
             {
-                player.Health = ;
+                player.Health = 0;
             }
 
-                // TODO: Add your update logic here
+            // TODO: Add your update logic here
 
             //Statement below checks if player is dead, and removes him from the game if true
             if (player.Health <= 0) 
