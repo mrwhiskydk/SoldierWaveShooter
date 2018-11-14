@@ -14,7 +14,7 @@ namespace SoldierWaveShooter
     public class GameObject
     {
         /// <summary>
-        /// used to set the loaded texture of current GameObject
+        /// used to set the texture of current GameObject sprite
         /// </summary>
         protected Texture2D sprite;
 
