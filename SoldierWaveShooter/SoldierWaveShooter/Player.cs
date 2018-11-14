@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 namespace SoldierWaveShooter
 {
     /// <summary>
-    /// Sub-class that represents the Player
+    /// Class that represents the Player
     /// </summary>
     public class Player : Character
     {        
@@ -108,7 +108,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Collision method that handles player collision with other GameObjects. Used to handle damage taken from Enemy collision
+        /// Method that handles player collision with other GameObjects. Used to handle damage taken from Enemy collision
         /// </summary>
         /// <param name="otherObject">The GameObject that the player object collides with</param>
         public override void DoCollision(GameObject otherObject)
@@ -213,7 +213,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Enables the player sprite to be drawn, flips the sprite horizontally. Draws the sprite red while immortal
+        /// Draws the player sprite, flips the sprite horizontally. Draws the sprite red while immortal
         /// </summary>
         /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)

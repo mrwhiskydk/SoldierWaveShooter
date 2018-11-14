@@ -65,7 +65,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Enabled the GameObject to handle collisions in a custom way
+        /// Enables the GameObject to handle collisions in a custom way
         /// </summary>
         /// <param name="otherObject">The GameObject that the current GameObject collides with</param>
         public virtual void DoCollision(GameObject otherObject)
