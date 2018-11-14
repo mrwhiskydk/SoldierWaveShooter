@@ -43,13 +43,15 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 20.0f;
+        private const float spawnBossCooldown = 40.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
         private Texture2D winScreen;
         private Rectangle winRect;
+        private Texture2D loseScreen;
+        private Rectangle loseRect;
         private Vector2 barPosition;
         private Rectangle barPos;
         public static bool isAlive = true;
@@ -117,7 +119,7 @@ namespace SoldierWaveShooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
-
+            loseScreen = Content.Load<Texture2D>("GameOver");
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
@@ -272,12 +274,8 @@ namespace SoldierWaveShooter
                 {
                     enemyBoss.Destroy();
                     enemyBoss.enemyDamage = 0;
-                    winGame = true;
-                    if (winGame == true)
-                    {
-                        winRect = new Rectangle(0, 0, 1920, 1080);
-                    }
-
+                    winGame = true;                 
+                    winRect = new Rectangle(0, 0, 1920, 1080);                   
                 }
             }
 
@@ -392,10 +390,14 @@ namespace SoldierWaveShooter
 
 
             spriteBatch.Begin();
+            loseRect = new Rectangle(0, 0, 1920, 1080);
+            if (isAlive == false)
+            {
+                spriteBatch.Draw(loseScreen, loseRect, Color.White);
+            }
 
-  
             spriteBatch.Draw(winScreen, winRect, Color.White);
-            
+
 
             foreach (GameObject go in gameObjects)
             {
