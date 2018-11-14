@@ -24,6 +24,7 @@ namespace SoldierWaveShooter
         /// 
         /// </summary>
         public List<GameObject> gameObjects = new List<GameObject>();
+
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
 
@@ -36,6 +37,7 @@ namespace SoldierWaveShooter
         /// 
         /// </summary>
         public static Boss boss;
+
         private Enemy enemyMelee;
         private Enemy enemyRanged;
         private Enemy enemyFlying;
@@ -48,6 +50,7 @@ namespace SoldierWaveShooter
         /// 
         /// </summary>
         public static Crosshair mouse;
+
         private float gravityStrength = 5f;
         private double spawnMeleeTimer;
         private const float spawnMeleeCooldown = 7.0f;
@@ -72,7 +75,7 @@ namespace SoldierWaveShooter
         private Rectangle barPos;
 
         /// <summary>
-        /// 
+        /// Static bool to check if player is alive or not. Used in the different enemies, boss and Gameworld update to control player and enemy deaths and spawns
         /// </summary>
         public static bool isAlive = true;
         
@@ -119,7 +122,7 @@ namespace SoldierWaveShooter
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="go"></param>
+        /// <param name="go">GameObjects that should be added to the game</param>
         public static void AddGameObject(GameObject go)
         {
             toBeAdded.Add(go);
