@@ -8,22 +8,22 @@ using Microsoft.Xna.Framework.Graphics;
 namespace SoldierWaveShooter
 {
     /// <summary>
-    /// Abstract Super-class that represents common methods, fields and properties between the player and enemy objects.
+    /// Abstract Super-class that represents common methods, fields and properties between the player and enemy objects
     /// </summary>
     public abstract class Character : AnimatedGameObject
     {
         /// <summary>
-        /// Field that sets movementspeed of player and enemy GameObjects.
+        /// Field that sets movementspeed of player and enemy GameObjects
         /// </summary>
         protected float movementSpeed = 300;       
         
         /// <summary>
-        /// Field used for player and enemy health.
+        /// Field used for player and enemy health
         /// </summary>
         protected int health;
 
         /// <summary>
-        /// Property that returns the health value.
+        /// Property that returns the health value
         /// </summary>
         public int Health
         {
@@ -35,7 +35,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Character constructor that enables gravity as default.
+        /// Character constructor that enables gravity as default
         /// </summary>
         /// <param name="frameCount"></param>
         /// <param name="animationFPS"></param>
@@ -50,7 +50,7 @@ namespace SoldierWaveShooter
 
 
         /// <summary>
-        /// Update method that makes sure gravity stays true, should it be enabled.
+        /// Update method that makes sure gravity stays true, should it be enabled
         /// </summary>
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         public override void Update(GameTime gameTime)
@@ -60,7 +60,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Draw method that prints sprites to the screen.
+        /// Draw method that prints sprites to the screen
         /// </summary>
         /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)
@@ -69,7 +69,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Abstract method for player and enemy movement.
+        /// Abstract method for player and enemy movement
         /// </summary>
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         protected abstract void HandleMovement(GameTime gameTime);

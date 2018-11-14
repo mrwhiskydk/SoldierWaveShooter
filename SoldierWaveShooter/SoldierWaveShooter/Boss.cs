@@ -36,38 +36,13 @@ namespace SoldierWaveShooter
 
                 if (Gameworld.player.Position.Y >= position.Y)
                 {
-                goDown = true;
+                    goDown = true;
                 }
                 else
                 {
-                goDown = false;
+                    goDown = false;
                 }
 
-            if (Gameworld.player.Position.X <= position.X)
-            {
-                isFacingRight = true;
-            }
-            else
-            {
-                isFacingRight = false;
-            }
-
-
-            //shooting
-            lastShot += gameTime.ElapsedGameTime.TotalSeconds;
-            if (lastShot >= attackCooldown)
-            {
-                for (int i = 0; i < bulletAmount; i++)
-                {
-                    //get the direction to shoot
-                    Vector2 direction = Gameworld.player.Position - position;
-                    direction.Normalize();
-                    //Send the bullet in a random direction depending on weapon spread
-                    float rndSpread = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
-                    float rndSpread2 = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
-
-                    new Projectile(position, "Bullet", new Vector2(direction.X + rndSpread, direction.Y + rndSpread2), projectileDamage, projectileSpeed, "enemy");
-                }
                 if (Gameworld.player.Position.X <= position.X)
                 {
                     isFacingRight = true;
@@ -76,20 +51,34 @@ namespace SoldierWaveShooter
                 {
                     isFacingRight = false;
                 }
+
+                //shooting
+                lastShot += gameTime.ElapsedGameTime.TotalSeconds;
+                if (lastShot >= attackCooldown)
+                {
+                    for (int i = 0; i < bulletAmount; i++)
+                    {
+                        //get the direction to shoot
+                        Vector2 direction = Gameworld.player.Position - position;
+                        direction.Normalize();
+                        //Send the bullet in a random direction depending on weapon spread
+                        float rndSpread = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
+                        float rndSpread2 = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
+
+                        new Projectile(position, "Bullet", new Vector2(direction.X + rndSpread, direction.Y + rndSpread2), projectileDamage, projectileSpeed, "enemy");
+                    }
+
+                    //Spawn a bullet casing flying in a semi random upwards direction
+                    new BulletCasing(position);
+
+                    lastShot = 0;
+                }              
             }
             else
             {
                 Gameworld.RemoveGameObject(this);
             }
-            
-        }
-
-                //Spawn a bullet casing flying in a semi random upwards direction
-                new BulletCasing(position);
-
-                lastShot = 0;
-            }
-        }
+        }                  
 
         protected override void HandleMovement(GameTime gameTime)
         {

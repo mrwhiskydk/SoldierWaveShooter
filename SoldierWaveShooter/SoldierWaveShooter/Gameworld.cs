@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace SoldierWaveShooter
 {
     /// <summary>
-    /// This is the main type for your game.
+    /// This is the main type for the game
     /// </summary>
     public class Gameworld : Game
     {
@@ -19,10 +19,22 @@ namespace SoldierWaveShooter
         private Texture2D bar;
         private Texture2D barMid;
         private Texture2D barTop;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Player player;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Boss boss;
         private Enemy enemyMelee;
         private Enemy enemyRanged;
@@ -31,6 +43,10 @@ namespace SoldierWaveShooter
         private Platform platform;
         private UI ui;
         private Texture2D collisionTexture;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Crosshair mouse;
         private float gravityStrength = 5f;
         private double spawnMeleeTimer;
@@ -43,7 +59,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 20.0f;
+        private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
@@ -52,12 +68,18 @@ namespace SoldierWaveShooter
         private Rectangle winRect;
         private Vector2 barPosition;
         private Rectangle barPos;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool isAlive = true;
         
         private bool winGame = false;
         private bool bossIsAlive = false;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static Rectangle ScreenSize
         {
             get
@@ -67,6 +89,10 @@ namespace SoldierWaveShooter
         }
 
         private static ContentManager _content;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static ContentManager ContentManager
         {
             get
@@ -75,6 +101,9 @@ namespace SoldierWaveShooter
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Gameworld()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -85,11 +114,19 @@ namespace SoldierWaveShooter
             _content = Content;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="go"></param>
         public static void AddGameObject(GameObject go)
         {
             toBeAdded.Add(go);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="go"></param>
         public static void RemoveGameObject(GameObject go)
         {
             toBeRemoved.Add(go);
@@ -246,7 +283,9 @@ namespace SoldierWaveShooter
                 Exit();
 
             // TODO: Add your update logic here
-            if (player.Health <= 0)
+
+            //if statement checks if player is dead, and removes him from the game if true
+            if (player.Health <= 0) 
             {
                 player.Destroy();
                 isAlive = false;
@@ -265,7 +304,7 @@ namespace SoldierWaveShooter
                     }
                 }
 
-            }
+            } 
 
             if (bossIsAlive == true)
             {

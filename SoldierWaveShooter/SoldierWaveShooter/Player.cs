@@ -25,12 +25,12 @@ namespace SoldierWaveShooter
         private float immortalDuration = 1.0f;
         private double immortalTime;
         /// <summary>
-        /// Bool that sets player immunity on and off.
+        /// Sets player immunity on and off
         /// </summary>
         public bool isImmortal;
 
         /// <summary>
-        /// Player constructor that sets player animation values, position and sprite name.
+        /// Player constructor that sets player animation values, position and sprite name
         /// </summary>
         public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 500), "PlayerRunSW")
         {
@@ -41,7 +41,7 @@ namespace SoldierWaveShooter
         }  
         
         /// <summary>
-        /// Update method that enables player movement, reload and change weapons. Makes the player invulnerable for a short time, if damage is taken. 
+        /// Update method that enables player movement, reload and change weapons. Makes the player immortal for a short time, if damage is taken
         /// </summary>
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         public override void Update(GameTime gameTime)
@@ -49,17 +49,17 @@ namespace SoldierWaveShooter
                 base.Update(gameTime);               
                 HandleMovement(gameTime);
 
-                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;  //Adding +1 second to immortalTime, until it reaches 3 seconds.
+                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;  //Adding +1 second to immortalTime, until it reaches 3 seconds
                 if (immortalTime > immortalDuration)
                 {
                     isImmortal = false;
-                    immortalTime = 0;   //Upon reaching 3 seconds, immortalTime is reset to 0.
+                    immortalTime = 0;   //Upon reaching 3 seconds, immortalTime is reset to 0
                 }
                 WeaponSystem();            
         }
 
         /// <summary>
-        /// Method that sets the player movement on both the X and Y axis, and reload functionality.
+        /// Method that sets the player movement on both the X and Y axis, and reload functionality
         /// </summary>
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         protected override void HandleMovement(GameTime gameTime)
@@ -96,7 +96,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Method used to remove both player and weapon objects from the game.
+        /// Method used to remove both player and weapon objects from the game
         /// </summary>
         public override void Destroy()
         {
@@ -108,7 +108,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Collision method that sets player collision with other GameObjects. Used to check for damage taken from Enemy collision.
+        /// Collision method that handles player collision with other GameObjects. Used to handle damage taken from Enemy collision
         /// </summary>
         /// <param name="otherObject">The GameObject that the player object collides with</param>
         public override void DoCollision(GameObject otherObject)
@@ -213,7 +213,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// Draw method that prints player sprite to screen, flips the sprite horizontally and draws the sprite red if invulnerable.
+        /// Enables the player sprite to be drawn, flips the sprite horizontally. Draws the sprite red while immortal
         /// </summary>
         /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)
