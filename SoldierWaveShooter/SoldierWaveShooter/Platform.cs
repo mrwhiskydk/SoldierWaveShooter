@@ -14,7 +14,6 @@ namespace SoldierWaveShooter
 
         public Platform(Vector2 startPosition, string spriteName) : base(startPosition, spriteName)
         {
-
         }
 
         public override void Update(GameTime gameTime)
@@ -24,15 +23,8 @@ namespace SoldierWaveShooter
             destructionTime += gameTime.ElapsedGameTime.TotalSeconds;
             if (destructionTime > destructionDuration)
             {
-                destructionTime = 0;
-               
+                destructionTime = 0;              
             }
-
-        }
-
-        public override void DoCollision(GameObject otherObject)
-        {
-            base.DoCollision(otherObject);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

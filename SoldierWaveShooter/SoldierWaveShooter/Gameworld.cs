@@ -19,6 +19,8 @@ namespace SoldierWaveShooter
         private Texture2D bar;
         private Texture2D barMid;
         private Texture2D barTop;
+        private Texture2D backGround;
+        private Rectangle BackGroundRect;
         public List<GameObject> gameObjects = new List<GameObject>();
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
@@ -29,7 +31,6 @@ namespace SoldierWaveShooter
         private Enemy enemyFlying;
         private Enemy enemyBoss;
         private Platform platform;
-        private UI ui;
         private Texture2D collisionTexture;
         public static Crosshair mouse;
         private float gravityStrength = 5f;
@@ -43,7 +44,7 @@ namespace SoldierWaveShooter
         private const float spawnRangedCooldown = 5.0f;
         private bool spawnRanged = false;
         private double spawnBossTimer;
-        private const float spawnBossCooldown = 40.0f;
+        private const float spawnBossCooldown = 10.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
         private float respawnDuration = 10.0f;   //Field used for player respawn in update
@@ -54,8 +55,7 @@ namespace SoldierWaveShooter
         private Rectangle loseRect;
         private Vector2 barPosition;
         private Rectangle barPos;
-        public static bool isAlive = true;
-        
+        public static bool isAlive = true;        
         private bool winGame = false;
         private bool bossIsAlive = false;
 
@@ -120,6 +120,8 @@ namespace SoldierWaveShooter
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
             loseScreen = Content.Load<Texture2D>("GameOver");
+            backGround = Content.Load<Texture2D>("PrisonBackground");
+            BackGroundRect = new Rectangle(0, 0, 1920, 1080);
             font = Content.Load<SpriteFont>("ExampleFont");
             bar = Content.Load<Texture2D>("barBaseSW");
             barMid = Content.Load<Texture2D>("barMidLayer");
@@ -275,11 +277,28 @@ namespace SoldierWaveShooter
                 {
                     enemyBoss.Destroy();
                     enemyBoss.enemyDamage = 0;
-                    winGame = true;                 
-                    winRect = new Rectangle(0, 0, 1920, 1080);                   
+                    winGame = true;     
+                    
                 }
             }
 
+            if (winGame == true)
+            {
+
+                foreach (GameObject gameobject in gameObjects)
+                {
+                    if (gameobject is Projectile)
+                    {
+                        gameobject.Destroy();
+                    }
+
+                    if (gameobject is Enemy)
+                    {
+                        gameobject.Destroy();
+                    }
+
+                }
+            }
 
             //Directional Rectangle for the healthbar
             barPos = new Rectangle((int)barPosition.X, (int)barPosition.Y, player.Health * 2, barTop.Height);
@@ -391,13 +410,6 @@ namespace SoldierWaveShooter
 
 
             spriteBatch.Begin(SpriteSortMode.FrontToBack);
-            loseRect = new Rectangle(0, 0, 1920, 1080);
-            if (isAlive == false)
-            {
-                spriteBatch.Draw(loseScreen, loseRect, Color.White);
-            }
-
-            spriteBatch.Draw(winScreen, winRect, Color.White);
 
 
             foreach (GameObject go in gameObjects)
@@ -417,11 +429,29 @@ namespace SoldierWaveShooter
             spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
             spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
             spriteBatch.Draw(barTop, barPosition, barPos, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.992f);
-            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
+            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);            
+            spriteBatch.Draw(backGround, Vector2.Zero, BackGroundRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.01f);
+           
+            loseRect = new Rectangle(0, 0, 1920, 1080);
+            if (isAlive == false)
+            {
+                spriteBatch.Draw(loseScreen, Vector2.Zero, loseRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+            }
+
+            winRect = new Rectangle(0, 0, 1920, 1080);
+            if (winGame == true)
+            {
+                spriteBatch.Draw(winScreen, Vector2.Zero, winRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
+            }
+
             spriteBatch.End();
             // TODO: Add your drawing code here
 
+
+
+
             base.Draw(gameTime);
+
         }
 
 

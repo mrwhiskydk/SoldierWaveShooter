@@ -15,7 +15,7 @@ namespace SoldierWaveShooter
         /// <summary>
         /// Field that sets movementspeed of player and enemy GameObjects.
         /// </summary>
-        protected float movementSpeed = 300;       
+        protected float movementSpeed;       
         
         /// <summary>
         /// Field used for player and enemy health.

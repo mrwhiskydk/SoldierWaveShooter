@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace SoldierWaveShooter
 {
+    /// <summary>
+    /// The Ranged class describes all ranged enemies in the game. It overrides some methods from the Enemy class, because it has unique features.
+    /// </summary>
     public class Ranged : Enemy
     {
         private double lastShot;
@@ -21,6 +24,10 @@ namespace SoldierWaveShooter
             movementSpeed = 20;
         }
 
+        /// <summary>
+        /// The update method for Ranged enemies. Has been overridden from the Enemy class, since Ranged enemies has unique features.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since the last call in the Update.</param>
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -29,6 +36,7 @@ namespace SoldierWaveShooter
             {
                 isFacingRight = false;
             }
+
             else
             {
                 isFacingRight = true;
@@ -58,29 +66,20 @@ namespace SoldierWaveShooter
                 {
                     isFacingRight = false;
                 }
+
                 else
                 {
                     isFacingRight = true;
                 }
             }
+
             else
             {
                 Destroy();
             }
+
             base.Update(gameTime);
         }
 
-        protected override void HandleMovement(GameTime gameTime)
-        {
-            base.HandleMovement(gameTime);
-
-        }
-
-
-        public override void DoCollision(GameObject otherObject)
-        {
-            base.DoCollision(otherObject);
-
-        }
     }
 }

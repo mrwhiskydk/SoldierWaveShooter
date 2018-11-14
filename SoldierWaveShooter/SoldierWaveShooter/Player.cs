@@ -38,6 +38,7 @@ namespace SoldierWaveShooter
 
             health = 110;   //Maximum amount of player health.
 
+            movementSpeed = 300;
         }  
         
         /// <summary>
