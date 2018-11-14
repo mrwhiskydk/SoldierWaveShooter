@@ -308,6 +308,18 @@
 /processorParam:TextureFormat=Color
 /build:ShotgunPiskelSW.png
 
+#begin Sniper rifle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sniper rifle.png
+
 #begin Sound/Weapons/dryfire.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -344,18 +356,6 @@
 /processorParam:Quality=Best
 /build:Sound/Weapons/shotgun.wav
 
-#begin Sound/Weapons/shotgun.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/Weapons/shotgun.wav
-
-#begin Sound/Weapons/sniper.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/Weapons/sniper.wav
-
 #begin Sound/Weapons/sniper.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -367,18 +367,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sound/Weapons/standard.wav
-
-#begin Sound/Weapons/standard.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/Weapons/standard.wav
-
-#begin Sound/Weapons/submachinegun.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sound/Weapons/submachinegun.wav
 
 #begin Sound/Weapons/submachinegun.wav
 /importer:WavImporter
