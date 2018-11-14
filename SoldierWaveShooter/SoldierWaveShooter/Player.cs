@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SoldierWaveShooter
 {
+    /// <summary>
+    /// Sub-class that represents the Player
+    /// </summary>
     public class Player : Character
     {        
         private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
@@ -21,32 +24,44 @@ namespace SoldierWaveShooter
         private bool takingDamage = false;
         private float immortalDuration = 1.0f;
         private double immortalTime;
+        /// <summary>
+        /// Bool that sets player immunity on and off.
+        /// </summary>
         public bool isImmortal;
 
-
+        /// <summary>
+        /// Player constructor that sets player animation values, position and sprite name.
+        /// </summary>
         public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 500), "PlayerRunSW")
         {
             weapon = weapons[0];
 
-            health = 110;
+            health = 110;   //Maximum amount of player health.
 
         }  
         
-
+        /// <summary>
+        /// Update method that enables player movement, reload and change weapons. Makes the player invulnerable for a short time, if damage is taken. 
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since last call in the update</param>
         public override void Update(GameTime gameTime)
         {
                 base.Update(gameTime);               
                 HandleMovement(gameTime);
 
-                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;
+                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;  //Adding +1 second to immortalTime, until it reaches 3 seconds.
                 if (immortalTime > immortalDuration)
                 {
                     isImmortal = false;
-                    immortalTime = 0;
+                    immortalTime = 0;   //Upon reaching 3 seconds, immortalTime is reset to 0.
                 }
                 WeaponSystem();            
         }
 
+        /// <summary>
+        /// Method that sets the player movement on both the X and Y axis, and reload functionality.
+        /// </summary>
+        /// <param name="gameTime">Time elapsed since last call in the update</param>
         protected override void HandleMovement(GameTime gameTime)
         {
             gravity = true;
@@ -64,7 +79,7 @@ namespace SoldierWaveShooter
             }
 
             jumpForce -= gameTime.ElapsedGameTime.TotalSeconds * 1500;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && isGrounded && canJump)
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && canJump)
             {
                 position.Y -= (float)(jumpForce * gameTime.ElapsedGameTime.TotalSeconds);
             }
@@ -80,13 +95,28 @@ namespace SoldierWaveShooter
             }
         }
 
+        /// <summary>
+        /// Method used to remove both player and weapon objects from the game.
+        /// </summary>
+        public override void Destroy()
+        {
+            foreach(Weapon weapon in weapons)
+            {
+                weapon.Destroy();
+            }
+            base.Destroy();           
+        }
 
+        /// <summary>
+        /// Collision method that sets player collision with other GameObjects. Used to check for damage taken from Enemy collision.
+        /// </summary>
+        /// <param name="otherObject">The GameObject that the player object collides with</param>
         public override void DoCollision(GameObject otherObject)
         {
 
             if (otherObject is Platform)
             {
-                isGrounded = true;
+                
                 Gravity = false;
                 jumpForce = jumpPower;
                 canJump = true;
@@ -169,6 +199,11 @@ namespace SoldierWaveShooter
             
 
         }
+
+        /// <summary>
+        /// Draw method that prints player sprite to screen, flips the sprite horizontally and draws the sprite red if invulnerable.
+        /// </summary>
+        /// <param name="spriteBatch">The spritebatch that is used for drawing</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
