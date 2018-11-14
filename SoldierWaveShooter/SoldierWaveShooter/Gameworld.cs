@@ -316,10 +316,6 @@ namespace SoldierWaveShooter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.T))
-            {
-                player.Health = 0;
-            }
 
             // TODO: Add your update logic here
 
