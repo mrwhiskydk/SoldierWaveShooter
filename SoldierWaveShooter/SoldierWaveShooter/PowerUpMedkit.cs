@@ -10,7 +10,7 @@ namespace SoldierWaveShooter
 {
     class PowerUpMedkit : PowerUp
     {
-        private int healthBoost = 10;
+        private int healthBoost = 25;
 
         /// <summary>
         /// Constructor

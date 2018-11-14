@@ -368,7 +368,13 @@ namespace SoldierWaveShooter
 
             if (winGame == true)
             {
-                winSound.Play();
+                if (!winSoundPlayed)
+                {
+                    music.Stop();
+                    winSound.Play();
+                    winSoundPlayed = true;
+                }
+                
                 foreach (GameObject gameobject in gameObjects)
                 {
                     if (gameobject is Projectile)
