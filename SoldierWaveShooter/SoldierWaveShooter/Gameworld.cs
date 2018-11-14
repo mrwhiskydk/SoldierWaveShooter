@@ -261,6 +261,10 @@ namespace SoldierWaveShooter
 
             mouse = new Crosshair();
             new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
+            new PowerUpMedkit(new Vector2(500, 500));
+            new PowerUpMedkit(new Vector2(500, 700));
+            new PowerUpMedkit(new Vector2(300, 500));
+            new PowerUp2x(new Vector2(300, 300));
             // TODO: use this.Content to load your game content here
         }
 

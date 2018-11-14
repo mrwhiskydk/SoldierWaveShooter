@@ -20,5 +20,10 @@ namespace SoldierWaveShooter
             magazine = 0;
             timeToReload = 2;
         }
+
+        public Shotgun(Vector2 startPosition, bool isAmmo) : base(startPosition, "ShotgunPiskelSW", isAmmo)
+        {
+            this.isAmmo = isAmmo;
+        }
     }
 }

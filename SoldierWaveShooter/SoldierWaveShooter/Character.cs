@@ -21,6 +21,7 @@ namespace SoldierWaveShooter
         /// Field used for player and enemy health
         /// </summary>
         protected int health;
+        protected int maxHealth;
 
         /// <summary>
         /// Property that returns the health value
@@ -31,7 +32,17 @@ namespace SoldierWaveShooter
             {
                 return health;
             }
-
+            set
+            {
+                if (value >= maxHealth)
+                {
+                    health = maxHealth;
+                }
+                else
+                {
+                    health = value;
+                }
+            }
         }
 
         /// <summary>

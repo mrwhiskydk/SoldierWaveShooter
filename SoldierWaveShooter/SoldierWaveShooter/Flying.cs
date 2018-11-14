@@ -33,7 +33,7 @@ namespace SoldierWaveShooter
 
                 if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
                 {
-                    Gameworld.RemoveGameObject(this);
+                    Destroy();
                 }
 
                 if (Gameworld.player.Position.Y >= position.Y)
@@ -47,7 +47,7 @@ namespace SoldierWaveShooter
             }
             else
             {
-                Gameworld.RemoveGameObject(this);
+                Destroy();
             }
             
         }

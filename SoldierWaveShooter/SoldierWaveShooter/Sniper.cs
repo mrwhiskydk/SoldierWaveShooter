@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,11 @@ namespace SoldierWaveShooter
             magazineCapacity = 5;
             magazine = 0;
             timeToReload = 2;
+        }
+
+        public Sniper(Vector2 startPosition, bool isAmmo) : base(startPosition, "Sniper rifle", isAmmo)
+        {
+            this.isAmmo = isAmmo;
         }
     }
 }
