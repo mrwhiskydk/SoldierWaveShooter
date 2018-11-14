@@ -12,12 +12,14 @@ namespace SoldierWaveShooter
         private Vector2 direction;
         public int damage;
         private int speed;
+        public string team;
 
-        public Projectile(Vector2 startPosition, string spriteName, Vector2 direction, int damage, int speed) : base(startPosition, spriteName)
+        public Projectile(Vector2 startPosition, string spriteName, Vector2 direction, int damage, int speed, string team) : base(startPosition, spriteName)
         {
             this.direction = direction;
             this.damage = damage;
             this.speed = speed;
+            this.team = team;
 
 
             if (direction != Vector2.Zero)

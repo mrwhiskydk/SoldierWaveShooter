@@ -7,10 +7,9 @@ namespace SoldierWaveShooter
 {
     public class Standard : Weapon
     {
-        public Standard() : base("ColtPiskel")
+        public Standard() : base("ColtPiskel", "Sound/Weapons/standard")
         {
             equipped = true;
-            damage = 10;
         }
     }
 }

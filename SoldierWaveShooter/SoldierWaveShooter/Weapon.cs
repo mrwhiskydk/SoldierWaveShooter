@@ -19,19 +19,19 @@ namespace SoldierWaveShooter
         protected double lastShot;
         public int ammo = 0;
         protected bool infiniteAmmo = true;
-        public int magazineCapacity = 10;
-        public int magazine = 10;
+        public int magazineCapacity = 0;
+        public int magazine = 0;
         protected double timeToReload = 0.5;
         private double reloadTimer;
         protected bool isReloading = false;
         public bool isAmmo;
         protected Random rnd = new Random();
-        
+        protected Sound gunSound;
         public bool equipped = false;
 
-        public Weapon(string spriteName) : base(spriteName)
+        public Weapon(string spriteName, string sound) : base(spriteName)
         {
-            
+            gunSound = new Sound(sound);
         }
 
         public Weapon(Vector2 startPosition, string spriteName, bool isAmmo) : base(startPosition, spriteName)
@@ -47,25 +47,27 @@ namespace SoldierWaveShooter
                 {
                     for (int i = 0; i < bulletAmount; i++)
                     {
+                        //get the direction to shoot
                         Vector2 mousePos = Gameworld.mouse.Position - position;
                         mousePos.Normalize();
                         //Send the bullet in a random direction depending on weapon spread
                         float rndSpread = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
                         float rndSpread2 = (float)rnd.Next(-(int)spread, (int)spread) / 1000;
 
-                        //Console.WriteLine("spread : " + rndSpread);
-
-                        new Projectile(position, bulletSprite, new Vector2(mousePos.X + rndSpread, mousePos.Y + rndSpread2), damage, projectileSpeed);
+                        new Projectile(position, bulletSprite, new Vector2(mousePos.X + rndSpread, mousePos.Y + rndSpread2), damage, projectileSpeed, "player");
                         lastShot = 0;
                     }
 
                     //Spawn a bullet casing flying in a semi random upwards direction
                     new BulletCasing(position);
+
+                    //if we dont have infinite ammo substract from the bullets in our magazine
                     if (!infiniteAmmo)
                     {
                         magazine--;
                     }
-                    
+
+                    gunSound.Play();
                 }
                 else if (ammo > 0 && !infiniteAmmo)
                 {
@@ -76,7 +78,7 @@ namespace SoldierWaveShooter
 
         public virtual void Reload()
         {
-            if (reloadTimer > timeToReload)
+            if (isReloading == false && magazine != magazineCapacity)
             {
                 reloadTimer = 0;
                 isReloading = true;
@@ -92,16 +94,21 @@ namespace SoldierWaveShooter
             reloadTimer += gameTime.ElapsedGameTime.TotalSeconds;
             if (reloadTimer >= timeToReload && isReloading)
             {
-                if (ammo > magazineCapacity)
+                if (ammo > 0)
                 {
-                    magazine = magazineCapacity;
-                    ammo -= magazine;
+                    int bulletsToReload = magazineCapacity - magazine;
+                    if (ammo > bulletsToReload)
+                    {
+                        magazine += bulletsToReload;
+                        ammo -= bulletsToReload;
+                    }
+                    else
+                    {
+                        magazine += ammo;
+                        ammo -= ammo;
+                    }
                 }
-                else
-                {
-                    magazine = ammo;
-                    ammo -= magazine;
-                }
+                
                 reloadTimer = 0;
                 isReloading = false;
             }
@@ -111,7 +118,7 @@ namespace SoldierWaveShooter
         {
             if (equipped || isAmmo)
             {
-                base.Draw(spriteBatch);
+                spriteBatch.Draw(sprite, position, null, Color.White, rotation, new Vector2(sprite.Width * 0.5f, sprite.Height * 0.5f), 1f, SpriteEffects.None, 0.96f);
             }
         }
     }

@@ -32,11 +32,6 @@ namespace SoldierWaveShooter
 
         }
 
-        public AnimatedGameObject(int frameCount, float animationFPS, string spriteName, float walkingspeed) : this(frameCount, animationFPS, Vector2.Zero, spriteName)
-        {
-
-        }
-
         public AnimatedGameObject(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(startPostion, spriteName)
         {
             this.animationFPS = animationFPS;
@@ -47,18 +42,6 @@ namespace SoldierWaveShooter
             }
             currentAnimationIndex = 0;
         }
-
-        public AnimatedGameObject(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(startPostion, spriteName)
-        {
-            this.animationFPS = animationFPS;
-            animationRectangles = new Rectangle[frameCount];
-            for (int i = 0; i < frameCount; i++)
-            {
-                animationRectangles[i] = new Rectangle(i * (sprite.Width / 3), 0, (sprite.Width / 3), (sprite.Height / 4));
-            }
-            currentAnimationIndex = 0;
-        }
-
 
         /// <summary>
         /// Updates the GameObject's logic and progresses the animation cycle
@@ -89,11 +72,11 @@ namespace SoldierWaveShooter
         {
             if (isFacingRight == true)
             {
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0.9f);
             }
             else if(isFacingRight == false)
             {
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.White, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0.9f);
             }
 
         }

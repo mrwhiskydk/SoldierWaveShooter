@@ -48,11 +48,6 @@ namespace SoldierWaveShooter
             
         }
 
-        public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName, float walkingspeed) : base(frameCount, animationFPS, startPostion, spriteName, walkingspeed)
-        {
-            gravity = true;
-            
-        }
 
         /// <summary>
         /// Update method that makes sure gravity stays true, should it be enabled.
