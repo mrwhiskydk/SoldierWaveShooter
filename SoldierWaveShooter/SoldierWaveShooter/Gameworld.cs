@@ -392,7 +392,7 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack);
 
   
             spriteBatch.Draw(winScreen, winRect, Color.White);

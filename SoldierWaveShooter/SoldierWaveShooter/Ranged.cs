@@ -51,7 +51,6 @@ namespace SoldierWaveShooter
 
                 lastShot = 0;
             }
-        }
 
             if (Gameworld.isAlive)
             {
@@ -66,11 +65,9 @@ namespace SoldierWaveShooter
             }
             else
             {
-                Gameworld.RemoveGameObject(this);
+                Destroy();
             }
             base.Update(gameTime);
-
-            
         }
 
         protected override void HandleMovement(GameTime gameTime)
