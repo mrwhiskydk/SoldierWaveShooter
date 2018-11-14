@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -50,6 +51,13 @@ namespace SoldierWaveShooter
         private Enemy enemyBoss;
         private Platform platform;
         private Texture2D collisionTexture;
+        private Sound winSound;
+        private bool winSoundPlayed;
+        private Sound loseSound;
+        private bool loseSoundPlayed;
+        private SoundEffect musicLoop;
+        private SoundEffectInstance music;
+
 
         /// <summary>
         /// Enables acces to the Crosshair in other classes
@@ -85,6 +93,8 @@ namespace SoldierWaveShooter
         public static bool isAlive = true;
         
         private bool winGame = false;
+
+
         private bool bossIsAlive = false;
 
         /// <summary>
@@ -174,6 +184,13 @@ namespace SoldierWaveShooter
             barMid = Content.Load<Texture2D>("barMidLayer");
             barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
+            winSound = new Sound("Sound/Weapons/win");
+            loseSound = new Sound("Sound/Weapons/lose");
+            musicLoop = Content.Load<SoundEffect>("Sound/Weapons/music");
+            music = musicLoop.CreateInstance();
+            music.IsLooped = true;
+            music.Play();
+
 
             // Castle Platforms
             for (int i = 0; i < 28; i++)
@@ -305,6 +322,12 @@ namespace SoldierWaveShooter
             //Statement below checks if player is dead, and removes him from the game if true
             if (player.Health <= 0) 
             {
+                if (!loseSoundPlayed)
+                {
+                    music.Stop();
+                    loseSound.Play();
+                    loseSoundPlayed = true;
+                }
                 player.Destroy();
                 isAlive = false;
 
@@ -313,6 +336,8 @@ namespace SoldierWaveShooter
                 if (respawnTime > respawnDuration)
                 {
                     player = new Player();
+                    music.Play();
+                    loseSoundPlayed = false;
                     isAlive = true;
 
                     respawnTime = 0;
@@ -333,14 +358,13 @@ namespace SoldierWaveShooter
                 {
                     enemyBoss.Destroy();
                     enemyBoss.enemyDamage = 0;
-                    winGame = true;     
-                    
+                    winGame = true;
                 }
             }
 
             if (winGame == true)
             {
-
+                winSound.Play();
                 foreach (GameObject gameobject in gameObjects)
                 {
                     if (gameobject is Projectile)

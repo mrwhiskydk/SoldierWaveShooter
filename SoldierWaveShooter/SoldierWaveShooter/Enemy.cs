@@ -28,7 +28,7 @@ namespace SoldierWaveShooter
         /// A field to determine if enemies should go to the left or not.
         /// </summary>
         protected bool goLeft = false;
-        private Random rnd = new Random();
+        protected Random rnd = new Random();
 
         public Enemy(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {

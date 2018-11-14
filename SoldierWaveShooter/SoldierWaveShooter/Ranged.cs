@@ -15,7 +15,6 @@ namespace SoldierWaveShooter
         private double attackCooldown = 1;
         private float spread = 50f;
         private int projectileSpeed = 500;
-        private Random rnd = new Random();
 
         public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
         {
@@ -66,10 +65,6 @@ namespace SoldierWaveShooter
             {
                 Destroy();
             }
-
-                base.Update(gameTime);
-            }
         }
-
     }
 }
