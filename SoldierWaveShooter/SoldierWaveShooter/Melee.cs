@@ -56,11 +56,11 @@ namespace SoldierWaveShooter
             base.HandleMovement(gameTime);
             if (climb == true && goToPlayer == true)
             {
-                position.Y += (float)(walkingspeed/2 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y += (float)(movementSpeed / 2 * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if (climb == false && goToPlayer == true)
             {
-                position.Y -= (float)(walkingspeed/2 * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(movementSpeed / 2 * gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
 

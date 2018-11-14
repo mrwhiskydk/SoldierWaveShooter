@@ -99,11 +99,11 @@ namespace SoldierWaveShooter
             Gravity = false;
             if (goDown == true && goToPlayer == true)
             {
-                position.Y += (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y += (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
             if (goDown == false && goToPlayer == true)
             {
-                position.Y -= (float)(walkingspeed * gameTime.ElapsedGameTime.TotalSeconds);
+                position.Y -= (float)(movementSpeed * gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
     }
