@@ -120,18 +120,18 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// 
+        /// Method that adds the current GameObject to the game
         /// </summary>
-        /// <param name="go">GameObjects that should be added to the game</param>
+        /// <param name="go">GameObject that should be added to the game</param>
         public static void AddGameObject(GameObject go)
         {
             toBeAdded.Add(go);
         }
 
         /// <summary>
-        /// 
+        /// Method that removes current GameObject from the game
         /// </summary>
-        /// <param name="go"></param>
+        /// <param name="go">GameObject that should be removed from the game</param>
         public static void RemoveGameObject(GameObject go)
         {
             toBeRemoved.Add(go);
@@ -289,12 +289,13 @@ namespace SoldierWaveShooter
 
             // TODO: Add your update logic here
 
-            //if statement checks if player is dead, and removes him from the game if true
+            //Statement below checks if player is dead, and removes him from the game if true
             if (player.Health <= 0) 
             {
                 player.Destroy();
                 isAlive = false;
 
+                //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
                 {
@@ -303,6 +304,7 @@ namespace SoldierWaveShooter
 
                     respawnTime = 0;
 
+                    //Statement below enables the boss to spawn again if the player dies
                     if (!wavePhase && !spawnBoss)
                     {
                         spawnBoss = true;
@@ -311,6 +313,7 @@ namespace SoldierWaveShooter
 
             } 
 
+            //Statement below enables win sprite to be drawn when the boss is defeated
             if (bossIsAlive == true)
             {
                 if (enemyBoss.enemyHealth <= 0)
@@ -328,7 +331,7 @@ namespace SoldierWaveShooter
             barPosition = new Vector2(94, 59);
             foreach (GameObject go in gameObjects)
             {
-                //Apply gravity
+                //Applies gravity to GameObject
                 if (go.Gravity)
                 {
                     go.Position = new Vector2(go.Position.X, go.Position.Y + gravityStrength);
@@ -358,10 +361,10 @@ namespace SoldierWaveShooter
 
             base.Update(gameTime);
 
-
+            //Statement below enables different enemy GameObjects to spawn (depending on their timer) if the player is alive
             if (isAlive)
             {
-                // Spawner Melee
+                // Spawns the Melee GameObject, once spawnMeleeTimer is up
                 spawnMeleeTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnMeleeTimer >= spawnMeleeCooldown)
                 {
@@ -375,7 +378,7 @@ namespace SoldierWaveShooter
                     spawnMelee = false;
                 }
 
-                // Spawner Ranged
+                // Spawns the Ranged GameObject, once spawnRangedTimer is up
                 spawnRangedTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnRangedTimer >= spawnRangedCooldown)
                 {
@@ -389,7 +392,7 @@ namespace SoldierWaveShooter
                     spawnRanged = false;
                 }
 
-                // Spawner Flying
+                // Spawns the Flying GameObject, once spawnFlyingTimer is up
                 spawnFlyingTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnFlyingTimer >= spawnFlyingCooldown)
                 {
@@ -403,7 +406,8 @@ namespace SoldierWaveShooter
                     spawnFlying = false;
                 }
 
-                // Spawner Boss og stopper andre enemies fra at spawne
+                
+                // Spawns the Boss GameObject, once spawnBossTimer is up, and disables other Enemy GameObjects from spawning
                 spawnBossTimer += gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnBossTimer >= spawnBossCooldown)
                 {
@@ -432,6 +436,7 @@ namespace SoldierWaveShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
 
+            // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack);
             loseRect = new Rectangle(0, 0, 1920, 1080);
             if (isAlive == false)
@@ -451,22 +456,21 @@ namespace SoldierWaveShooter
             }
             
             
-            
-            //Add spriteBatch for healthbar           
             spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(70, 35), Color.White);
             spriteBatch.DrawString(font, $"Ammo:{player.weapon.ammo}", new Vector2(350, 60), Color.White);
             spriteBatch.DrawString(font, $"magazine:{player.weapon.magazine}", new Vector2(350, 90), Color.White);
             spriteBatch.Draw(bar, new Vector2(70, 35), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.99f);
             spriteBatch.Draw(barMid, new Vector2(94, 59), null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.991f);
             spriteBatch.Draw(barTop, barPosition, barPos, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.992f);
-            //spriteBatch.DrawString(font, $"Health:{player.Health}", new Vector2(165, 75), Color.White);
             spriteBatch.End();
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
 
-
+        /// <summary>
+        /// Method that draws the CollisionBox of the GameObject
+        /// </summary>
+        /// <param name="go">CollisionBox of the GameObject</param>
         private void DrawCollisionBox(GameObject go)
         {
             Rectangle collisionBox = go.CollisionBox;
