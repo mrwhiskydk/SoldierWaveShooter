@@ -21,22 +21,26 @@ namespace SoldierWaveShooter
         private Texture2D barTop;
 
         /// <summary>
-        /// 
+        /// Used to set the texture of the default background sprite
         /// </summary>
         private Texture2D backGround;
         private Rectangle BackGroundRect;
+
+        /// <summary>
+        /// List that contains the different GameObjects in the game
+        /// </summary>
         public List<GameObject> gameObjects = new List<GameObject>();
 
         private static List<GameObject> toBeAdded = new List<GameObject>();
         private static List<GameObject> toBeRemoved = new List<GameObject>();
 
         /// <summary>
-        /// 
+        /// Enables access to the Player in other classes
         /// </summary>
         public static Player player;
 
         /// <summary>
-        /// 
+        /// Enables acces to the Boss in other classes
         /// </summary>
         public static Boss boss;
 
@@ -48,7 +52,7 @@ namespace SoldierWaveShooter
         private Texture2D collisionTexture;
 
         /// <summary>
-        /// 
+        /// Enables acces to the Crosshair in other classes
         /// </summary>
         public static Crosshair mouse;
 
@@ -76,7 +80,7 @@ namespace SoldierWaveShooter
         private Rectangle barPos;
 
         /// <summary>
-        /// Static bool to check if player is alive or not. Used in the different enemies, boss and Gameworld update to control player and enemy deaths and spawns
+        /// Enables use access in other classes. Handles player and enemy deaths and spawns in Gameworld update method
         /// </summary>
         public static bool isAlive = true;
         
@@ -84,7 +88,7 @@ namespace SoldierWaveShooter
         private bool bossIsAlive = false;
 
         /// <summary>
-        /// 
+        /// Sets the screensize of the game
         /// </summary>
         public static Rectangle ScreenSize
         {
@@ -97,7 +101,7 @@ namespace SoldierWaveShooter
         private static ContentManager _content;
 
         /// <summary>
-        /// 
+        /// Method that enables loading of resources
         /// </summary>
         public static ContentManager ContentManager
         {
