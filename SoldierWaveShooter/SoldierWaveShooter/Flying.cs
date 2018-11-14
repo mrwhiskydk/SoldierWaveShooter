@@ -67,16 +67,15 @@ namespace SoldierWaveShooter
                 enemyHealth -= enemyHealth;
             }
 
-            if (otherObject is Projectile)
+            else if (otherObject is Projectile)
             {
                 Projectile bullet = (Projectile)otherObject;
-                enemyHealth -= bullet.damage;
+                if (bullet.team == "player")
+                {
+                    enemyHealth -= bullet.damage;
+                    bullet.Destroy();
+                }
             }
-
-            if (otherObject is Projectile)
-            {
-                Gameworld.RemoveGameObject(otherObject);
-            }             
         }
     }
 }

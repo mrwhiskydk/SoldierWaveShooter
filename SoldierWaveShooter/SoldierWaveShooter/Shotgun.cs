@@ -8,7 +8,7 @@ namespace SoldierWaveShooter
 {
     public class Shotgun : Weapon
     {
-        public Shotgun() : base("ShotgunPiskelSW")
+        public Shotgun() : base("ShotgunPiskelSW", "Sound/Weapons/shotgun")
         {
             firerate = 0.75f;
             projectileSpeed = 1250;

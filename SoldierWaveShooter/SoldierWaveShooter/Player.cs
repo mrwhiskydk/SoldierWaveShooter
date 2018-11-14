@@ -27,9 +27,7 @@ namespace SoldierWaveShooter
         public Player() : base(4, 10, new Vector2(Gameworld.ScreenSize.Width / 2, 500), "PlayerRunSW")
         {
             weapon = weapons[0];
-
             health = 110;
-
         }  
         
 
@@ -93,19 +91,32 @@ namespace SoldierWaveShooter
             }
 
 
-            if (otherObject is Enemy && !isImmortal)
+            else if (otherObject is Enemy && !isImmortal)
             {
                 Enemy enemy = (Enemy)otherObject;
-                health -= enemy.enemyDamage;               
-                isImmortal = true;
+                
 
                 if (enemy.enemyHealth > 0)
                 {
                     takingDamage = true;
+                    health -= enemy.enemyDamage;
+                    isImmortal = true;
                 }
             }
 
-            if (otherObject is Weapon)
+            else if (otherObject is Projectile && !isImmortal)
+            {
+                Projectile bullet = (Projectile)otherObject;
+                if (bullet.team == "enemy")
+                {
+                    health -= bullet.damage;
+                    bullet.Destroy();
+                    isImmortal = true;
+                    takingDamage = true;
+                }
+            }
+
+            else if (otherObject is Weapon)
             {
                 Weapon obj = (Weapon)otherObject;
                 if (obj.isAmmo)
@@ -114,7 +125,6 @@ namespace SoldierWaveShooter
                     {
                         if (obj.GetType() == weap.GetType())
                         {
-                            Console.WriteLine(weap.GetType());
                             weap.ammo += weap.magazineCapacity;
                             obj.Destroy();
                             break;
@@ -176,14 +186,14 @@ namespace SoldierWaveShooter
             if (isImmortal == true && isFacingRight == false && takingDamage == true)
             {
 
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.FlipHorizontally, 0.95f);
 
             }
 
             if (isImmortal == true && isFacingRight == true && takingDamage == true)
             {
 
-                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteBatch.Draw(sprite, position, animationRectangles[currentAnimationIndex], Color.Red, rotation, new Vector2(animationRectangles[currentAnimationIndex].Width * 0.5f, animationRectangles[currentAnimationIndex].Height * 0.5f), 1f, SpriteEffects.None, 0.95f);
 
             }
 

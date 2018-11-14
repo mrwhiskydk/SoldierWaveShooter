@@ -64,6 +64,7 @@
     <Compile Include="Ranged.cs" />
     <Compile Include="Shotgun.cs" />
     <Compile Include="Sniper.cs" />
+    <Compile Include="Sound.cs" />
     <Compile Include="Standard.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="Weapon.cs" />
