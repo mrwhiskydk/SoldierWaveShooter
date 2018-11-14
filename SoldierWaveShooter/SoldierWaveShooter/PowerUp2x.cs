@@ -4,19 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace SoldierWaveShooter
 {
-    class PowerUpMedkit : PowerUp
+    class PowerUp2x : PowerUp
     {
-        private int healthBoost = 10;
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="startPosition">Start position</param>
-        public PowerUpMedkit(Vector2 startPosition) : base(startPosition, "Medkit")
+        public PowerUp2x(Vector2 startPosition) : base(startPosition, "2x")
         {
 
         }
@@ -27,7 +20,8 @@ namespace SoldierWaveShooter
             {
                 Console.WriteLine(Gameworld.player.Health);
                 Player player = (Player)otherObject;
-                player.Health += healthBoost;
+                player.fireRateMultiplier = 2;
+                player.fireRateMultiplierTimer = 0;
                 Destroy();
 
                 Console.WriteLine("After collision " + Gameworld.player.Health);

@@ -40,7 +40,7 @@ namespace SoldierWaveShooter
 
                 if (!Gameworld.ScreenSize.Intersects(CollisionBox) && enemyHealth <= 0)
                 {
-                    Gameworld.RemoveGameObject(this);
+                    Destroy();
                 }
 
                 if (Gameworld.player.Position.Y >= position.Y)
@@ -56,7 +56,7 @@ namespace SoldierWaveShooter
 
             else
             {
-                Gameworld.RemoveGameObject(this);
+                Destroy();
             }
             
         }
@@ -90,6 +90,39 @@ namespace SoldierWaveShooter
             if (otherObject is Player && enemyHealth > 0)
             {
                 enemyHealth -= enemyHealth;
+
+                //Generate a random number to see if we should drop something
+                int random = rnd.Next(0, 10);
+                if (random == 7 || random == 8)
+                {
+                    random = rnd.Next(0, 3);
+                    switch (random)
+                    {
+                        case 0:
+                            new Machinegun(position, true);
+                            break;
+                        case 1:
+                            new Shotgun(position, true);
+                            break;
+                        case 2:
+                            new Sniper(position, true);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (random == 9)
+                {
+                    random = rnd.Next(0, 2);
+                    if (random == 0)
+                    {
+                        new PowerUp2x(position);
+                    }
+                    else
+                    {
+                        new PowerUpMedkit(position);
+                    }
+                }
             }
 
             else if (otherObject is Projectile)

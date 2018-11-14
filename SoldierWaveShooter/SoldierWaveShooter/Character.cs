@@ -21,6 +21,7 @@ namespace SoldierWaveShooter
         /// Field used for player and enemy health
         /// </summary>
         protected int health;
+        protected int maxHealth;
 
         /// <summary>
         /// Property that returns the health value
@@ -31,16 +32,26 @@ namespace SoldierWaveShooter
             {
                 return health;
             }
-
+            set
+            {
+                if (value >= maxHealth)
+                {
+                    health = maxHealth;
+                }
+                else
+                {
+                    health = value;
+                }
+            }
         }
 
         /// <summary>
         /// Character constructor that enables gravity as default
         /// </summary>
-        /// <param name="frameCount"></param>
-        /// <param name="animationFPS"></param>
-        /// <param name="startPostion"></param>
-        /// <param name="spriteName"></param>
+        /// <param name="frameCount">Counts each frame of the current GameObject</param>
+        /// <param name="animationFPS">Sets how fast each frame is counted in the current GameObject</param>
+        /// <param name="startPostion">Default position of the current GameObject</param>
+        /// <param name="spriteName">sprite name of the current GameObject</param>
         public Character(int frameCount, float animationFPS, Vector2 startPostion, string spriteName) : base(frameCount, animationFPS, startPostion, spriteName)
         {
             gravity = true;

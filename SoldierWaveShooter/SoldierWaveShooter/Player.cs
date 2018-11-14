@@ -14,8 +14,11 @@ namespace SoldierWaveShooter
     /// </summary>
     public class Player : Character
     {        
-        private Weapon[] weapons = { new Standard(), new Sniper(), new Machinegun(), new Shotgun() };      
+        private Weapon[] weapons = { new Standard(), new Machinegun(), new Shotgun(), new Sniper() };      
         public Weapon weapon;
+        public int fireRateMultiplier = 1;
+        public double fireRateMultiplierTimer;
+        private Player[] playerAnimations = new Player[6];
 
         private const float jumpPower = 1000;
         private double jumpForce = jumpPower;
@@ -35,7 +38,8 @@ namespace SoldierWaveShooter
         {
             weapon = weapons[0];
 
-            health = 110;   //Maximum amount of player health.
+            maxHealth = 110;   //Maximum amount of player health.
+            health = maxHealth;
 
             movementSpeed = 300;
         }  
@@ -46,16 +50,22 @@ namespace SoldierWaveShooter
         /// <param name="gameTime">Time elapsed since last call in the update</param>
         public override void Update(GameTime gameTime)
         {
-                base.Update(gameTime);               
-                HandleMovement(gameTime);
+            base.Update(gameTime);               
+            HandleMovement(gameTime);
 
-                immortalTime += gameTime.ElapsedGameTime.TotalSeconds;  //Adding +1 second to immortalTime, until it reaches 3 seconds
-                if (immortalTime > immortalDuration)
-                {
-                    isImmortal = false;
-                    immortalTime = 0;   //Upon reaching 3 seconds, immortalTime is reset to 0
-                }
-                WeaponSystem();            
+            immortalTime += gameTime.ElapsedGameTime.TotalSeconds;  //Adding +1 second to immortalTime, until it reaches 3 seconds
+            if (immortalTime > immortalDuration)
+            {
+                isImmortal = false;
+                immortalTime = 0;   //Upon reaching 3 seconds, immortalTime is reset to 0
+            }
+            WeaponSystem();
+
+            fireRateMultiplierTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (fireRateMultiplierTimer >= 5)
+            {
+                fireRateMultiplier = 1;
+            }
         }
 
         /// <summary>

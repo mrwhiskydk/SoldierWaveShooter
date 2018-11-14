@@ -11,6 +11,7 @@ namespace SoldierWaveShooter
     public abstract class Weapon : GameObject
     {
         protected float firerate = 0.2f;
+        protected float currentFirerate;
         protected int projectileSpeed = 1000;
         protected int damage = 10;
         protected float spread = 30f;
@@ -58,7 +59,7 @@ namespace SoldierWaveShooter
         /// </summary>
         public virtual void Shoot()
         {
-            if (lastShot > firerate)
+            if (lastShot > currentFirerate)
             {
                 if (magazine > 0 || infiniteAmmo)
                 {
@@ -140,6 +141,16 @@ namespace SoldierWaveShooter
                 
                 reloadTimer = 0;
                 isReloading = false;
+            }
+
+            //if we have double firerate powerup
+            if (Gameworld.player.fireRateMultiplier == 2)
+            {
+                currentFirerate = firerate / 2;
+            }
+            else
+            {
+                currentFirerate = firerate;
             }
         }
 

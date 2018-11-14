@@ -21,19 +21,15 @@ namespace SoldierWaveShooter
             this.speed = speed;
             this.team = team;
 
-
             if (direction != Vector2.Zero)
             {
                 this.direction.Normalize();
                 rotation = (float)Math.Atan2(direction.Y, direction.X);
             }
-
-            //Console.WriteLine("direction : " + this.direction);
         }
 
         public override void Update(GameTime gameTime)
         {
-            Console.WriteLine(direction);
             position += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!Gameworld.ScreenSize.Intersects(CollisionBox))
