@@ -78,7 +78,7 @@ namespace SpeedoAlienPrisonShootout
         private const float spawnBossCooldown = 60.0f;
         private bool spawnBoss = true;
         private bool wavePhase = true;
-        private float respawnDuration = 10.0f;   //Field used for player respawn in update
+        private float respawnDuration = 5.0f;   //Field used for player respawn in update
         private double respawnTime; //Field used for player respawn in update
         private Texture2D winScreen;
         private Rectangle winRect;
@@ -313,17 +313,18 @@ namespace SpeedoAlienPrisonShootout
             // TODO: Add your update logic here
 
             //Statement below checks if player is dead, and removes him from the game if true
-            if (player.Health <= 0) 
+            if (player.Health <= 0 ) 
             {
-                if (!loseSoundPlayed)
+                if (!loseSoundPlayed )
                 {
                     music.Stop();
                     loseSound.Play();
                     loseSoundPlayed = true;
                 }
+
                 player.Destroy();
                 isAlive = false;
-
+                spawnBossTimer = 0;
                 //Statement below adds the player to the game once respawnTime reaches the value of respawnDuration
                 respawnTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (respawnTime > respawnDuration)
@@ -517,7 +518,7 @@ namespace SpeedoAlienPrisonShootout
             }
 
             winRect = new Rectangle(0, 0, 1920, 1080);
-            if (winGame == true)
+            if (winGame == true && isAlive == true)
             {
                 spriteBatch.Draw(winScreen, Vector2.Zero, winRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 1);
             }

@@ -17,7 +17,7 @@ namespace SpeedoAlienPrisonShootout
         private int projectileSpeed = 500;
         private Sound sound = new Sound("Sound/Weapons/standard");
 
-        public Ranged() : base(4, 4, new Vector2(120, 200), "Ranged")
+        public Ranged() : base(4, 1, new Vector2(120, 200), "Ranged")
         {
             enemyHealth = 70;
             enemyDamage = 10;
