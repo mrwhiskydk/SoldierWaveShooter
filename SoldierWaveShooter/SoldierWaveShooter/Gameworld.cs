@@ -107,7 +107,7 @@ namespace SoldierWaveShooter
         }
 
         /// <summary>
-        /// 
+        /// Constructor for the Gameworld
         /// </summary>
         public Gameworld()
         {
@@ -156,6 +156,8 @@ namespace SoldierWaveShooter
         /// </summary>
         protected override void LoadContent()
         {
+            // TODO: use this.Content to load your game content here
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             winScreen = Content.Load<Texture2D>("YouWin");
@@ -166,7 +168,7 @@ namespace SoldierWaveShooter
             barTop = Content.Load<Texture2D>("barTopLayer");
             collisionTexture = Content.Load<Texture2D>("CollisionTexture");
 
-            // Castle platforme
+            // Castle Platforms
             for (int i = 0; i < 28; i++)
             {
                 new Platform(new Vector2((i*70) + 35, 1016), "castle");
@@ -202,7 +204,7 @@ namespace SoldierWaveShooter
 
 
 
-            // Kæder
+            // Chains
             platform = new Platform(new Vector2(120, 540), "chain");
             platform = new Platform(new Vector2(120, 470), "chain");
             platform = new Platform(new Vector2(120, 400), "chain");
@@ -264,7 +266,7 @@ namespace SoldierWaveShooter
 
             mouse = new Crosshair();
             new Machinegun(new Vector2(player.Position.X + 50, player.Position.Y), true);
-            // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
