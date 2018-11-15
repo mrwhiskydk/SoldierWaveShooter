@@ -16,9 +16,9 @@ namespace SpeedoAlienPrisonShootout
         public Flying() : base(3, 9, new Vector2(1850,50), "FlyingGreen")
         {
             isFacingRight = true;
-            enemyHealth = 50;
+            enemyHealth = 30;
             enemyDamage = 5;
-            movementSpeed = 30;
+            movementSpeed = 70;
         }
 
         /// <summary>

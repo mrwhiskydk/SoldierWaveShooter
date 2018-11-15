@@ -66,10 +66,10 @@ namespace SpeedoAlienPrisonShootout
 
         private float gravityStrength = 5f;
         private double spawnMeleeTimer;
-        private const float spawnMeleeCooldown = 7.0f;
+        private const float spawnMeleeCooldown = 5.0f;
         private bool spawnMelee = false;
         private double spawnFlyingTimer;
-        private const float spawnFlyingCooldown = 3.0f;
+        private const float spawnFlyingCooldown = 5.0f;
         private bool spawnFlying = false;
         private double spawnRangedTimer;
         private const float spawnRangedCooldown = 5.0f;

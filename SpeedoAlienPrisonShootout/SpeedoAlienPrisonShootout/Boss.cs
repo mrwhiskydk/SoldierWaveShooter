@@ -18,13 +18,13 @@ namespace SpeedoAlienPrisonShootout
         private float spread = 1000;
         private int projectileSpeed = 300;
         private int bulletAmount = 10;
-        private int projectileDamage = 5;
+        private int projectileDamage = 10;
         private Sound sound = new Sound("Sound/Weapons/shotgun");
 
         public Boss() : base(5, 5, new Vector2(Gameworld.ScreenSize.Width / 2, 150), "Boss")
         {
             isFacingRight = false;
-            enemyHealth = 50;
+            enemyHealth = 2000;
             enemyDamage = 15;
             movementSpeed = 25;
         }
