@@ -21,7 +21,7 @@ namespace SpeedoAlienPrisonShootout
         {
             enemyHealth = 70;
             enemyDamage = 10;
-            movementSpeed = 20;
+            movementSpeed = 40;
         }
 
         /// <summary>
